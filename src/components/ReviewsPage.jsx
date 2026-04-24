@@ -30,7 +30,6 @@ const reviewCards = [
 function ReviewsPage() {
   const [startIndex, setStartIndex] = useState(0);
 
-  // 🔁 Auto rotate every 3 sec
   useEffect(() => {
     const interval = setInterval(() => {
       setStartIndex((prev) => (prev + 1) % reviewCards.length);
