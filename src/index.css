@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #0054d1;
+  --color-primary-dark: #003a91;
+  --color-secondary: #ff4fd8;
+  --color-accent: #00b8ff;
+  --color-text: #111827;
+  --color-text-muted: #4b5563;
+  --color-surface: #ffffff;
+  --color-surface-muted: #f8fafc;
+  --color-page-bg: #eef4fb;
+  --color-card-bg: #ffffff;
+  --color-dark: #040711;
+  --color-dark-soft: #0b1328;
+  --color-dark-elevated: #121a31;
+  --color-border: #dbe3ef;
+  --color-border-soft: rgba(255, 255, 255, 0.1);
+  --color-border-softer: rgba(255, 255, 255, 0.2);
+
+  --font-sans: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --radius-card: 1rem;
+  --radius-pill: 999px;
+
+  --shadow-soft: 0 10px 30px rgba(0, 34, 90, 0.1);
+  --shadow-strong: 0 20px 45px rgba(0, 34, 90, 0.2);
+  --shadow-navbar: 0 12px 30px rgba(0, 40, 110, 0.16);
+  --shadow-accent: 0 0 24px rgba(0, 184, 255, 0.18);
+  --shadow-secondary: 0 8px 20px rgba(255, 79, 216, 0.4);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 96px;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background: var(--color-surface);
+}
+
+@layer components {
+  .surface-card {
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-border);
+    background: var(--color-card-bg);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .dark-card {
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-border-soft);
+    background: var(--color-dark-soft);
+    box-shadow: var(--shadow-soft);
+  }
+
+  .primary-btn {
+    border-radius: var(--radius-pill);
+    background: var(--color-primary);
+    color: #fff;
+    box-shadow: var(--shadow-soft);
+    transition: background 0.2s ease;
+  }
+
+  .primary-btn:hover {
+    background: var(--color-primary-dark);
+  }
+}
