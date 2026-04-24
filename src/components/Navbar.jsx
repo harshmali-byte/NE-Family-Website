@@ -179,7 +179,7 @@ function Navbar({ navItems, isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button className="primary-btn hidden px-5 py-2 text-sm font-semibold md:inline-flex">
+          <button className=" rounded-[var(--radius-card)] bg-[var(--color-secondary)] text-white hidden px-5 py-2 text-sm font-semibold md:inline-flex">
             Get a Quote
           </button>
 

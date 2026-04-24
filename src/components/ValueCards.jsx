@@ -1,10 +1,24 @@
+import { useState } from 'react'
+
 function ValueCards({ valueCards }) {
+  const [expandedCards, setExpandedCards] = useState({})
+
+  const toggleExpanded = (title) => {
+    setExpandedCards((prev) => ({
+      ...prev,
+      [title]: !prev[title],
+    }))
+  }
+
   return (
     <section className="bg-[var(--color-page-bg)] pb-16" id="services">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 md:px-10">
 
         {valueCards.map((card, index) => {
           const isReverse = index % 2 !== 0
+          const isLongContent = card.text.length > 700
+          const isExpanded = Boolean(expandedCards[card.title])
+          const previewText = isLongContent ? `${card.text.slice(0, 450)}...` : card.text
 
           return (
             <article
@@ -33,7 +47,9 @@ function ValueCards({ valueCards }) {
                 {/* Accent Line */}
                 <div
                   className={`
-                    mt-2 h-1 w-20 bg-[var(--color-accent)]
+                    mt-2 h-[3px] w-full rounded-full
+                    bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-secondary)] to-[var(--color-primary)]
+                    shadow-[0_0_14px_rgba(34,211,238,0.35)]
                     ${isReverse ? 'ml-auto' : ''}
                   `}
                 />
@@ -48,8 +64,27 @@ function ValueCards({ valueCards }) {
                     ${isReverse ? 'ml-auto' : ''}
                   `}
                 >
-                  {card.text}
+                  {isLongContent && !isExpanded ? previewText : card.text}
                 </p>
+
+                {isLongContent && (
+                  <button
+                    className={`mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-accent)] transition hover:text-white ${
+                      isReverse ? 'ml-auto' : ''
+                    }`}
+                    onClick={() => toggleExpanded(card.title)}
+                    type="button"
+                  >
+                    <span>{isExpanded ? 'Read less' : 'Read more'}</span>
+                    <span
+                      className={`inline-flex h-6 w-6 items-center justify-center rounded-full border border-[var(--color-accent)] transition ${
+                        isExpanded ? 'rotate-180' : ''
+                      }`}
+                    >
+                      ↓
+                    </span>
+                  </button>
+                )}
               </div>
 
               {/* ICON */}
@@ -82,3 +117,5 @@ function ValueCards({ valueCards }) {
 }
 
 export default ValueCards
+
+

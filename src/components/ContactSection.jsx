@@ -108,7 +108,7 @@ function ContactSection() {
 
             <button
               disabled={loading}
-              className="w-full rounded-md bg-[var(--color-secondary)] py-3 text-white"
+              className="w-full rounded-[var(--radius-card)] bg-[var(--color-secondary)] py-3 text-white"
               type="submit"
             >
               {loading ? 'Submitting...' : 'SUBMIT'}

@@ -61,7 +61,7 @@ const next = () => {
 // get 3 visible cards
 const leftIndex =
   activeIndex === 0 ? cardData.length - 1 : activeIndex - 1;
-
+                                                                                                                       
 const rightIndex =
   activeIndex === cardData.length - 1 ? 0 : activeIndex + 1;
 
@@ -80,7 +80,7 @@ const rightCard = cardData[rightIndex];
               <li>✔ Save, sign & never get screwed by insurance companies again</li>
             </ul>
             <a
-              className="mt-7 inline-flex w-full items-center justify-center rounded-md bg-[var(--color-secondary)] px-6 py-4 text-xl font-bold text-white shadow-[var(--shadow-secondary)] transition hover:brightness-110 md:max-w-xl"
+              className="mt-7 inline-flex w-full items-center justify-center rounded-[var(--radius-card)] bg-[var(--color-secondary)] px-6 py-4 text-xl font-bold text-white shadow-[var(--shadow-secondary)] transition hover:brightness-110 md:max-w-xl"
               href="https://form.jotform.com/213495620282152"
             >
               GET STARTED
@@ -117,7 +117,7 @@ const rightCard = cardData[rightIndex];
 
       {/* LEFT */}
       <div
-        className="w-[300px] rounded-md border border-white/10 bg-[var(--color-dark-soft)] p-6 text-center text-white transition duration-300 hover:-translate-y-1 hover:border-[var(--color-accent)]"
+        className="w-[300px] rounded-[var(--radius-card)] border border-white/10 bg-[var(--color-dark-soft)] p-6 text-center text-white transition duration-300 hover:-translate-y-1 hover:border-[var(--color-accent)]"
         style={{
           clipPath: "polygon(0 0, 100% 8%, 100% 92%, 0% 100%)",
         }}
@@ -132,7 +132,7 @@ const rightCard = cardData[rightIndex];
       </div>
 
       {/* CENTER */}
-      <div className="w-[340px] rounded-md border border-[var(--color-accent)]/50 bg-[var(--color-dark-soft)] p-8 text-center text-white shadow-md shadow-[var(--shadow-accent)] transition duration-300 hover:-translate-y-1">
+      <div className="w-[340px] rounded-[var(--radius-card)] border border-[var(--color-accent)]/50 bg-[var(--color-dark-soft)] p-8 text-center text-white shadow-md shadow-[var(--shadow-accent)] transition duration-300 hover:-translate-y-1">
         <h4 className="text-2xl font-bold text-white">
           {centerCard.title}
         </h4>
@@ -144,7 +144,7 @@ const rightCard = cardData[rightIndex];
 
       {/* RIGHT */}
       <div
-        className="w-[300px] rounded-md border border-white/10 bg-[var(--color-dark-soft)] p-6 text-center text-white transition duration-300 hover:-translate-y-1 hover:border-[var(--color-accent)]"
+        className="w-[300px] rounded-[var(--radius-card)] border border-white/10 bg-[var(--color-dark-soft)] p-6 text-center text-white transition duration-300 hover:-translate-y-1 hover:border-[var(--color-accent)]"
         style={{
           clipPath: "polygon(0 8%, 100% 0, 100% 100%, 0 92%)",
         }}

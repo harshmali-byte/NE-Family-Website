@@ -51,8 +51,8 @@ function ReviewsPage() {
 
         {/* HEADER */}
         <div className="mt-16 text-center">
-          <p className="text-4xl text-[#f2b600]">★★★★★</p>
-          <p className="mt-2 text-2xl font-bold text-[#1f2937]">EXCELLENT</p>
+          <p className="text-4xl text-amber-500">★★★★★</p>
+          <p className="mt-2 text-2xl font-bold text-[var(--color-text)]">EXCELLENT</p>
           <p className="mt-1 text-sm text-slate-600">
             Based on 2,832 reviews
           </p>
@@ -70,10 +70,7 @@ function ReviewsPage() {
         {/* CARDS */}
         <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4 transition-all duration-500">
           {visibleCards.map((card, index) => (
-            <article
-              key={index}
-              className="group relative rounded-xl bg-white p-5 shadow-md transition-all duration-500 hover:scale-105 hover:shadow-xl"
-            >
+            <article key={index} className="surface-card group relative p-5 transition-all duration-500 hover:scale-105">
               {/* HEADER */}
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
@@ -83,20 +80,20 @@ function ReviewsPage() {
                     className="h-10 w-10 rounded-full object-cover border"
                   />
                   <div>
-                    <p className="text-sm font-bold text-[#111827]">
+                    <p className="text-sm font-bold text-[var(--color-text)]">
                       {card.name}
                     </p>
                     <p className="text-xs text-slate-500">{card.time}</p>
                   </div>
                 </div>
 
-                <span className="text-xs font-semibold text-[#4285f4]">
+                <span className="text-xs font-semibold text-[var(--color-primary)]">
                   G
                 </span>
               </div>
 
               {/* STARS */}
-              <p className="mt-3 text-lg text-[#f2b600]">★★★★★</p>
+              <p className="mt-3 text-lg text-amber-500">★★★★★</p>
 
               {/* TEXT */}
               <p className="mt-2 text-sm leading-6 text-slate-700">
@@ -104,7 +101,7 @@ function ReviewsPage() {
               </p>
 
               {/* HOVER EFFECT */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-transparent to-blue-50 opacity-0 transition group-hover:opacity-100" />
+              <div className="absolute inset-0 rounded-[var(--radius-card)] bg-gradient-to-tr from-transparent to-blue-50 opacity-0 transition group-hover:opacity-100" />
             </article>
           ))}
         </div>

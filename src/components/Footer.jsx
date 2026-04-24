@@ -76,7 +76,7 @@ function Footer() {
 
           <iframe
             title="Office Location"
-            className="mt-4 h-80 w-full rounded-md border border-white/15"
+            className="mt-4 h-80 w-full rounded-[var(--radius-card)] border border-white/15"
             src="https://www.google.com/maps?q=101+President+Ave+Fall+River+MA&output=embed"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
