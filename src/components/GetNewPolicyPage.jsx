@@ -1,39 +1,11 @@
 import { useEffect, useState } from 'react'
 import getNewPolicy0 from '../assets/getnewpolicy0.png'
 import getNewPolicy1 from '../assets/getnewpolicy1.png'
-
-const insuranceAreas = [
-  'Home and Auto Insurance',
-  'Car Insurance',
-  'Truck Insurance',
-  'Business Insurance',
-  'Business Liability Insurance',
-  'Ecommerce Business Insurance',
-  'Life Insurance',
-  'Life Insurance for Children',
-  'Life Insurance for Parents',
-  'Accidental Life Insurance',
-  'Insurance Binder',
-  'Certificate of Insurance',
-  'Workers Compensation Insurance',
-]
-
-const cardData = [
-  {
-    title: 'Ecommerce Business Insurance:',
-    text: 'Insurance providers cover your whole process of ecommerce business procedures from manufacturer to end-user. In case of any uncertainties, ecommerce business insurance provides you an instant backup plan.',
-  },
-  {
-    title: 'Life Insurance:',
-    text: 'Life insurance, also referred to as basic life insurance, ensures a nominee receives a particular amount of money upon the insured person’s death or when the policy gets matured.',
-  },
-  {
-    title: 'Life Insurance for Children:',
-    text: 'Life insurance for children provides long-term financial support and helps with studies and major life expenses with future planning confidence.',
-  },
-]
+import { useI18n } from '../i18n.jsx'
 
 function GetNewPolicyPage() {
+  const { t } = useI18n()
+  const cardData = t.getNewPolicy.cards
   const policyImages = [getNewPolicy0, getNewPolicy1]
   const [activeImage, setActiveImage] = useState(0)
 
@@ -73,22 +45,22 @@ const rightCard = cardData[rightIndex];
       <div className="mx-auto w-full max-w-7xl space-y-12 px-6 md:px-10">
         <article className="dark-card grid items-center gap-8 p-6 md:grid-cols-[1.2fr_1fr] md:p-8">
           <div>
-            <h2 className="text-4xl font-bold text-white">How It Works</h2>
+            <h2 className="text-4xl font-bold text-white">{t.getNewPolicy.howItWorks}</h2>
             <ul className="mt-5 space-y-3 text-lg text-white/90">
-              <li>✔ Choose the type of policy you want</li>
-              <li>✔ Answer a few questions or attach a picture</li>
-              <li>✔ Save, sign & never get screwed by insurance companies again</li>
+              {t.getNewPolicy.steps.map((step) => (
+                <li key={step}>✔ {step}</li>
+              ))}
             </ul>
             <a
               className="mt-7 inline-flex w-full items-center justify-center rounded-[var(--radius-card)] bg-[var(--color-secondary)] px-6 py-4 text-xl font-bold text-white shadow-[var(--shadow-secondary)] transition hover:brightness-110 md:max-w-xl"
               href="https://form.jotform.com/213495620282152"
             >
-              GET STARTED
+              {t.getNewPolicy.getStarted}
             </a>
           </div>
 
           <img
-            alt="Office and policy support"
+            alt={t.getNewPolicy.imageAlt}
             className="h-72 w-full rounded-lg object-cover transition-opacity duration-700 md:h-80"
             src={policyImages[activeImage]}
           />

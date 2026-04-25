@@ -3,14 +3,17 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import AboutPage from './components/AboutPage'
 import ContactSection from './components/ContactSection'
+import FileAClaimPage from './components/FileAClaimPage'
 import Footer from './components/Footer'
 import GetNewPolicyPage from './components/GetNewPolicyPage'
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
+import PayMyBillPage from './components/PayMyBillPage'
+import PolicyChangePage from './components/PolicyChangePage'
 import ReviewsPage from './components/ReviewsPage'
 import TrustSection from './components/TrustSection'
 import ValueCards from './components/ValueCards'
-import { navItems, trustMetrics, valueCards } from './data'
+import { trustMetrics, valueCards } from './data'
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -41,7 +44,6 @@ function App() {
     <div className="min-h-screen bg-[var(--color-page-bg)]">
       <Navbar
         isMobileMenuOpen={isMobileMenuOpen}
-        navItems={navItems}
         onCloseMenu={handleCloseMenu}
         onToggleMenu={handleToggleMenu}
       />
@@ -59,6 +61,9 @@ function App() {
             }
           />
           <Route path="/get-a-new-policy" element={<GetNewPolicyPage />} />
+          <Route path="/pay-my-bill" element={<PayMyBillPage />} />
+          <Route path="/policy-change" element={<PolicyChangePage />} />
+          <Route path="/file-a-claim" element={<FileAClaimPage />} />
           <Route path="/reviews" element={<ReviewsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactSection />} />

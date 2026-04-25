@@ -2,8 +2,10 @@ import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { faCommentDots, faEnvelope, faFax, faPhone, faCheckCircle } from '@fortawesome/free-solid-svg-icons'
+import { useI18n } from '../i18n.jsx'
 
 function ContactSection() {
+  const { t } = useI18n()
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
 
@@ -38,29 +40,40 @@ function ContactSection() {
         {/* LEFT */}
         <div className="text-black">
           <h3 className="text-3xl font-semibold tracking-wide md:text-4xl">
-            OUR TEAM IS READY TO HELP
+            {t.contact.title}
           </h3>
 
           <ul className="mt-8 space-y-4 text-sm md:text-base">
             <li className="flex items-center gap-3">
               <FontAwesomeIcon icon={faCommentDots} />
-              <span>Text</span>
+              <a className="hover:text-[var(--color-primary)]" href="sms:+918120270109?body=Hi%2C%20I%20need%20insurance%20help.">
+                {t.contact.text}: +91 8120270109
+              </a>
             </li>
             <li className="flex items-center gap-3">
               <FontAwesomeIcon icon={faWhatsapp} />
-              <span>WhatsApp</span>
+              <a
+                className="hover:text-[var(--color-primary)]"
+                href="https://wa.me/918120270109?text=Hi%2C%20I%20need%20insurance%20help."
+                rel="noreferrer"
+                target="_blank"
+              >
+                {t.contact.whatsapp}: +91 8120270109
+              </a>
             </li>
             <li className="flex items-center gap-3">
               <FontAwesomeIcon icon={faEnvelope} />
-              <span>Email: service@nefamily4me.com</span>
+              <span>{t.contact.email}: service@nefamily4me.com</span>
             </li>
             <li className="flex items-center gap-3">
               <FontAwesomeIcon icon={faPhone} />
-              <span>Call: +15086722997</span>
+              <a className="hover:text-[var(--color-primary)]" href="tel:+918120270109">
+                {t.contact.call}: +91 8120270109
+              </a>
             </li>
             <li className="flex items-center gap-3">
               <FontAwesomeIcon icon={faFax} />
-              <span>Fax: 508.677.3058</span>
+              <span>{t.contact.fax}: 508.677.3058</span>
             </li>
           </ul>
         </div>
@@ -75,14 +88,14 @@ function ContactSection() {
             <input
               className="w-full border-b border-white/20 bg-transparent px-2 py-3 text-white"
               name="name"
-              placeholder="Full Name"
+              placeholder={t.contact.fullName}
               required
             />
 
             <input
               className="w-full border-b border-white/20 bg-transparent px-2 py-3 text-white"
               name="email"
-              placeholder="Email"
+              placeholder={t.contact.emailAddress}
               required
               type="email"
             />
@@ -90,19 +103,19 @@ function ContactSection() {
             <textarea
               className="w-full border-b border-white/20 bg-transparent px-2 py-3 text-white"
               name="message"
-              placeholder="Message"
+              placeholder={t.contact.message}
               required
             />
 
             <label className="flex items-center gap-3 text-white">
               <input className="form-checkbox h-5 w-5 text-[var(--color-primary)]" type="checkbox" required />
-              <span>I’m not a robot</span>
+              <span>{t.contact.robot}</span>
             </label>
 
             {success && (
               <div className="flex items-center gap-2 text-green-400 text-sm font-medium">
                 <FontAwesomeIcon icon={faCheckCircle} />
-                Form submitted successfully
+                {t.contact.success}
               </div>
             )}
 
@@ -111,7 +124,7 @@ function ContactSection() {
               className="w-full rounded-[var(--radius-card)] bg-[var(--color-secondary)] py-3 text-white"
               type="submit"
             >
-              {loading ? 'Submitting...' : 'SUBMIT'}
+              {loading ? t.contact.submitting : t.contact.submit}
             </button>
           </form>
         </div>
