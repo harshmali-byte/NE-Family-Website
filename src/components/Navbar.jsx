@@ -117,8 +117,9 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
 
                 {isPolicyMenuOpen && (
                   <div className="absolute left-0 top-full z-50 min-w-[157px] pt-4">
-                    <div className="bg-black px-6 py-6 text-white shadow-2xl">
-                      <ul className="space-y-4 text-md font-semibold">
+                    <div className="bg-white/40 backdrop-blur-sm border border-white/20
+rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
+                      <ul className="space-y-3 text-sm font-semibold">
                         {policySubsections.map((subsection) => (
                           <li key={subsection.label}>
                             <Link
@@ -180,8 +181,9 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
 
             {isLanguageMenuOpen && (
               <div className="absolute right-0 top-full z-50 pt-4">
-                <div className="bg-black px-6 py-6 text-white shadow-2xl">
-                  <ul className="space-y-2 text-lg font-semibold">
+                <div className="bg-white/40 backdrop-blur-sm border border-white/20
+rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
+                  <ul className="space-y-3 text-sm font-semibold">
                     {languageOptions.map((language) => (
                       <li key={language.label}>
                         <button
@@ -213,7 +215,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
         </nav>
 
         <div className="flex items-center gap-3">
-          <button className=" rounded-[var(--radius-card)] bg-[var(--color-secondary)] text-white hidden px-5 py-2 text-sm font-semibold md:inline-flex">
+          <button className="relative hidden overflow-hidden rounded-[var(--radius-card)] bg-[var(--color-secondary)] px-5 py-2 text-sm font-semibold text-white shadow-sm transition duration-300 before:absolute before:inset-y-0 before:-left-1/2 before:w-1/3 before:skew-x-[-20deg] before:bg-white/40 before:blur-sm before:transition-all before:duration-500 hover:shadow-[0_0_22px_rgba(31,212,224,0.45)] hover:brightness-110 hover:before:left-full active:scale-95 md:inline-flex">
             {t.navbar.getQuote}
           </button>
 
@@ -313,12 +315,11 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
               ))}
             </ul>
           </div>
-          <button className="primary-btn mt-4 inline-flex w-full items-center justify-center px-5 py-2 text-sm font-semibold">
+          <button className="primary-btn relative mt-4 inline-flex w-full items-center justify-center overflow-hidden px-5 py-2 text-sm font-semibold transition duration-300 before:absolute before:inset-y-0 before:-left-1/2 before:w-1/3 before:skew-x-[-20deg] before:bg-white/40 before:blur-sm before:transition-all before:duration-500 hover:shadow-[0_0_22px_rgba(31,212,224,0.45)] hover:brightness-110 hover:before:left-full active:scale-95">
             {t.navbar.getQuote}
           </button>
         </nav>
       </div>
-      <div className="h-[3px] w-full bg-[var(--color-secondary)]" />
     </header>
   )
 }
