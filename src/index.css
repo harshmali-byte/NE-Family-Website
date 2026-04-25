@@ -13,7 +13,10 @@
   --color-surface-muted: #f1f5f9;
   --color-page-bg: #eaf4ff;
   --color-card-bg: #ffffff;
-  --color-dark: #0b1120;
+  --color-card-bg-light: #ffffff;
+  --color-card-bg-dark: #111a2e;
+  --color-card-bg-dark-elevated: #16213a;
+  --color-dark: white;
   --color-dark-soft: #111a2e;
   --color-dark-elevated: #16213a;
   --color-border: #dbe3ef;
@@ -30,6 +33,20 @@
   --shadow-navbar: 0 12px 30px rgba(37, 99, 235, 0.18);
   --shadow-accent: 0 0 24px rgba(34, 211, 238, 0.2);
   --shadow-secondary: 0 8px 20px rgba(168, 85, 247, 0.35);
+
+  --card-heading-size: 1.25rem;
+  --card-heading-size-md: 1.5rem;
+  --card-heading-line-height: 1.35;
+  --card-subheading-size: 1.125rem;
+  --card-subheading-size-md: 1.25rem;
+  --card-subheading-line-height: 1.4;
+  --card-body-size: 0.95rem;
+  --card-body-size-md: 1rem;
+  --card-body-line-height: 1.75;
+  --card-text-light: var(--color-text);
+  --card-text-muted-light: var(--color-text-muted);
+  --card-text-dark: #ffffff;
+  --card-text-muted-dark: rgba(255, 255, 255, 0.82);
 }
 
 * {
@@ -58,18 +75,55 @@ body {
 }
 
 @layer components {
-  .surface-card {
+  .card-surface-light {
     border-radius: var(--radius-card);
     border: 1px solid var(--color-border);
-    background: var(--color-card-bg);
+    background: var(--color-card-bg-light);
     box-shadow: var(--shadow-soft);
   }
 
-  .dark-card {
+  .card-surface-dark {
     border-radius: var(--radius-card);
     border: 1px solid var(--color-border-soft);
-    background: var(--color-dark-soft);
+    background: var(--color-card-bg-dark);
     box-shadow: var(--shadow-soft);
+  }
+
+  .card-heading {
+    font-size: var(--card-heading-size);
+    line-height: var(--card-heading-line-height);
+    font-weight: 700;
+  }
+
+  .card-subheading {
+    font-size: var(--card-subheading-size);
+    line-height: var(--card-subheading-line-height);
+    font-weight: 700;
+  }
+
+  .card-body {
+    font-size: var(--card-body-size);
+    line-height: var(--card-body-line-height);
+  }
+
+  .card-text-light {
+    color: var(--card-text-light);
+  }
+
+  .card-text-muted-light {
+    color: var(--card-text-muted-light);
+  }
+
+  .card-text-dark {
+    color: var(--card-text-dark);
+  }
+
+  .card-text-muted-dark {
+    color: var(--card-text-muted-dark);
+  }
+
+  .card-surface-elevated {
+    background: var(--color-card-bg-dark-elevated);
   }
 
   .primary-btn {
@@ -82,5 +136,64 @@ body {
 
   .primary-btn:hover {
     background: var(--color-primary-dark);
+  }
+
+  .interactive-card {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease, filter 0.35s ease;
+    will-change: transform, box-shadow;
+  }
+
+  .interactive-card::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    top: -10%;
+    left: -55%;
+    height: 120%;
+    width: 45%;
+    transform: skewX(-20deg);
+    opacity: 0;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transition: left 0.7s ease, opacity 0.35s ease;
+  }
+
+  .interactive-card:hover::before,
+  .interactive-card:focus-within::before {
+    left: 125%;
+    opacity: 1;
+  }
+
+  .interactive-card:hover,
+  .interactive-card:focus-within {
+    transform: translateY(-6px);
+  }
+
+  .interactive-card-light:hover,
+  .interactive-card-light:focus-within {
+    border-color: var(--color-primary);
+    box-shadow: var(--shadow-strong);
+  }
+
+  .interactive-card-dark:hover,
+  .interactive-card-dark:focus-within {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-accent);
+    filter: brightness(1.04);
+  }
+
+  @media (min-width: 768px) {
+    .card-heading {
+      font-size: var(--card-heading-size-md);
+    }
+
+    .card-subheading {
+      font-size: var(--card-subheading-size-md);
+    }
+
+    .card-body {
+      font-size: var(--card-body-size-md);
+    }
   }
 }

@@ -82,9 +82,9 @@ function ReviewsPage() {
   return (
     <section className="overflow-hidden bg-[var(--color-page-bg)] py-12 md:py-14">
       <div className="mx-auto w-full max-w-7xl space-y-10 px-6 md:px-10">
-        <article className="surface-card bg-gradient-to-r from-white to-[var(--color-surface-muted)] p-7 text-center md:p-9">
+        <article className="card-surface-dark interactive-card  p-7 text-center md:p-9">
           <p className="text-3xl tracking-wide text-amber-400">★★★★★</p>
-          <h2 className="mt-2 text-3xl font-black tracking-tight text-[var(--color-text)] md:text-4xl">{t.reviews.title}</h2>
+          <h2 className="text-white mt-2 tracking-tight md:text-4xl">{t.reviews.title}</h2>
           <p className="mt-2 text-sm font-medium text-[var(--color-text-muted)]">{t.reviews.basedOn}</p>
           <p className="mt-4 text-4xl font-semibold tracking-wide">
             <span className="text-[#4285f4]">G</span>
@@ -115,19 +115,15 @@ function ReviewsPage() {
               return (
                 <article
                   key={`${card.name}-${index}`}
-                  className={`group relative m-2 cursor-pointer overflow-hidden rounded-[var(--radius-card)] border p-5 transition-all duration-300 ${
+                  className={`interactive-card interactive-card-dark group relative m-2 cursor-pointer overflow-hidden rounded-[var(--radius-card)] border p-5 transition-all duration-300 ${
                     isHighlighted
-                      ? 'dark-card scale-[1.01] border-[var(--color-accent)] shadow-[var(--shadow-accent)]'
-                      : 'dark-card border-white/10'
+                      ? 'card-surface-dark scale-[1.01] border-[var(--color-accent)] shadow-[var(--shadow-accent)]'
+                      : 'card-surface-dark border-white/10'
                   } hover:-translate-y-1 hover:border-[var(--color-accent)] hover:shadow-[var(--shadow-accent)]`}
                   onClick={() => setSelectedIndex(originalIndex)}
                   onMouseEnter={() => setSelectedIndex(originalIndex)}
                   style={{ width: `${100 / duplicatedCards.length}%` }}
                 >
-                  <span
-                    className="pointer-events-none absolute -left-1/2 top-0 h-full w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 transition-all duration-700 group-hover:left-[130%] group-hover:opacity-100"
-                    aria-hidden="true"
-                  />
                   <div className="relative z-10 flex items-start justify-between gap-4">
                     <div className="flex items-center gap-3">
                       <img
@@ -136,7 +132,7 @@ function ReviewsPage() {
                         className="h-11 w-11 rounded-full border border-white/20 object-cover"
                       />
                       <div>
-                        <p className="text-sm font-bold text-white">{card.name}</p>
+                        <p className="card-subheading card-text-dark text-sm">{card.name}</p>
                         <p className="text-xs text-white/70">{card.time}</p>
                       </div>
                     </div>
@@ -144,7 +140,7 @@ function ReviewsPage() {
                   </div>
 
                   <p className="relative z-10 mt-4 text-base leading-none tracking-wide text-amber-400">★★★★★</p>
-                  <p className="relative z-10 mt-3 line-clamp-4 text-sm leading-6 text-white/85">{card.text}</p>
+                  <p className="card-body card-text-muted-dark relative z-10 mt-3 line-clamp-4">{card.text}</p>
 
                   
                 </article>
@@ -176,9 +172,6 @@ function ReviewsPage() {
           })}
         </div>
 
-        <div className=" px-5 py-3 text-right md:px-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-black/75">{t.reviews.verifiedBy}</p>
-        </div>
       </div>
     </section>
   )

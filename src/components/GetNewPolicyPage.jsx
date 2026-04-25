@@ -43,10 +43,10 @@ const rightCard = cardData[rightIndex];
   return (
     <section className="bg-[var(--color-page-bg)] py-12 md:py-14">
       <div className="mx-auto w-full max-w-7xl space-y-12 px-6 md:px-10">
-        <article className="dark-card grid items-center gap-8 p-6 md:grid-cols-[1.2fr_1fr] md:p-8">
+        <article className="card-surface-dark interactive-card interactive-card-dark grid items-center gap-8 p-6 md:grid-cols-[1.2fr_1fr] md:p-8">
           <div>
-            <h2 className="text-4xl font-bold text-white">{t.getNewPolicy.howItWorks}</h2>
-            <ul className="mt-5 space-y-3 text-lg text-white/90">
+            <h2 className="card-heading card-text-dark md:text-4xl">{t.getNewPolicy.howItWorks}</h2>
+            <ul className="card-body card-text-muted-dark mt-5 space-y-3">
               {t.getNewPolicy.steps.map((step) => (
                 <li key={step}>✔ {step}</li>
               ))}
@@ -66,7 +66,7 @@ const rightCard = cardData[rightIndex];
           />
         </article>
 
-        <article className="dark-card relative px-8 py-10 md:px-14">
+        <article className="card-surface-dark interactive-card interactive-card-dark relative px-8 py-10 md:px-14">
 
     {/* ARROWS */}
     <button
@@ -89,43 +89,43 @@ const rightCard = cardData[rightIndex];
 
       {/* LEFT */}
       <div
-        className="w-[300px] rounded-[var(--radius-card)] border border-white/10 bg-[var(--color-dark-soft)] p-6 text-center text-white transition duration-300 hover:-translate-y-1 hover:border-[var(--color-accent)]"
+        className="interactive-card interactive-card-dark card-surface-elevated w-[300px] rounded-[var(--radius-card)] border border-white/10 p-6 text-center text-white transition duration-300 hover:border-[var(--color-accent)]"
         style={{
           clipPath: "polygon(0 0, 100% 8%, 100% 92%, 0% 100%)",
         }}
       >
-        <h4 className="text-xl font-bold text-white">
+        <h4 className="card-subheading card-text-dark">
           {leftCard.title}
         </h4>
         <div className="mx-auto mt-3 h-1 w-24 bg-[var(--color-accent)]/70" />
-        <p className="mt-4 text-sm leading-7 text-slate-300">
+        <p className="card-body card-text-muted-dark mt-4">
           {leftCard.text}
         </p>
       </div>
 
       {/* CENTER */}
-      <div className="w-[340px] rounded-[var(--radius-card)] border border-[var(--color-accent)]/50 bg-[var(--color-dark-soft)] p-8 text-center text-white shadow-md shadow-[var(--shadow-accent)] transition duration-300 hover:-translate-y-1">
-        <h4 className="text-2xl font-bold text-white">
+      <div className="interactive-card interactive-card-dark card-surface-elevated w-[340px] rounded-[var(--radius-card)] border border-[var(--color-accent)]/50 p-8 text-center text-white shadow-md shadow-[var(--shadow-accent)] transition duration-300">
+        <h4 className="card-heading card-text-dark">
           {centerCard.title}
         </h4>
         <div className="mx-auto mt-3 h-1 w-28 bg-[var(--color-accent)]" />
-        <p className="mt-4 text-base leading-8 text-slate-300">
+        <p className="card-body card-text-muted-dark mt-4">
           {centerCard.text}
         </p>
       </div>
 
       {/* RIGHT */}
       <div
-        className="w-[300px] rounded-[var(--radius-card)] border border-white/10 bg-[var(--color-dark-soft)] p-6 text-center text-white transition duration-300 hover:-translate-y-1 hover:border-[var(--color-accent)]"
+        className="interactive-card interactive-card-dark card-surface-elevated w-[300px] rounded-[var(--radius-card)] border border-white/10 p-6 text-center text-white transition duration-300 hover:border-[var(--color-accent)]"
         style={{
           clipPath: "polygon(0 8%, 100% 0, 100% 100%, 0 92%)",
         }}
       >
-        <h4 className="text-xl font-bold text-white">
+        <h4 className="card-subheading card-text-dark">
           {rightCard.title}
         </h4>
         <div className="mx-auto mt-3 h-1 w-24 bg-[var(--color-accent)]/70" />
-        <p className="mt-4 text-sm leading-7 text-slate-300">
+        <p className="card-body card-text-muted-dark mt-4">
           {rightCard.text}
         </p>
       </div>

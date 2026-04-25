@@ -24,7 +24,9 @@ function ValueCards({ valueCards }) {
             <article
               key={card.title}
               className={`
-                dark-card
+                card-surface-dark
+                interactive-card interactive-card-dark
+                group
                 grid items-center gap-8
                 p-6 md:p-10
                 text-white
@@ -35,31 +37,30 @@ function ValueCards({ valueCards }) {
 
               {/* TEXT */}
               <div
-                className={`
+                className={`inline-block
                   ${isReverse ? 'md:order-2 md:text-right md:items-end' : ''}
                   flex flex-col justify-center
                 `}
               >
-                <h3 className="text-xl md:text-2xl font-bold">
-                  {card.title}
-                </h3>
+                <div className={`w-fit ${isReverse ? 'ml-auto' : ''}`}>
+                  <h3 className="card-heading card-text-dark">
+                    {card.title}
+                  </h3>
 
-                {/* Accent Line */}
-                <div
-                  className={`
-                    mt-2 h-[3px] w-full rounded-full
-                    bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-secondary)] to-[var(--color-primary)]
-                    shadow-[0_0_14px_rgba(34,211,238,0.35)]
-                    ${isReverse ? 'ml-auto' : ''}
-                  `}
-                />
+                  {/* Accent Line */}
+                  <div
+                    className="
+                      mt-2 h-[3px] w-full rounded-full
+                      bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-secondary)] to-[var(--color-primary)]
+                      shadow-[0_0_14px_rgba(34,211,238,0.35)]
+                    "
+                  />
+                </div>
 
                 <p
                   className={`
                     mt-4
-                    text-sm md:text-base
-                    leading-7 md:leading-8
-                    text-slate-300
+                    card-body card-text-muted-dark
                     max-w-2xl
                     ${isReverse ? 'ml-auto' : ''}
                   `}
@@ -103,6 +104,7 @@ function ValueCards({ valueCards }) {
                     lg:h-36 lg:w-36
                     object-contain
                     opacity-90
+                    transition duration-300 group-hover:scale-105
                   "
                 />
               </div>
@@ -117,5 +119,4 @@ function ValueCards({ valueCards }) {
 }
 
 export default ValueCards
-
 

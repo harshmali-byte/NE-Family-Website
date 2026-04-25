@@ -20,40 +20,40 @@ function AboutPage() {
   return (
     <section className="bg-[var(--color-page-bg)] py-12 md:py-16">
       <div className="mx-auto w-full max-w-7xl space-y-10 px-6 md:px-10">
-        <article className="surface-card dark-card text-white grid overflow-hidden md:grid-cols-[1.08fr_0.92fr]">
+        <article className="card-surface-dark interactive-card interactive-card-dark grid overflow-hidden text-white md:grid-cols-[1.08fr_0.92fr]">
           <div className="p-6 md:p-9">
-            <h2 className="text-3xl font-white leading-tight text-white md:text-5xl">
+            <h2 className="card-heading card-text-dark md:text-5xl">
               {t.about.title}
             </h2>
-            <p className="mt-5 text-sm leading-7 text-white md:text-base">
+            <p className="card-body card-text-muted-dark mt-5">
               {t.about.paragraphs[0]}
             </p>
-            <p className="mt-4 text-sm leading-7 text-white md:text-base">
+            <p className="card-body card-text-muted-dark mt-4">
               {t.about.paragraphs[1]}
             </p>
-            <p className="mt-4 text-sm leading-7 text-white md:text-base">
+            <p className="card-body card-text-muted-dark mt-4">
               {t.about.paragraphs[2]}
             </p>
-            <p className="mt-4 text-sm leading-7 text-white md:text-base">
+            <p className="card-body card-text-muted-dark mt-4">
               {t.about.paragraphs[3]}
             </p>
           </div>
 
-          <div className="flex min-h-[320px] items-center justify-center bg-[var(--color-surface-muted)] p-6 md:min-h-[430px]">
+          <div className="card-surface-elevated flex min-h-[320px] items-center justify-center p-6 md:min-h-[430px]">
             <img
               alt={t.about.teamImageAlt}
-              className="h-full w-full rounded-xl border border-[var(--color-border)] object-contain bg-white p-2"
+              className="h-full w-full rounded-xl border border-white/20 object-contain bg-white p-2"
               src={aboutMain}
             />
           </div>
         </article>
 
-        <article className="surface-card grid overflow-hidden md:grid-cols-2">
-          <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden bg-[var(--color-surface-muted)] p-6">
+        <article className="card-surface-dark interactive-card interactive-card-dark grid overflow-hidden text-white md:grid-cols-2">
+          <div className="card-surface-elevated relative flex min-h-[320px] items-center justify-center overflow-hidden p-6">
             {aboutSlides.map((slide, index) => (
               <img
                 alt={`${t.about.slideImageAltPrefix} ${index + 1}`}
-                className={`absolute inset-6 h-[calc(100%-3rem)] w-[calc(100%-3rem)] rounded-xl border border-[var(--color-border)] object-cover transition-opacity duration-700 ${
+                className={`absolute inset-6 h-[calc(100%-3rem)] w-[calc(100%-3rem)] rounded-xl border border-white/20 object-cover transition-opacity duration-700 ${
                   activeSlide === index ? 'opacity-100' : 'opacity-0'
                 }`}
                 key={slide}
@@ -63,22 +63,22 @@ function AboutPage() {
           </div>
 
           <div className="p-6 md:p-9">
-            <h3 className="text-3xl font-black text-[var(--color-text)] md:text-4xl">
+            <h3 className="card-heading card-text-dark md:text-4xl">
               {t.about.rightTitle}
             </h3>
-            <p className="mt-5 text-sm leading-7 text-[var(--color-text-muted)] md:text-base">
+            <p className="card-body card-text-muted-dark mt-5">
               {t.about.rightIntro}
             </p>
-            <h4 className="mt-6 text-2xl font-bold text-[var(--color-text)]">{t.about.rightSections[0].heading}</h4>
-            <p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)] md:text-base">
+            <h4 className="card-subheading card-text-dark mt-6">{t.about.rightSections[0].heading}</h4>
+            <p className="card-body card-text-muted-dark mt-3">
               {t.about.rightSections[0].text}
             </p>
-            <h4 className="mt-6 text-2xl font-bold text-[var(--color-text)]">{t.about.rightSections[1].heading}</h4>
-            <p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)] md:text-base">
+            <h4 className="card-subheading card-text-dark mt-6">{t.about.rightSections[1].heading}</h4>
+            <p className="card-body card-text-muted-dark mt-3">
               {t.about.rightSections[1].text}
             </p>
-            <h4 className="mt-6 text-2xl font-bold text-[var(--color-text)]">{t.about.rightSections[2].heading}</h4>
-            <p className="mt-3 text-sm leading-7 text-[var(--color-text-muted)] md:text-base">
+            <h4 className="card-subheading card-text-dark mt-6">{t.about.rightSections[2].heading}</h4>
+            <p className="card-body card-text-muted-dark mt-3">
               {t.about.rightSections[2].text}
             </p>
           </div>
