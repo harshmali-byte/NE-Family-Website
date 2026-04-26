@@ -31,6 +31,13 @@
   --color-card-bg-light: #ffffff;
   --color-card-bg-dark: #111a2e;
   --color-card-bg-dark-elevated: #16213a;
+  --policy-card-bg: linear-gradient(
+    135deg,
+    #d6c6a5 0%,
+    #cfa7b3 30%,
+    #b78bbf 60%,
+    #7896d4 100%
+  );
   --color-dark: white;
   --color-dark-soft: #111a2e;
   --color-dark-elevated: #16213a;
@@ -139,6 +146,10 @@ body {
 
   .card-surface-elevated {
     background: var(--color-card-bg-dark-elevated);
+  }
+
+  .policy-card-gradient {
+    background: var(--policy-card-bg);
   }
 
   .content-page {

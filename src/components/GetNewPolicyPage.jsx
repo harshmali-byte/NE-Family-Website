@@ -90,7 +90,7 @@ function GetNewPolicyPage() {
 
           <div className="flex items-stretch justify-center gap-6">
             <div
-              className="card-surface-elevated interactive-card interactive-card-dark hidden w-[300px] rounded-[var(--radius-card)] border border-white/10 p-6 text-center text-white transition duration-300 hover:border-[var(--color-accent)] lg:block"
+              className="policy-card-gradient interactive-card interactive-card-dark hidden w-[300px] rounded-[var(--radius-card)] border border-white/20 p-6 text-center text-white transition duration-300 hover:border-[var(--color-accent)] lg:block"
               style={{
                 clipPath: 'polygon(0 0, 100% 8%, 100% 92%, 0% 100%)',
               }}
@@ -103,7 +103,7 @@ function GetNewPolicyPage() {
             <div
               ref={tiltRef}
               {...tiltHandlers}
-              className="card-3d card-surface-elevated relative min-h-[260px] w-full max-w-[360px] rounded-[var(--radius-card)] border border-[var(--color-accent)]/50 p-7 text-center text-white shadow-md md:p-8"
+              className="card-3d policy-card-gradient relative min-h-[260px] w-full max-w-[360px] rounded-[var(--radius-card)] border border-white/40 p-7 text-center text-white shadow-md md:p-8"
             >
               <div className="card-holo-bg" />
               <div className="card-glow" />
@@ -116,7 +116,7 @@ function GetNewPolicyPage() {
             </div>
 
             <div
-              className="card-surface-elevated interactive-card interactive-card-dark hidden w-[300px] rounded-[var(--radius-card)] border border-white/10 p-6 text-center text-white transition duration-300 hover:border-[var(--color-accent)] lg:block"
+              className="policy-card-gradient interactive-card interactive-card-dark hidden w-[300px] rounded-[var(--radius-card)] border border-white/20 p-6 text-center text-white transition duration-300 hover:border-[var(--color-accent)] lg:block"
               style={{
                 clipPath: 'polygon(0 8%, 100% 0, 100% 100%, 0 92%)',
               }}

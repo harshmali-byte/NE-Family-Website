@@ -65,7 +65,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-white/15 bg-white/5 p-3 shadow-[var(--shadow-strong)] backdrop-blur md:p-4">
+        <div className="  p-3 shadow-[var(--shadow-strong)] backdrop-blur md:p-4">
           <div className="overflow-hidden rounded-xl">
             <iframe
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
