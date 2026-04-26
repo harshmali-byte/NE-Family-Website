@@ -91,7 +91,7 @@ const privacySections = [
 const policyActions = [
   { label: 'Pay My Bill', to: '/pay-my-bill' },
   { label: 'Policy Change', to: '/policy-change' },
-  { label: 'Certificate', to: '/policy-change' },
+  { label: 'Certificate', to: '/certificate' },
   { label: 'File A Claim', to: '/file-a-claim' },
 ]
 

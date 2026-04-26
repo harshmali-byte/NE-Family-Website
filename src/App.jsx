@@ -3,6 +3,7 @@ import { Navigate, Route, Routes } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import AboutPage from './components/AboutPage'
 import BlogPage from './components/BlogPage'
+import CertificatePage from './components/CertificatePage'
 import ContactSection from './components/ContactSection'
 import FileAClaimPage from './components/FileAClaimPage'
 import Footer from './components/Footer'
@@ -43,14 +44,14 @@ function App() {
   }, [location.hash, location.pathname])
 
   return (
-    <div className="min-h-screen bg-[var(--color-page-bg)]">
+    <div className="min-h-screen bg-[image:var(--color-page-bg)]">
       <Navbar
         isMobileMenuOpen={isMobileMenuOpen}
         onCloseMenu={handleCloseMenu}
         onToggleMenu={handleToggleMenu}
       />
 
-      <main className="bg-[var(--color-page-bg)]">
+      <main className="bg-[image:var(--color-page-bg)]">
         <Routes>
           <Route
             path="/"
@@ -65,6 +66,7 @@ function App() {
           <Route path="/get-a-new-policy" element={<GetNewPolicyPage />} />
           <Route path="/pay-my-bill" element={<PayMyBillPage />} />
           <Route path="/policy-change" element={<PolicyChangePage />} />
+          <Route path="/certificate" element={<CertificatePage />} />
           <Route path="/file-a-claim" element={<FileAClaimPage />} />
           <Route path="/reviews" element={<ReviewsPage />} />
           <Route path="/blog" element={<BlogPage />} />

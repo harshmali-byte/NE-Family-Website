@@ -15,7 +15,18 @@
   --color-text-muted: #475569;
   --color-surface: #ffffff;
   --color-surface-muted: #f1f5f9;
-  --color-page-bg: #eaf4ff;
+  /* --color-page-bg: #eaf4ff; */
+  --color-page-bg:
+    radial-gradient(circle at 30% 10%, rgba(34, 211, 238, 0.4), transparent 30%),
+    radial-gradient(circle at 70% 90%, rgba(236, 72, 153, 0.5), transparent 50%),
+    linear-gradient(180deg, #020617, #020617),
+    repeating-linear-gradient(
+      to right,
+      transparent 0px,
+      transparent 120px,
+      rgba(34, 211, 238, 0.08) 130px,
+      transparent 140px
+    );
   --color-card-bg: #ffffff;
   --color-card-bg-light: #ffffff;
   --color-card-bg-dark: #111a2e;
@@ -75,7 +86,7 @@ section[id] {
 body {
   font-family: var(--font-sans);
   color: var(--color-text);
-  background: var(--color-surface);
+  background: var(--color-page-bg);
 }
 
 @layer components {

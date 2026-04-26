@@ -3,15 +3,15 @@ import CommonContactForm from './CommonContactForm'
 
 function PolicyActionPage({ title, prompt, options }) {
   return (
-    <section className="bg-[var(--color-page-bg)] py-14">
+    <section className="bg-[image:var(--color-page-bg)] py-14">
       <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
-        <h1 className="text-center text-4xl font-black uppercase tracking-wide text-[var(--color-text)] md:text-5xl">
+        <h1 className="text-center text-4xl font-black uppercase tracking-wide text-white md:text-5xl">
           {title}
         </h1>
 
         <div className="mt-10 grid items-start gap-8 md:grid-cols-[1fr_1fr]">
           <div>
-            <h2 className="card-heading card-text-light md:text-3xl">{prompt}</h2>
+            <h2 className="card-heading text-white md:text-3xl">{prompt}</h2>
 
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3">
               {options.map((option) => (

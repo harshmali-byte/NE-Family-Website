@@ -23,7 +23,7 @@ function Footer() {
     { label: 'Get a New Policy', to: '/get-a-new-policy' },
     { label: 'Pay My Bill', to: '/pay-my-bill' },
     { label: 'File A Claim', to: '/file-a-claim' },
-    { label: 'Certificate Request', to: '/policy-change' },
+    { label: 'Certificate Request', to: '/certificate' },
     { label: 'Reviews', to: '/reviews' },
     { label: 'Blog', to: '/blog' },
     { label: 'Privacy policy & Terms of Use', to: '/privacy-policy-terms-of-use' },

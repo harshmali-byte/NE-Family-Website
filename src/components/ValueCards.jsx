@@ -11,7 +11,7 @@ function ValueCards({ valueCards }) {
   }
 
   return (
-    <section className="bg-[var(--color-page-bg)] pb-16" id="services">
+    <section className="bg-[image:var(--color-page-bg)] pb-16" id="services">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 md:px-10">
 
         {valueCards.map((card, index) => {
@@ -119,4 +119,5 @@ function ValueCards({ valueCards }) {
 }
 
 export default ValueCards
+
 

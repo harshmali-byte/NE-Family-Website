@@ -37,7 +37,7 @@ function GetNewPolicyPage() {
   const rightCard = cardData[rightIndex]
 
   return (
-    <section className="bg-[var(--color-page-bg)] py-12 md:py-14">
+    <section className="bg-[image:var(--color-page-bg)] py-12 md:py-14">
       <div className="mx-auto w-full max-w-7xl space-y-12 px-6 md:px-10">
         <article className="card-surface-dark interactive-card interactive-card-dark grid items-center gap-8 p-6 md:grid-cols-[1.2fr_1fr] md:p-8">
           <div>

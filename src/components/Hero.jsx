@@ -15,26 +15,23 @@ function Hero() {
     return () => window.clearInterval(timer)
   }, [rotatingWords.length])
   return (
-    <section
-      className="bg-gradient-to-br from-[#f3f9ff] via-[#f4fbff] to-[#d7f4f8]"
-      id="home"
-    >
+    <section className="bg-[image:var(--color-page-bg)]" id="home">
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-16 md:grid-cols-2 md:px-10 md:py-20">
         <div className="space-y-6">
-          <p className="inline-flex rounded-[var(--radius-pill)] bg-white px-4 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-primary)]">
+          <p className="inline-flex rounded-[var(--radius-pill)] bg-white/10 px-4 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] ring-1 ring-white/10">
             {t.hero.badge}
           </p>
-          <h1 className="text-4xl font-black leading-tight text-[var(--color-text)] md:text-6xl">
+          <h1 className="text-4xl font-black leading-tight text-white md:text-6xl">
             {t.hero.headingStart}
             <span className="text-[var(--color-secondary)]"> {rotatingWords[activeWordIndex]}</span>.
 
             <br />
             {t.hero.headingEnd}
           </h1>
-          <p className="max-w-lg text-base leading-relaxed text-[var(--color-text-muted)] md:text-lg">
+          <p className="max-w-lg text-base leading-relaxed text-white/80 md:text-lg">
             {t.hero.subtext}
           </p>
-          <div className="grid w-full max-w-2xl grid-cols-3 gap-5 pt-2 text-center text-[var(--color-primary)]">
+          <div className="grid w-full max-w-2xl grid-cols-3 gap-5 pt-2 text-center text-[var(--color-accent)]">
             <div>
               <img
                 alt="Best price guarantee"
@@ -68,7 +65,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className="rounded-2xl border border-white/70  p-3 shadow-[var(--shadow-strong)] backdrop-blur md:p-4">
+        <div className="rounded-2xl border border-white/15 bg-white/5 p-3 shadow-[var(--shadow-strong)] backdrop-blur md:p-4">
           <div className="overflow-hidden rounded-xl">
             <iframe
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

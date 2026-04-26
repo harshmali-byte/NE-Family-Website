@@ -32,7 +32,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
   const policySubsections = [
     { label: t.navbar.payMyBill, to: '/pay-my-bill' },
     { label: t.navbar.policyChange, to: '/policy-change' },
-    { label: t.navbar.certificate, to: '/policy-change' },
+    { label: t.navbar.certificate, to: '/certificate' },
     { label: t.navbar.fileAClaim, to: '/file-a-claim' },
   ]
 
@@ -47,7 +47,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
     }
 
     if (item === t.navbar.myPolicy) {
-      return ['/pay-my-bill', '/policy-change', '/file-a-claim'].includes(location.pathname)
+      return ['/pay-my-bill', '/policy-change', '/certificate', '/file-a-claim'].includes(location.pathname)
     }
 
     return false

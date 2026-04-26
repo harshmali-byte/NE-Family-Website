@@ -2,7 +2,7 @@ import { useRef } from 'react'
 
 function TrustSection({ trustMetrics }) {
   return (
-    <section className="bg-[var(--color-page-bg)] py-12 md:py-14" id="reviews">
+    <section className="bg-[image:var(--color-page-bg)] py-12 md:py-14" id="reviews">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10">
         <article className="card-surface-dark interactive-card interactive-card-dark p-6 md:p-10">
           <h3 className="card-heading card-text-dark text-center md:text-3xl">

@@ -80,7 +80,7 @@ function ReviewsPage() {
   const currentAutoHighlight = activeIndex % reviewCards.length
 
   return (
-    <section className="overflow-hidden bg-[var(--color-page-bg)] py-12 md:py-14">
+    <section className="overflow-hidden bg-[image:var(--color-page-bg)] py-12 md:py-14">
       <div className="mx-auto w-full max-w-7xl space-y-10 px-6 md:px-10">
         <article className="card-surface-dark interactive-card  p-7 text-center md:p-9">
           <p className="text-3xl tracking-wide text-amber-400">★★★★★</p>

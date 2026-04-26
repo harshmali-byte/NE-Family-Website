@@ -8,11 +8,11 @@ function ContactSection() {
   const { t } = useI18n()
 
   return (
-    <section className="bg-[var(--color-page-bg)] py-16" id="contact">
+    <section className="bg-[image:var(--color-page-bg)] py-16" id="contact">
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 md:grid-cols-2 md:px-10">
 
         {/* LEFT */}
-        <div className="text-black">
+        <div className="text-white">
           <h3 className="text-3xl font-semibold tracking-wide md:text-4xl">
             {t.contact.title}
           </h3>
