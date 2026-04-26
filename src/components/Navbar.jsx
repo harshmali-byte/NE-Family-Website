@@ -90,7 +90,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
             </Link>
         </div>
 
-        <nav className="hidden   items-center gap-8 text-sm font-semibold text-[var(--color-text-muted)] md:flex">
+        <nav className="hidden   items-center gap-8  font-bold text-md text-[var(--color-text-muted)] md:flex">
           {navItemsTranslated.map((item) => (
             item === t.navbar.myPolicy ? (
               <div

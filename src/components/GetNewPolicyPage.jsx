@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react'
 import getNewPolicy0 from '../assets/getnewpolicy0.png'
 import getNewPolicy1 from '../assets/getnewpolicy1.png'
 import { useI18n } from '../i18n.jsx'
+import { useTilt } from '../hooks/useTilt.js'
 
 function GetNewPolicyPage() {
   const { t } = useI18n()
   const cardData = t.getNewPolicy.cards
   const policyImages = [getNewPolicy0, getNewPolicy1]
   const [activeImage, setActiveImage] = useState(0)
-
+const tilt = useTilt()
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setActiveImage((prev) => (prev + 1) % policyImages.length)
@@ -103,7 +104,7 @@ const rightCard = cardData[rightIndex];
         </p>
       </div>
 
-      {/* CENTER */}
+      {/* CENTER
       <div className="interactive-card interactive-card-dark card-surface-elevated w-[340px] rounded-[var(--radius-card)] border border-[var(--color-accent)]/50 p-8 text-center text-white shadow-md shadow-[var(--shadow-accent)] transition duration-300">
         <h4 className="card-heading card-text-dark">
           {centerCard.title}
@@ -112,7 +113,44 @@ const rightCard = cardData[rightIndex];
         <p className="card-body card-text-muted-dark mt-4">
           {centerCard.text}
         </p>
-      </div>
+      </div> */}
+
+
+          <div
+  ref={tilt.ref}
+  {...tilt.handlers}
+  className="
+    card-3d
+    interactive-card interactive-card-dark
+    card-surface-elevated
+    relative
+    w-[340px]
+    rounded-[var(--radius-card)]
+    border border-[var(--color-accent)]/50
+    p-8
+    text-center
+    text-white
+    shadow-md
+    transition duration-300
+  "
+>
+  {/* HOLO EFFECT */}
+  <div className="card-holo-bg" />
+  <div className="card-glow" />
+
+  {/* CONTENT */}
+  <div className="relative z-10">
+    <h4 className="card-heading card-text-dark">
+      {centerCard.title}
+    </h4>
+
+    <div className="mx-auto mt-3 h-1 w-28 bg-[var(--color-accent)]" />
+
+    <p className="card-body card-text-muted-dark mt-4">
+      {centerCard.text}
+    </p>
+  </div>
+</div>
 
       {/* RIGHT */}
       <div

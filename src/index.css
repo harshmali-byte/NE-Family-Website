@@ -3,6 +3,8 @@
 @tailwind utilities;
 
 :root {
+   --ratio-x: 0;
+  --ratio-y: 0;
   --color-primary: #2563eb;
   --color-primary-dark: #1d4ed8;
   --color-secondary: #1fd4e0;
@@ -196,4 +198,54 @@ body {
       font-size: var(--card-body-size-md);
     }
   }
+}
+
+
+/* 3D CARD BASE */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease;
+
+  transform: rotateY(calc(-15deg * var(--ratio-x)))
+    rotateX(calc(15deg * var(--ratio-y)));
+}
+
+/* HOLOGRAPHIC LIGHT */
+.card-holo-bg {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+
+  background: linear-gradient(
+    120deg,
+    #22d3ee,
+    #3b82f6,
+    #9333ea,
+    transparent
+  );
+
+  opacity: 0.2;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+
+.card-3d:hover .card-holo-bg {
+  opacity: 0.6;
+}
+
+/* LIGHT REFLECTION */
+.card-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+
+  background: radial-gradient(
+    circle at calc(50% + var(--ratio-x) * 30%)
+      calc(50% + var(--ratio-y) * 30%),
+    rgba(255, 255, 255, 0.25),
+    transparent 60%
+  );
+
+  pointer-events: none;
 }
