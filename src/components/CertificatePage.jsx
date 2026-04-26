@@ -105,7 +105,7 @@ function CertificatePage() {
   }
 
   return (
-    <section className="bg-[image:var(--color-page-bg)] py-14">
+    <section className="py-14">
       <div className="mx-auto w-full max-w-3xl px-6 md:px-10">
         <h1 className="text-center text-4xl font-black uppercase tracking-wide text-white md:text-5xl">
           CERTIFICATE

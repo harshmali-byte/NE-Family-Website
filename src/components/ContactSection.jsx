@@ -8,7 +8,7 @@ function ContactSection() {
   const { t } = useI18n()
 
   return (
-    <section className="bg-[image:var(--color-page-bg)] py-16" id="contact">
+    <section className="py-16" id="contact">
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 md:grid-cols-2 md:px-10">
 
         {/* LEFT */}

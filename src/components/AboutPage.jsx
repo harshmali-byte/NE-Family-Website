@@ -18,7 +18,7 @@ function AboutPage() {
   }, [])
 
   return (
-    <section className="bg-[image:var(--color-page-bg)] py-12 md:py-16">
+    <section className="py-12 md:py-16">
       <div className="mx-auto w-full max-w-7xl space-y-10 px-6 md:px-10">
         <article className="card-surface-dark interactive-card interactive-card-dark grid overflow-hidden text-white md:grid-cols-[1.08fr_0.92fr]">
           <div className="p-6 md:p-9">

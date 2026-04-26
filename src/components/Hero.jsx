@@ -15,7 +15,7 @@ function Hero() {
     return () => window.clearInterval(timer)
   }, [rotatingWords.length])
   return (
-    <section className="bg-[image:var(--color-page-bg)]" id="home">
+    <section id="home">
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-16 md:grid-cols-2 md:px-10 md:py-20">
         <div className="space-y-6">
           <p className="inline-flex rounded-[var(--radius-pill)] bg-white/10 px-4 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] ring-1 ring-white/10">

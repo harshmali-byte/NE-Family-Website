@@ -142,7 +142,6 @@ body {
   }
 
   .content-page {
-    background: var(--color-page-bg);
     padding-block: 3rem;
   }
 

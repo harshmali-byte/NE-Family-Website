@@ -44,14 +44,14 @@ function App() {
   }, [location.hash, location.pathname])
 
   return (
-    <div className="min-h-screen bg-[image:var(--color-page-bg)]">
+    <div className="min-h-screen bg-[image:var(--color-page-bg)] bg-fixed">
       <Navbar
         isMobileMenuOpen={isMobileMenuOpen}
         onCloseMenu={handleCloseMenu}
         onToggleMenu={handleToggleMenu}
       />
 
-      <main className="bg-[image:var(--color-page-bg)]">
+      <main>
         <Routes>
           <Route
             path="/"
