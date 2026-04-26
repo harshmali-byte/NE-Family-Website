@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react'
+import { faCheck } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import getNewPolicy0 from '../assets/getnewpolicy0.png'
 import getNewPolicy1 from '../assets/getnewpolicy1.png'
-import { useI18n } from '../i18n.jsx'
 import { useTilt } from '../hooks/useTilt.js'
+import { useI18n } from '../i18n.jsx'
 
 function GetNewPolicyPage() {
   const { t } = useI18n()
   const cardData = t.getNewPolicy.cards
   const policyImages = [getNewPolicy0, getNewPolicy1]
   const [activeImage, setActiveImage] = useState(0)
-const tilt = useTilt()
+  const [activeIndex, setActiveIndex] = useState(1)
+  const { tiltRef, tiltHandlers } = useTilt()
+
   useEffect(() => {
     const intervalId = window.setInterval(() => {
       setActiveImage((prev) => (prev + 1) % policyImages.length)
@@ -17,30 +21,21 @@ const tilt = useTilt()
 
     return () => window.clearInterval(intervalId)
   }, [policyImages.length])
-const [activeIndex, setActiveIndex] = useState(1);
 
-const prev = () => {
-  setActiveIndex((prev) =>
-    prev === 0 ? cardData.length - 1 : prev - 1
-  );
-};
+  const prev = () => {
+    setActiveIndex((current) => (current === 0 ? cardData.length - 1 : current - 1))
+  }
 
-const next = () => {
-  setActiveIndex((prev) =>
-    prev === cardData.length - 1 ? 0 : prev + 1
-  );
-};
+  const next = () => {
+    setActiveIndex((current) => (current === cardData.length - 1 ? 0 : current + 1))
+  }
 
-// get 3 visible cards
-const leftIndex =
-  activeIndex === 0 ? cardData.length - 1 : activeIndex - 1;
-                                                                                                                       
-const rightIndex =
-  activeIndex === cardData.length - 1 ? 0 : activeIndex + 1;
+  const leftIndex = activeIndex === 0 ? cardData.length - 1 : activeIndex - 1
+  const rightIndex = activeIndex === cardData.length - 1 ? 0 : activeIndex + 1
+  const leftCard = cardData[leftIndex]
+  const centerCard = cardData[activeIndex]
+  const rightCard = cardData[rightIndex]
 
-const leftCard = cardData[leftIndex];
-const centerCard = cardData[activeIndex];
-const rightCard = cardData[rightIndex];
   return (
     <section className="bg-[var(--color-page-bg)] py-12 md:py-14">
       <div className="mx-auto w-full max-w-7xl space-y-12 px-6 md:px-10">
@@ -49,7 +44,14 @@ const rightCard = cardData[rightIndex];
             <h2 className="card-heading card-text-dark md:text-4xl">{t.getNewPolicy.howItWorks}</h2>
             <ul className="card-body card-text-muted-dark mt-5 space-y-3">
               {t.getNewPolicy.steps.map((step) => (
-                <li key={step}>✔ {step}</li>
+                <li key={step} className="flex items-start gap-3">
+                  <FontAwesomeIcon
+                    aria-hidden="true"
+                    className="mt-1 w-4 shrink-0 text-[var(--color-accent)]"
+                    icon={faCheck}
+                  />
+                  <span>{step}</span>
+                </li>
               ))}
             </ul>
             <a
@@ -67,113 +69,64 @@ const rightCard = cardData[rightIndex];
           />
         </article>
 
-        <article className="card-surface-dark interactive-card interactive-card-dark relative px-8 py-10 md:px-14">
+        <article className="card-surface-dark relative px-12 py-10 md:px-16">
+          <button
+            aria-label="Previous policy type"
+            className="absolute left-3 top-1/2 z-20 -translate-y-1/2 text-4xl leading-none text-white/80 transition hover:text-[var(--color-accent)] md:left-5"
+            onClick={prev}
+            type="button"
+          >
+            &lsaquo;
+          </button>
 
-    {/* ARROWS */}
-    <button
-      onClick={prev}
-      className="absolute left-5 top-1/2 -translate-y-1/2 text-3xl text-white/80 transition hover:text-[var(--color-accent)]"
-      type="button"
-    >
-      ‹
-    </button>
+          <button
+            aria-label="Next policy type"
+            className="absolute right-3 top-1/2 z-20 -translate-y-1/2 text-4xl leading-none text-white/80 transition hover:text-[var(--color-accent)] md:right-5"
+            onClick={next}
+            type="button"
+          >
+            &rsaquo;
+          </button>
 
-    <button
-      onClick={next}
-      className="absolute right-5 top-1/2 -translate-y-1/2 text-3xl text-white/80 transition hover:text-[var(--color-accent)]"
-      type="button"
-    >
-      ›
-    </button>
+          <div className="flex items-stretch justify-center gap-6">
+            <div
+              className="card-surface-elevated interactive-card interactive-card-dark hidden w-[300px] rounded-[var(--radius-card)] border border-white/10 p-6 text-center text-white transition duration-300 hover:border-[var(--color-accent)] lg:block"
+              style={{
+                clipPath: 'polygon(0 0, 100% 8%, 100% 92%, 0% 100%)',
+              }}
+            >
+              <h4 className="card-subheading card-text-dark">{leftCard.title}</h4>
+              <div className="mx-auto mt-3 h-1 w-24 bg-[var(--color-accent)]/70" />
+              <p className="card-body card-text-muted-dark mt-4">{leftCard.text}</p>
+            </div>
 
-    <div className="flex justify-center items-center gap-6">
+            <div
+              ref={tiltRef}
+              {...tiltHandlers}
+              className="card-3d card-surface-elevated relative min-h-[260px] w-full max-w-[360px] rounded-[var(--radius-card)] border border-[var(--color-accent)]/50 p-7 text-center text-white shadow-md md:p-8"
+            >
+              <div className="card-holo-bg" />
+              <div className="card-glow" />
 
-      {/* LEFT */}
-      <div
-        className="interactive-card interactive-card-dark card-surface-elevated w-[300px] rounded-[var(--radius-card)] border border-white/10 p-6 text-center text-white transition duration-300 hover:border-[var(--color-accent)]"
-        style={{
-          clipPath: "polygon(0 0, 100% 8%, 100% 92%, 0% 100%)",
-        }}
-      >
-        <h4 className="card-subheading card-text-dark">
-          {leftCard.title}
-        </h4>
-        <div className="mx-auto mt-3 h-1 w-24 bg-[var(--color-accent)]/70" />
-        <p className="card-body card-text-muted-dark mt-4">
-          {leftCard.text}
-        </p>
-      </div>
+              <div className="relative z-10">
+                <h4 className="card-heading card-text-dark">{centerCard.title}</h4>
+                <div className="mx-auto mt-3 h-1 w-28 bg-[var(--color-accent)]" />
+                <p className="card-body card-text-muted-dark mt-4">{centerCard.text}</p>
+              </div>
+            </div>
 
-      {/* CENTER
-      <div className="interactive-card interactive-card-dark card-surface-elevated w-[340px] rounded-[var(--radius-card)] border border-[var(--color-accent)]/50 p-8 text-center text-white shadow-md shadow-[var(--shadow-accent)] transition duration-300">
-        <h4 className="card-heading card-text-dark">
-          {centerCard.title}
-        </h4>
-        <div className="mx-auto mt-3 h-1 w-28 bg-[var(--color-accent)]" />
-        <p className="card-body card-text-muted-dark mt-4">
-          {centerCard.text}
-        </p>
-      </div> */}
-
-
-          <div
-  ref={tilt.ref}
-  {...tilt.handlers}
-  className="
-    card-3d
-    interactive-card interactive-card-dark
-    card-surface-elevated
-    relative
-    w-[340px]
-    rounded-[var(--radius-card)]
-    border border-[var(--color-accent)]/50
-    p-8
-    text-center
-    text-white
-    shadow-md
-    transition duration-300
-  "
->
-  {/* HOLO EFFECT */}
-  <div className="card-holo-bg" />
-  <div className="card-glow" />
-
-  {/* CONTENT */}
-  <div className="relative z-10">
-    <h4 className="card-heading card-text-dark">
-      {centerCard.title}
-    </h4>
-
-    <div className="mx-auto mt-3 h-1 w-28 bg-[var(--color-accent)]" />
-
-    <p className="card-body card-text-muted-dark mt-4">
-      {centerCard.text}
-    </p>
-  </div>
-</div>
-
-      {/* RIGHT */}
-      <div
-        className="interactive-card interactive-card-dark card-surface-elevated w-[300px] rounded-[var(--radius-card)] border border-white/10 p-6 text-center text-white transition duration-300 hover:border-[var(--color-accent)]"
-        style={{
-          clipPath: "polygon(0 8%, 100% 0, 100% 100%, 0 92%)",
-        }}
-      >
-        <h4 className="card-subheading card-text-dark">
-          {rightCard.title}
-        </h4>
-        <div className="mx-auto mt-3 h-1 w-24 bg-[var(--color-accent)]/70" />
-        <p className="card-body card-text-muted-dark mt-4">
-          {rightCard.text}
-        </p>
-      </div>
-
-    </div>
-  </article>
-
-
-
-       
+            <div
+              className="card-surface-elevated interactive-card interactive-card-dark hidden w-[300px] rounded-[var(--radius-card)] border border-white/10 p-6 text-center text-white transition duration-300 hover:border-[var(--color-accent)] lg:block"
+              style={{
+                clipPath: 'polygon(0 8%, 100% 0, 100% 100%, 0 92%)',
+              }}
+            >
+              <h4 className="card-subheading card-text-dark">{rightCard.title}</h4>
+              <div className="mx-auto mt-3 h-1 w-24 bg-[var(--color-accent)]/70" />
+              <p className="card-body card-text-muted-dark mt-4">{rightCard.text}</p>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
   )

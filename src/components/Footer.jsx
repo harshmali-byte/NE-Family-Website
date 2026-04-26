@@ -1,15 +1,34 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faMapMarkerAlt,
+  faCommentSms,
+  faFax,
   faPhone,
   faEnvelope
 } from '@fortawesome/free-solid-svg-icons'
+import { faFacebookF, faInstagram, faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+import { Link } from 'react-router-dom'
 
 import bbbBadge from '../assets/bbbb-300x209.webp'
 import logo from '../assets/New-England-Family-Logo.webp'
 import trustpilotBadge from '../assets/trust-300x300.webp'
 
+const socialLinks = {
+  facebook: 'https://www.facebook.com/newenglandfam',
+  instagram: 'https://www.instagram.com/nefamilyinsurance/',
+}
+
 function Footer() {
+  const quickLinks = [
+    { label: 'My Policy', to: '/policy-change' },
+    { label: 'Get a New Policy', to: '/get-a-new-policy' },
+    { label: 'Pay My Bill', to: '/pay-my-bill' },
+    { label: 'File A Claim', to: '/file-a-claim' },
+    { label: 'Certificate Request', to: '/policy-change' },
+    { label: 'Reviews', to: '/reviews' },
+    { label: 'Blog', to: '/blog' },
+    { label: 'Privacy policy & Terms of Use', to: '/privacy-policy-terms-of-use' },
+  ]
+
   return (
     <footer className="bg-black">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 py-12 text-white md:grid-cols-3 md:px-10">
@@ -27,11 +46,11 @@ function Footer() {
           </h4>
 
           <ul className="mt-4 space-y-2 text-sm text-white/90">
-            <li className="cursor-pointer hover:text-white">My Account</li>
-            <li className="cursor-pointer hover:text-white">Get a Quote</li>
-            <li className="cursor-pointer hover:text-white">Roadside Help</li>
-            <li className="cursor-pointer hover:text-white">Claims Center</li>
-            <li className="cursor-pointer hover:text-white">Emergency Contact</li>
+            {quickLinks.map((link) => (
+              <li key={link.label} className="cursor-pointer hover:text-white">
+                {link.to ? <Link to={link.to}>{link.label}</Link> : link.label}
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -44,28 +63,65 @@ function Footer() {
           <ul className="mt-4 space-y-3 text-sm text-white/90">
             <li className="flex items-center gap-3">
               <FontAwesomeIcon
-                icon={faMapMarkerAlt}
-                className="text-[var(--color-primary)]"
+                icon={faCommentSms}
+                className="text-2xl text-white"
               />
-              <span>101 President Ave Suite #1, Fall River, MA</span>
+              <span>Text</span>
             </li>
 
             <li className="flex items-center gap-3">
               <FontAwesomeIcon
-                icon={faPhone}
-                className="text-[var(--color-primary)]"
+                icon={faWhatsapp}
+                className="text-2xl text-white"
               />
-              <span>+1 508 672 2997</span>
+              <span>WhatsApp</span>
             </li>
 
             <li className="flex items-center gap-3">
               <FontAwesomeIcon
                 icon={faEnvelope}
-                className="text-[var(--color-primary)]"
+                className="text-2xl text-white"
               />
-              <span>service@nefamily4me.com</span>
+              <span>Email: service@nefamily4me.com</span>
+            </li>
+
+            <li className="flex items-center gap-3">
+              <FontAwesomeIcon
+                icon={faPhone}
+                className="text-2xl text-white"
+              />
+              <span>Call: +15086722997</span>
+            </li>
+
+            <li className="flex items-center gap-3">
+              <FontAwesomeIcon
+                icon={faFax}
+                className="text-2xl text-white"
+              />
+              <span>Fax: 508 677 3058</span>
             </li>
           </ul>
+
+          <div className="mt-4 flex gap-2">
+            <a
+              aria-label="New England Family Insurance on Facebook"
+              className="flex h-8 w-8 items-center justify-center rounded bg-[var(--color-primary)]"
+              href={socialLinks.facebook}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <FontAwesomeIcon icon={faFacebookF} />
+            </a>
+            <a
+              aria-label="New England Family Insurance on Instagram"
+              className="flex h-8 w-8 items-center justify-center rounded bg-white/10"
+              href={socialLinks.instagram}
+              rel="noreferrer"
+              target="_blank"
+            >
+              <FontAwesomeIcon icon={faInstagram} />
+            </a>
+          </div>
         </div>
 
         {/* MAP */}

@@ -3,8 +3,10 @@
 @tailwind utilities;
 
 :root {
-   --ratio-x: 0;
-  --ratio-y: 0;
+  --rotate-x: 0deg;
+  --rotate-y: 0deg;
+  --glow-x: 50%;
+  --glow-y: 50%;
   --color-primary: #2563eb;
   --color-primary-dark: #1d4ed8;
   --color-secondary: #1fd4e0;
@@ -128,6 +130,61 @@ body {
     background: var(--color-card-bg-dark-elevated);
   }
 
+  .content-page {
+    background: var(--color-page-bg);
+    padding-block: 3rem;
+  }
+
+  .content-shell {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 80rem;
+    padding-inline: 1.5rem;
+  }
+
+  .content-hero {
+    padding: 1.5rem;
+    color: #fff;
+  }
+
+  .content-eyebrow {
+    font-size: 0.875rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  .content-section {
+    padding: 1.5rem;
+    color: #fff;
+  }
+
+  .content-section-title {
+    color: var(--card-text-dark);
+    font-size: var(--card-subheading-size);
+    font-weight: 700;
+    line-height: var(--card-subheading-line-height);
+  }
+
+  .content-prose {
+    color: var(--card-text-muted-dark);
+    font-size: var(--card-body-size);
+    line-height: var(--card-body-line-height);
+  }
+
+  .content-prose p + p,
+  .content-prose ul + p,
+  .content-prose p + ul {
+    margin-top: 1rem;
+  }
+
+  .content-prose ul {
+    margin-top: 0.75rem;
+    list-style: disc;
+    padding-left: 1.25rem;
+  }
+
   .primary-btn {
     border-radius: var(--radius-pill);
     background: var(--color-primary);
@@ -186,6 +243,27 @@ body {
   }
 
   @media (min-width: 768px) {
+    .content-page {
+      padding-block: 4rem;
+    }
+
+    .content-shell {
+      padding-inline: 2.5rem;
+    }
+
+    .content-hero,
+    .content-section {
+      padding: 2.25rem;
+    }
+
+    .content-section-title {
+      font-size: var(--card-subheading-size-md);
+    }
+
+    .content-prose {
+      font-size: var(--card-body-size-md);
+    }
+
     .card-heading {
       font-size: var(--card-heading-size-md);
     }
@@ -203,11 +281,19 @@ body {
 
 /* 3D CARD BASE */
 .card-3d {
+  isolation: isolate;
+  overflow: hidden;
   transform-style: preserve-3d;
-  transition: transform 0.2s ease;
+  transform: perspective(900px) rotateX(var(--rotate-x)) rotateY(var(--rotate-y)) translateY(-4px);
+  transition: transform 0.18s ease, box-shadow 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
+  will-change: transform;
+}
 
-  transform: rotateY(calc(-15deg * var(--ratio-x)))
-    rotateX(calc(15deg * var(--ratio-y)));
+.card-3d:hover,
+.card-3d:focus-within {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-accent);
+  filter: brightness(1.04);
 }
 
 /* HOLOGRAPHIC LIGHT */
@@ -241,8 +327,7 @@ body {
   border-radius: inherit;
 
   background: radial-gradient(
-    circle at calc(50% + var(--ratio-x) * 30%)
-      calc(50% + var(--ratio-y) * 30%),
+    circle at var(--glow-x) var(--glow-y),
     rgba(255, 255, 255, 0.25),
     transparent 60%
   );

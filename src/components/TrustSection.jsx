@@ -6,7 +6,7 @@ function TrustSection({ trustMetrics }) {
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10">
         <article className="card-surface-dark interactive-card interactive-card-dark p-6 md:p-10">
           <h3 className="card-heading card-text-dark text-center md:text-3xl">
-            REVIEWS
+            Why Work with N.E. Family?
           </h3>
           <div className="mx-auto mt-2 h-[3px] w-full max-w-3xl rounded-full bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-secondary)] to-[var(--color-primary)] shadow-[0_0_14px_rgba(34,211,238,0.35)]" />
 

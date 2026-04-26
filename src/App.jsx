@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
 import { useLocation } from 'react-router-dom'
 import AboutPage from './components/AboutPage'
+import BlogPage from './components/BlogPage'
 import ContactSection from './components/ContactSection'
 import FileAClaimPage from './components/FileAClaimPage'
 import Footer from './components/Footer'
@@ -10,6 +11,7 @@ import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import PayMyBillPage from './components/PayMyBillPage'
 import PolicyChangePage from './components/PolicyChangePage'
+import PrivacyTermsPage from './components/PrivacyTermsPage'
 import ReviewsPage from './components/ReviewsPage'
 import TrustSection from './components/TrustSection'
 import ValueCards from './components/ValueCards'
@@ -65,6 +67,8 @@ function App() {
           <Route path="/policy-change" element={<PolicyChangePage />} />
           <Route path="/file-a-claim" element={<FileAClaimPage />} />
           <Route path="/reviews" element={<ReviewsPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/privacy-policy-terms-of-use" element={<PrivacyTermsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactSection />} />
           <Route path="*" element={<Navigate replace to="/" />} />

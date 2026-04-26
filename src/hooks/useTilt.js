@@ -1,36 +1,46 @@
-import { useRef } from "react";
+import { useRef } from 'react'
 
 export function useTilt() {
-  const ref = useRef(null);
+  const ref = useRef(null)
 
-  const handleMove = (e) => {
-    const el = ref.current;
-    if (!el) return;
+  const setTiltVars = (el, rotateX, rotateY, glowX, glowY) => {
+    el.style.setProperty('--rotate-x', rotateX)
+    el.style.setProperty('--rotate-y', rotateY)
+    el.style.setProperty('--glow-x', glowX)
+    el.style.setProperty('--glow-y', glowY)
+  }
 
-    const rect = el.getBoundingClientRect();
-    const hw = rect.width / 2;
-    const hh = rect.height / 2;
+  const handleMove = (event) => {
+    const el = ref.current
+    if (!el) return
 
-    const ratioX = (e.clientX - (rect.left + hw)) / hw;
-    const ratioY = (e.clientY - (rect.top + hh)) / hh;
+    const rect = el.getBoundingClientRect()
+    const halfWidth = rect.width / 2
+    const halfHeight = rect.height / 2
+    const ratioX = (event.clientX - (rect.left + halfWidth)) / halfWidth
+    const ratioY = (event.clientY - (rect.top + halfHeight)) / halfHeight
 
-    el.style.setProperty("--ratio-x", ratioX);
-    el.style.setProperty("--ratio-y", ratioY);
-  };
+    setTiltVars(
+      el,
+      `${(-ratioY * 12).toFixed(2)}deg`,
+      `${(ratioX * 12).toFixed(2)}deg`,
+      `${((ratioX + 1) * 50).toFixed(2)}%`,
+      `${((ratioY + 1) * 50).toFixed(2)}%`,
+    )
+  }
 
   const handleLeave = () => {
-    const el = ref.current;
-    if (!el) return;
+    const el = ref.current
+    if (!el) return
 
-    el.style.setProperty("--ratio-x", 0);
-    el.style.setProperty("--ratio-y", 0);
-  };
+    setTiltVars(el, '0deg', '0deg', '50%', '50%')
+  }
 
   return {
-    ref,
-    handlers: {
+    tiltRef: ref,
+    tiltHandlers: {
       onPointerMove: handleMove,
       onPointerLeave: handleLeave,
     },
-  };
+  }
 }
