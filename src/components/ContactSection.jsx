@@ -21,7 +21,7 @@ function ContactSection() {
             <li className="flex items-center gap-3">
               <FontAwesomeIcon icon={faCommentDots} />
               <a className="hover:text-[var(--color-primary)]" href="sms:+918120270109?body=Hi%2C%20I%20need%20insurance%20help.">
-                {t.contact.text}: +91 8120270109
+                {t.contact.text}: +15086722997
               </a>
             </li>
             <li className="flex items-center gap-3">
@@ -32,7 +32,7 @@ function ContactSection() {
                 rel="noreferrer"
                 target="_blank"
               >
-                {t.contact.whatsapp}: +91 8120270109
+                {t.contact.whatsapp}: + 15086722997
               </a>
             </li>
             <li className="flex items-center gap-3">
@@ -42,7 +42,7 @@ function ContactSection() {
             <li className="flex items-center gap-3">
               <FontAwesomeIcon icon={faPhone} />
               <a className="hover:text-[var(--color-primary)]" href="tel:+918120270109">
-                {t.contact.call}: +91 8120270109
+                {t.contact.call}: +15086722997
               </a>
             </li>
             <li className="flex items-center gap-3">

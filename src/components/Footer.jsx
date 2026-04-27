@@ -30,7 +30,7 @@ function Footer() {
   ]
 
   return (
-    <footer className="bg-black">
+    <footer className="bg-black/80 text-white">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 py-12 text-white md:grid-cols-3 md:px-10">
 
         {/* LEFT - LOGO + LINKS */}
