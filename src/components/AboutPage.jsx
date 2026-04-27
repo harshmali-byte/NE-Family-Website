@@ -40,25 +40,35 @@ function AboutPage() {
           </div>
 
           <div className="card-surface-elevated flex min-h-[320px] items-center justify-center p-6 md:min-h-[430px]">
-            <img
-              alt={t.about.teamImageAlt}
-              className="h-full w-full rounded-xl border border-white/20 object-contain bg-white p-2"
-              src={aboutMain}
-            />
+            <div className="h-full w-full rounded-2xl bg-gradient-to-br from-cyan-300 via-blue-500 to-violet-400 p-[2px] shadow-[0_0_20px_rgba(168,85,247,0.45)]">
+              <div className="h-full w-full rounded-[14px] bg-[#06122f] p-[4px]">
+                <img
+                  alt={t.about.teamImageAlt}
+                  className="h-full w-full rounded-[12px] object-cover"
+                  src={aboutMain}
+                />
+              </div>
+            </div>
           </div>
         </article>
 
         <article className="card-surface-dark interactive-card interactive-card-dark grid overflow-hidden text-white md:grid-cols-2">
           <div className="card-surface-elevated relative flex min-h-[320px] items-center justify-center overflow-hidden p-6">
             {aboutSlides.map((slide, index) => (
-              <img
-                alt={`${t.about.slideImageAltPrefix} ${index + 1}`}
-                className={`absolute inset-6 h-[calc(100%-3rem)] w-[calc(100%-3rem)] rounded-xl border border-white/20 object-cover transition-opacity duration-700 ${
+              <div
+                className={`absolute inset-6 rounded-2xl bg-gradient-to-br from-cyan-300 via-blue-500 to-violet-400 p-[2px] shadow-[0_0_20px_rgba(34,211,238,0.3)] transition-opacity duration-700 ${
                   activeSlide === index ? 'opacity-100' : 'opacity-0'
                 }`}
                 key={slide}
-                src={slide}
-              />
+              >
+                <div className="h-full w-full rounded-[14px] bg-[#06122f] p-[4px]">
+                  <img
+                    alt={`${t.about.slideImageAltPrefix} ${index + 1}`}
+                    className="h-full w-full rounded-[12px] object-cover"
+                    src={slide}
+                  />
+                </div>
+              </div>
             ))}
           </div>
 

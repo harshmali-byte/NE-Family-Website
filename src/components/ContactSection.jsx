@@ -20,7 +20,7 @@ function ContactSection() {
           <ul className="mt-8 space-y-4 text-sm md:text-base">
             <li className="flex items-center gap-3">
               <FontAwesomeIcon icon={faCommentDots} />
-              <a className="hover:text-[var(--color-primary)]" href="sms:+918120270109?body=Hi%2C%20I%20need%20insurance%20help.">
+              <a className="hover:text-[var(--color-primary)]" href="sms:+15086722997?body=Hi%2C%20I%20need%20insurance%20help.">
                 {t.contact.text}: +15086722997
               </a>
             </li>
@@ -28,11 +28,11 @@ function ContactSection() {
               <FontAwesomeIcon icon={faWhatsapp} />
               <a
                 className="hover:text-[var(--color-primary)]"
-                href="https://wa.me/918120270109?text=Hi%2C%20I%20need%20insurance%20help."
+                href="https://wa.me/15086722997?text=Hi%2C%20I%20need%20insurance%20help."
                 rel="noreferrer"
                 target="_blank"
               >
-                {t.contact.whatsapp}: + 15086722997
+                {t.contact.whatsapp}: +15086722997
               </a>
             </li>
             <li className="flex items-center gap-3">
@@ -41,7 +41,7 @@ function ContactSection() {
             </li>
             <li className="flex items-center gap-3">
               <FontAwesomeIcon icon={faPhone} />
-              <a className="hover:text-[var(--color-primary)]" href="tel:+918120270109">
+              <a className="hover:text-[var(--color-primary)]" href="tel:+15086722997">
                 {t.contact.call}: +15086722997
               </a>
             </li>
