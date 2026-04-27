@@ -82,18 +82,24 @@ function ReviewsPage() {
   return (
     <section className="overflow-hidden py-12 md:py-14">
       <div className="mx-auto w-full max-w-7xl space-y-10 px-6 md:px-10">
-        <article className="card-surface-dark interactive-card  p-7 text-center md:p-9">
-          <p className="text-3xl tracking-wide text-amber-400">★★★★★</p>
-          <h2 className="text-white mt-2 tracking-tight md:text-4xl">{t.reviews.title}</h2>
-          <p className="mt-2 text-sm font-medium text-[var(--color-text-muted)]">{t.reviews.basedOn}</p>
-          <p className="mt-4 text-4xl font-semibold tracking-wide">
-            <span className="text-[#4285f4]">G</span>
-            <span className="text-[#db4437]">o</span>
-            <span className="text-[#f4b400]">o</span>
-            <span className="text-[#4285f4]">g</span>
-            <span className="text-[#0f9d58]">l</span>
-            <span className="text-[#db4437]">e</span>
-          </p>
+        <article className="relative flex justify-center overflow-visible py-2">
+          <div className="pointer-events-none absolute top-1/2 h-44 w-44 -translate-y-1/2 rounded-full bg-violet-500/20 blur-3xl" />
+          <div className="pointer-events-none absolute top-1/2 h-32 w-[26rem] -translate-y-1/2 rounded-full bg-cyan-400/15 blur-2xl" />
+          <div className="relative w-full max-w-xl rounded-full bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 p-[2px] shadow-[0_0_30px_rgba(192,132,252,0.25)]">
+            <div className="rounded-full bg-[linear-gradient(180deg,#101a43_0%,#151f52_100%)] px-8 py-7 text-center">
+              <p className="text-3xl tracking-wide text-amber-400">★★★★★</p>
+              <h2 className="mt-2 text-4xl font-black tracking-tight text-white">{t.reviews.title}</h2>
+              <p className="mt-1 text-sm font-medium text-white/65">{t.reviews.basedOn}</p>
+              <p className="mt-3 text-4xl font-semibold tracking-wide">
+                <span className="text-[#4285f4]">G</span>
+                <span className="text-[#db4437]">o</span>
+                <span className="text-[#f4b400]">o</span>
+                <span className="text-[#4285f4]">g</span>
+                <span className="text-[#0f9d58]">l</span>
+                <span className="text-[#db4437]">e</span>
+              </p>
+            </div>
+          </div>
         </article>
 
         <div className="overflow-hidden rounded-[var(--radius-card)]">

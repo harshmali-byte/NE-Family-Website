@@ -53,6 +53,8 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
     return false
   }
 
+  const navAccentClass = 'text-[#c084fc] drop-shadow-[0_0_10px_rgba(192,132,252,0.45)]'
+
   useEffect(() => {
     if (!isMobileMenuOpen) {
       return undefined
@@ -101,7 +103,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
               >
                 <button
                   className={`inline-flex items-center gap-2 pb-1 transition ${
-                    isActiveItem(item) ? 'text-[var(--color-primary)]' : 'hover:text-[var(--color-primary)]'
+                    isActiveItem(item) ? navAccentClass : 'hover:text-[#c084fc]'
                   }`}
                   onClick={() => setIsPolicyMenuOpen((prev) => !prev)}
                   type="button"
@@ -139,7 +141,7 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
             ) : (
               <Link
                 className={`group relative pb-1 transition ${
-                  isActiveItem(item) ? 'text-[var(--color-primary)]' : 'hover:text-[var(--color-primary)]'
+                  isActiveItem(item) ? navAccentClass : 'hover:text-[#c084fc]'
                 }`}
                 to={navHrefMap[item] || '/'}
                 key={item}
@@ -161,7 +163,7 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
             onMouseLeave={() => setIsLanguageMenuOpen(false)}
           >
             <button
-              className="inline-flex items-center gap-2 pb-1 transition hover:text-[var(--color-primary)]"
+              className="inline-flex items-center gap-2 pb-1 transition hover:text-[#c084fc]"
               onClick={() => setIsLanguageMenuOpen((prev) => !prev)}
               type="button"
             >
@@ -249,8 +251,8 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
                     <Link
                       className={`block rounded-md px-2 py-2 text-sm font-semibold transition ${
                         isActiveItem(item)
-                          ? 'bg-slate-50 text-[var(--color-primary)]'
-                          : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[var(--color-primary)]'
+                          ? 'bg-slate-50 text-[#c084fc]'
+                          : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[#c084fc]'
                       }`}
                       to={navHrefMap[item] || '/'}
                       onClick={onCloseMenu}
@@ -261,7 +263,7 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
                       {policySubsections.map((subsection) => (
                         <li key={subsection.label}>
                           <Link
-                            className="block rounded-md px-2 py-1 text-xs font-medium text-[var(--color-text-muted)] transition hover:bg-slate-50 hover:text-[var(--color-primary)]"
+                            className="block rounded-md px-2 py-1 text-xs font-medium text-[var(--color-text-muted)] transition hover:bg-slate-50 hover:text-[#c084fc]"
                             to={subsection.to}
                           >
                             {subsection.label}
@@ -274,8 +276,8 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
                   <Link
                     className={`block rounded-md px-2 py-2 text-sm font-semibold transition ${
                       isActiveItem(item)
-                        ? 'bg-slate-50 text-[var(--color-primary)]'
-                        : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[var(--color-primary)]'
+                        ? 'bg-slate-50 text-[#c084fc]'
+                        : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[#c084fc]'
                     }`}
                     to={navHrefMap[item] || '/'}
                     onClick={onCloseMenu}
@@ -296,8 +298,8 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
                   <button
                     className={`block w-full rounded-md px-2 py-2 text-left text-sm font-semibold transition ${
                       selectedLanguage.label === language.label
-                        ? 'bg-slate-50 text-[var(--color-primary)]'
-                        : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[var(--color-primary)]'
+                        ? 'bg-slate-50 text-[#c084fc]'
+                        : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[#c084fc]'
                     }`}
                     onClick={() => setLanguage(language.code)}
                     type="button"
