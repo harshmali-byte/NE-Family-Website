@@ -30,7 +30,7 @@ function ValueCards({ valueCards }) {
                 grid items-center gap-8
                 p-6 md:p-10
                 text-white
-                md:grid-cols-[1fr_auto]
+                md:grid-cols-[1.2fr_1fr]
                 ${isReverse ? 'md:grid-cols-[auto_1fr]' : ''}
               `}
             >

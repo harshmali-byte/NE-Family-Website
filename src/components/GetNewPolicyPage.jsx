@@ -39,6 +39,12 @@ function GetNewPolicyPage() {
 
   const cardIcons = [faCartShopping, faHeart, faUserShield]
   const getCardIcon = (index) => cardIcons[index % cardIcons.length]
+  const sideCardClassName =
+    'hidden h-[540px] w-[320px] shrink-0 flex-col justify-start overflow-hidden rounded-[22px] border border-cyan-300/30 p-6 text-center text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_0_24px_rgba(34,211,238,0.08)] transition duration-300 hover:border-cyan-300/55 hover:shadow-[0_0_32px_rgba(34,211,238,0.22)] xl:flex'
+  const sideTitleClassName = 'mt-5 text-[1.7rem] font-bold leading-tight'
+  const sideTextClassName = 'mx-auto mt-5 max-w-[16.5rem] text-[0.96rem] leading-7 text-white/84'
+  const sideButtonClassName =
+    'mx-auto mt-auto inline-flex max-w-full items-center justify-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-300/10 px-7 py-2.5 text-sm font-semibold text-cyan-300 transition hover:border-cyan-200 hover:text-white'
 
   return (
     <section className="py-12 md:py-14">
@@ -96,15 +102,15 @@ function GetNewPolicyPage() {
 
           <div className="relative z-10 flex items-center justify-center gap-6 overflow-visible">
             <div
-              className="hidden w-[300px] shrink-0 rounded-[22px] border border-cyan-300/30 bg-[linear-gradient(170deg,#04133a_0%,#061a48_70%,#082154_100%)] p-7 text-center text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_0_24px_rgba(34,211,238,0.08)] transition duration-300 hover:border-cyan-300/55 hover:shadow-[0_0_32px_rgba(34,211,238,0.22)] xl:block [transform:perspective(1100px)_rotateY(9deg)]"
+              className={`${sideCardClassName} bg-[linear-gradient(170deg,#04133a_0%,#061a48_70%,#082154_100%)] [transform:perspective(1100px)_rotateY(9deg)]`}
             >
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-cyan-300/35 bg-cyan-300/10 text-cyan-200 shadow-[0_0_18px_rgba(34,211,238,0.25)]">
+              <div className="mx-auto flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-cyan-300/35 bg-cyan-300/10 text-cyan-200 shadow-[0_0_18px_rgba(34,211,238,0.25)]">
                 <FontAwesomeIcon className="text-xl" icon={getCardIcon(leftIndex)} />
               </div>
-              <h4 className="mt-6 text-[2rem] font-bold leading-tight">{leftCard.title}</h4>
+              <h4 className={sideTitleClassName}>{leftCard.title}</h4>
               <div className="mx-auto mt-4 h-[3px] w-20 rounded-full bg-cyan-300/95 shadow-[0_0_12px_rgba(34,211,238,0.65)]" />
-              <p className="mx-auto mt-6 max-w-[16.5rem] text-[1.08rem] leading-9 text-white/84">{leftCard.text}</p>
-              <button className="mt-8 inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-300/10 px-7 py-2.5 text-base font-semibold text-cyan-300 transition hover:border-cyan-200 hover:text-white" type="button">
+              <p className={sideTextClassName}>{leftCard.text}</p>
+              <button className={sideButtonClassName} type="button">
                 Learn More
                 <FontAwesomeIcon icon={faArrowRight} />
               </button>
@@ -113,7 +119,7 @@ function GetNewPolicyPage() {
             <div
               ref={tiltRef}
               {...tiltHandlers}
-              className="card-3d relative min-h-[280px] w-full max-w-[372px] shrink-0 rounded-[24px] border border-violet-300/50 bg-[linear-gradient(170deg,#171046_0%,#21115d_50%,#2a1572_100%)] p-8 text-center text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.09),0_0_50px_rgba(147,51,234,0.36)]"
+              className="card-3d relative min-h-[520px] w-full max-w-[410px] shrink-0 rounded-[24px] border border-violet-300/50 bg-[linear-gradient(170deg,#171046_0%,#21115d_50%,#2a1572_100%)] p-8 text-center text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.09),0_0_58px_rgba(147,51,234,0.42)] md:p-9 xl:min-h-[560px] xl:max-w-[420px]"
             >
               <div className="card-holo-bg" />
               <div className="card-glow" />
@@ -121,9 +127,9 @@ function GetNewPolicyPage() {
                 <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full border border-violet-300/45 bg-violet-300/15 text-violet-100 shadow-[0_0_24px_rgba(168,85,247,0.45)]">
                   <FontAwesomeIcon className="text-2xl" icon={getCardIcon(activeIndex)} />
                 </div>
-                <h4 className="mt-6 text-[2.1rem] font-bold leading-tight">{centerCard.title}</h4>
+                <h4 className="mt-7 text-[2.2rem] font-bold leading-tight">{centerCard.title}</h4>
                 <div className="mx-auto mt-4 h-[3px] w-20 rounded-full bg-violet-300/95 shadow-[0_0_12px_rgba(196,181,253,0.85)]" />
-                <p className="mx-auto mt-6 max-w-[16.5rem] text-[1.1rem] leading-9 text-white/86">{centerCard.text}</p>
+                <p className="mx-auto mt-7 max-w-[18rem] text-[1.1rem] leading-9 text-white/86">{centerCard.text}</p>
                 <button className="mt-8 inline-flex items-center gap-2 rounded-full border border-violet-300/55 bg-violet-300/20 px-7 py-2.5 text-base font-semibold text-violet-100 transition hover:border-violet-200 hover:text-white" type="button">
                   Learn More
                   <FontAwesomeIcon icon={faArrowRight} />
@@ -140,15 +146,15 @@ function GetNewPolicyPage() {
             </div>
 
             <div
-              className="hidden w-[300px] shrink-0 rounded-[22px] border border-cyan-300/30 bg-[linear-gradient(170deg,#052240_0%,#08324c_70%,#0a3b57_100%)] p-7 text-center text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_0_24px_rgba(34,211,238,0.08)] transition duration-300 hover:border-cyan-300/55 hover:shadow-[0_0_32px_rgba(34,211,238,0.22)] xl:block [transform:perspective(1100px)_rotateY(-9deg)]"
+              className={`${sideCardClassName} bg-[linear-gradient(170deg,#052240_0%,#08324c_70%,#0a3b57_100%)] [transform:perspective(1100px)_rotateY(-9deg)]`}
             >
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-cyan-300/35 bg-cyan-300/10 text-cyan-200 shadow-[0_0_18px_rgba(34,211,238,0.25)]">
+              <div className="mx-auto flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-cyan-300/35 bg-cyan-300/10 text-cyan-200 shadow-[0_0_18px_rgba(34,211,238,0.25)]">
                 <FontAwesomeIcon className="text-xl" icon={getCardIcon(rightIndex)} />
               </div>
-              <h4 className="mt-6 text-[2rem] font-bold leading-tight">{rightCard.title}</h4>
+              <h4 className={sideTitleClassName}>{rightCard.title}</h4>
               <div className="mx-auto mt-4 h-[3px] w-20 rounded-full bg-cyan-300/95 shadow-[0_0_12px_rgba(34,211,238,0.65)]" />
-              <p className="mx-auto mt-6 max-w-[16.5rem] text-[1.08rem] leading-9 text-white/84">{rightCard.text}</p>
-              <button className="mt-8 inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-300/10 px-7 py-2.5 text-base font-semibold text-cyan-300 transition hover:border-cyan-200 hover:text-white" type="button">
+              <p className={sideTextClassName}>{rightCard.text}</p>
+              <button className={sideButtonClassName} type="button">
                 Learn More
                 <FontAwesomeIcon icon={faArrowRight} />
               </button>
