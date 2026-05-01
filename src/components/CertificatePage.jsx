@@ -107,35 +107,35 @@ function CertificatePage() {
   return (
     <section className="py-14">
       <div className="mx-auto w-full max-w-3xl px-6 md:px-10">
-        <h1 className="text-center text-4xl font-black uppercase tracking-wide text-white md:text-5xl">
+        <h1 className="text-center text-4xl font-black uppercase tracking-wide text-[var(--color-text)] md:text-5xl">
           CERTIFICATE
         </h1>
 
         <div className="mt-8">
-          <div className="mb-2 flex justify-between text-xs text-white/70">
+          <div className="mb-2 flex justify-between text-xs text-[var(--color-text-muted)]">
             <span>Step {step} of 5</span>
             <span>{progress}%</span>
           </div>
 
-          <div className="h-2 w-full overflow-hidden rounded-full bg-white/15">
+          <div className="h-2 w-full overflow-hidden rounded-full bg-slate-200">
             <div
-              className="h-full bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-primary)] transition-all duration-500"
+              className="h-full bg-[var(--color-primary)] transition-all duration-500"
               style={{ width: `${progress}%` }}
             />
           </div>
         </div>
 
-        <article className="card-surface-dark interactive-card interactive-card-dark mt-8 p-6 md:p-8">
+        <article className="card-surface-light interactive-card interactive-card-light mt-8 p-6 md:p-8">
           {step === 1 && (
             <>
-              <h2 className="card-subheading card-text-dark">Certificate Holder Name *</h2>
+              <h2 className="card-subheading card-text-light">Certificate Holder Name *</h2>
               <FloatingInput label="Full Name" onChange={(value) => updateField('fullName', value)} value={form.fullName} />
             </>
           )}
 
           {step === 2 && (
             <>
-              <h2 className="card-subheading card-text-dark">Certificate Holder Address *</h2>
+              <h2 className="card-subheading card-text-light">Certificate Holder Address *</h2>
               <div className="mt-6 grid gap-4 md:grid-cols-2">
                 <FloatingInput label="Street Address" onChange={(value) => updateField('streetAddress', value)} spacing="mt-0" value={form.streetAddress} />
                 <FloatingInput label="State / Province" onChange={(value) => updateField('state', value)} spacing="mt-0" value={form.state} />
@@ -147,14 +147,14 @@ function CertificatePage() {
 
           {step === 3 && (
             <>
-              <h2 className="card-subheading card-text-dark">Where should we send it? *</h2>
+              <h2 className="card-subheading card-text-light">Where should we send it? *</h2>
               <FloatingInput label="Email Address" onChange={(value) => updateField('email', value)} type="email" value={form.email} />
             </>
           )}
 
           {step === 4 && (
             <>
-              <h2 className="card-subheading card-text-dark">Include all policies?</h2>
+              <h2 className="card-subheading card-text-light">Include all policies?</h2>
               <div className="mt-4 space-y-3">
                 {['Yes', 'No'].map((option) => (
                   <label className="flex cursor-pointer items-center gap-3" key={option}>
@@ -168,7 +168,7 @@ function CertificatePage() {
                       }}
                       type="radio"
                     />
-                    <span className="card-body card-text-muted-dark">{option}</span>
+                    <span className="card-body card-text-muted-light">{option}</span>
                   </label>
                 ))}
               </div>
@@ -179,7 +179,7 @@ function CertificatePage() {
             <>
               {shouldShowPolicyOptions && (
                 <>
-                  <h2 className="card-subheading card-text-dark">Select Policies *</h2>
+                  <h2 className="card-subheading card-text-light">Select Policies *</h2>
                   <div className="mt-4 space-y-3">
                     {policies.map((policy) => (
                       <label className="flex cursor-pointer items-center gap-3" key={policy}>
@@ -189,7 +189,7 @@ function CertificatePage() {
                           onChange={() => togglePolicy(policy)}
                           type="checkbox"
                         />
-                        <span className="card-body card-text-muted-dark">{policy}</span>
+                        <span className="card-body card-text-muted-light">{policy}</span>
                       </label>
                     ))}
                   </div>
@@ -204,18 +204,18 @@ function CertificatePage() {
                     onChange={(event) => updateField('acceptedTerms', event.target.checked)}
                     type="checkbox"
                   />
-                  <span className="card-body card-text-muted-dark">
+                  <span className="card-body card-text-muted-light">
                     I agree to terms & conditions *
                   </span>
                 </label>
               </div>
 
-              <div className="mt-6 rounded-[var(--radius-card)] border border-white/15 bg-white/5 p-4">
-                <p className="card-body card-text-muted-dark">
+              <div className="mt-6 rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface-muted)] p-4">
+                <p className="card-body card-text-muted-light">
                   Captcha verification: What is {captcha.left} + {captcha.right}?
                 </p>
                 <input
-                  className="mt-3 w-full rounded-[var(--radius-card)] border border-white/20 bg-[#0d1b3d] px-4 py-3 text-sm text-white outline-none transition focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[rgba(34,211,238,0.25)]"
+                  className="mt-3 w-full rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-[var(--color-text)] outline-none transition focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[rgba(30,64,175,0.2)]"
                   onChange={(event) => updateField('captchaAnswer', event.target.value)}
                   placeholder="Enter answer"
                   type="number"
@@ -226,20 +226,20 @@ function CertificatePage() {
           )}
 
           {error && (
-            <p className="mt-6 rounded-[var(--radius-card)] border border-red-400/30 bg-red-500/10 px-4 py-3 text-sm font-semibold text-red-300">
+            <p className="mt-6 rounded-[var(--radius-card)] border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-800">
               {error}
             </p>
           )}
 
           {submitted && (
-            <p className="mt-6 rounded-[var(--radius-card)] border border-emerald-400/30 bg-emerald-500/10 px-4 py-3 text-sm font-semibold text-emerald-300">
+            <p className="mt-6 rounded-[var(--radius-card)] border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-900">
               Certificate request is ready to submit.
             </p>
           )}
 
           <div className="mt-8 flex justify-between">
             <button
-              className="rounded-[var(--radius-card)] border border-white/20 bg-white/5 px-5 py-2 text-sm text-white transition hover:border-white/40 hover:bg-white/10 disabled:cursor-not-allowed disabled:opacity-50"
+              className="rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface-muted)] px-5 py-2 text-sm text-[var(--color-text)] transition hover:border-slate-400 disabled:cursor-not-allowed disabled:opacity-50"
               disabled={step === 1}
               onClick={prev}
               type="button"
@@ -249,7 +249,7 @@ function CertificatePage() {
 
             {step < 5 ? (
               <button
-                className="rounded-[var(--radius-card)] bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-primary)] px-6 py-2 text-sm font-semibold text-white shadow-[0_0_18px_rgba(34,211,238,0.35)] transition hover:opacity-90"
+                className="primary-btn rounded-[var(--radius-card)] px-6 py-2 text-sm font-semibold"
                 onClick={next}
                 type="button"
               >
@@ -257,7 +257,7 @@ function CertificatePage() {
               </button>
             ) : (
               <button
-                className="rounded-[var(--radius-card)] bg-gradient-to-r from-emerald-400 to-emerald-600 px-6 py-2 text-sm font-semibold text-white shadow-[0_0_18px_rgba(52,211,153,0.35)] transition hover:opacity-90"
+                className="primary-btn rounded-[var(--radius-card)] px-6 py-2 text-sm font-semibold"
                 onClick={submit}
                 type="button"
               >
@@ -275,13 +275,13 @@ function FloatingInput({ label, onChange, spacing = 'mt-6', type = 'text', value
   return (
     <div className={`relative ${spacing}`}>
       <input
-        className="peer w-full rounded-[var(--radius-card)] border border-white/20 bg-[#0d1b3d] px-4 pb-2 pt-5 text-sm text-white outline-none transition focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[rgba(34,211,238,0.25)]"
+        className="peer w-full rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 pb-2 pt-5 text-sm text-[var(--color-text)] outline-none transition focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[rgba(30,64,175,0.2)]"
         onChange={(event) => onChange(event.target.value)}
         placeholder=" "
         type={type}
         value={value}
       />
-      <label className="absolute left-4 top-2 text-xs text-white/65 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs peer-focus:text-[var(--color-accent)]">
+      <label className="absolute left-4 top-2 text-xs text-[var(--color-text-muted)] transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs peer-focus:text-[var(--color-accent)]">
         {label}
       </label>
     </div>

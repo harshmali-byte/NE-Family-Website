@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import { useI18n } from '../i18n.jsx'
 
-function CommonContactForm({ subject = 'New contact inquiry', className = '', theme = 'dark' }) {
+function CommonContactForm({ subject = 'New contact inquiry', className = '', theme = 'light' }) {
   const { t } = useI18n()
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
@@ -79,7 +79,7 @@ function CommonContactForm({ subject = 'New contact inquiry', className = '', th
         )}
 
         <button
-          className="w-full rounded-[var(--radius-card)] bg-[var(--color-secondary)] py-3 text-white shadow-[var(--shadow-secondary)] transition hover:brightness-110"
+          className="primary-btn w-full rounded-[var(--radius-card)] py-3 font-semibold"
           disabled={loading}
           type="submit"
         >

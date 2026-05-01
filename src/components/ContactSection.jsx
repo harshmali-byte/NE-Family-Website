@@ -12,7 +12,7 @@ function ContactSection() {
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 md:grid-cols-2 md:px-10">
 
         {/* LEFT */}
-        <div className="text-white">
+        <div className="text-[var(--color-text)]">
           <h3 className="text-3xl font-semibold tracking-wide md:text-4xl">
             {t.contact.title}
           </h3>
@@ -53,7 +53,7 @@ function ContactSection() {
         </div>
 
         {/* FORM */}
-        <CommonContactForm subject="New contact inquiry" theme="dark" />
+        <CommonContactForm subject="New contact inquiry" theme="light" />
       </div>
     </section>
   )

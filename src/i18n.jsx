@@ -404,6 +404,8 @@ export function I18nProvider({ children }) {
   return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>
 }
 
+/** Hook is intentionally co-located with `I18nProvider` for a single module boundary. */
+// eslint-disable-next-line react-refresh/only-export-components -- provider + hook pattern
 export function useI18n() {
   const context = useContext(I18nContext)
   if (!context) {

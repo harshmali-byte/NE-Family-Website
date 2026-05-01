@@ -44,7 +44,7 @@ function App() {
   }, [location.hash, location.pathname])
 
   return (
-    <div className="min-h-screen bg-[image:var(--color-page-bg)] bg-fixed">
+    <div className="min-h-screen bg-[var(--color-page-bg)]">
       <Navbar
         isMobileMenuOpen={isMobileMenuOpen}
         onCloseMenu={handleCloseMenu}

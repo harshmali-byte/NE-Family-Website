@@ -30,8 +30,8 @@ function Footer() {
   ]
 
   return (
-    <footer className="bg-black/80 text-white">
-      <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 py-12 text-white md:grid-cols-3 md:px-10">
+    <footer className="bg-[var(--color-primary)] text-white">
+      <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 py-12 md:grid-cols-3 md:px-10">
 
         {/* LEFT - LOGO + LINKS */}
         <div>
@@ -105,7 +105,7 @@ function Footer() {
           <div className="mt-4 flex gap-2">
             <a
               aria-label="New England Family Insurance on Facebook"
-              className="flex h-8 w-8 items-center justify-center rounded bg-[var(--color-primary)]"
+              className="flex h-8 w-8 items-center justify-center rounded border border-white/20 bg-[var(--color-primary-dark)]"
               href={socialLinks.facebook}
               rel="noreferrer"
               target="_blank"

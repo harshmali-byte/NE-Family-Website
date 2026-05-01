@@ -11,7 +11,7 @@ function ValueCards({ valueCards }) {
   }
 
   return (
-    <section className="pb-16" id="services">
+    <section className="bg-[var(--color-page-bg)] pb-16 pt-4" id="services">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 md:px-10">
 
         {valueCards.map((card, index) => {
@@ -24,12 +24,12 @@ function ValueCards({ valueCards }) {
             <article
               key={card.title}
               className={`
-                card-surface-dark
-                interactive-card interactive-card-dark
+                card-surface-light
+                interactive-card interactive-card-light
                 group
                 grid items-center gap-8
                 p-6 md:p-10
-                text-white
+                text-[var(--color-text)]
                 md:grid-cols-[1.2fr_1fr]
                 ${isReverse ? 'md:grid-cols-[auto_1fr]' : ''}
               `}
@@ -43,24 +43,19 @@ function ValueCards({ valueCards }) {
                 `}
               >
                 <div className={`w-fit ${isReverse ? 'ml-auto' : ''}`}>
-                  <h3 className="card-heading card-text-dark">
+                  <h3 className="card-heading card-text-light">
                     {card.title}
                   </h3>
 
-                  {/* Accent Line */}
                   <div
-                    className="
-                      mt-2 h-[3px] w-full rounded-full
-                      bg-gradient-to-r from-[var(--color-accent)] via-[var(--color-secondary)] to-[var(--color-primary)]
-                      shadow-[0_0_14px_rgba(34,211,238,0.35)]
-                    "
+                    className="mt-2 h-[3px] w-full max-w-md rounded-full bg-[var(--color-primary)]"
                   />
                 </div>
 
                 <p
                   className={`
                     mt-4
-                    card-body card-text-muted-dark
+                    card-body card-text-muted-light
                     max-w-2xl
                     ${isReverse ? 'ml-auto' : ''}
                   `}
@@ -70,7 +65,7 @@ function ValueCards({ valueCards }) {
 
                 {isLongContent && (
                   <button
-                    className={`mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-accent)] transition hover:text-white ${
+                    className={`mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-accent)] transition hover:text-[var(--color-primary)] ${
                       isReverse ? 'ml-auto' : ''
                     }`}
                     onClick={() => toggleExpanded(card.title)}
@@ -78,7 +73,7 @@ function ValueCards({ valueCards }) {
                   >
                     <span>{isExpanded ? 'Read less' : 'Read more'}</span>
                     <span
-                      className={`inline-flex h-6 w-6 items-center justify-center rounded-full border border-[var(--color-accent)] transition ${
+                      className={`inline-flex h-6 w-6 items-center justify-center rounded-full border border-[var(--color-border)] transition ${
                         isExpanded ? 'rotate-180' : ''
                       }`}
                     >
@@ -104,7 +99,6 @@ function ValueCards({ valueCards }) {
                     lg:h-36 lg:w-36
                     object-contain
                     opacity-90
-                    transition duration-300 group-hover:scale-105
                   "
                 />
               </div>
@@ -119,4 +113,3 @@ function ValueCards({ valueCards }) {
 }
 
 export default ValueCards
-

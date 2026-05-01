@@ -15,23 +15,23 @@ function Hero() {
     return () => window.clearInterval(timer)
   }, [rotatingWords.length])
   return (
-    <section id="home">
+    <section className="border-b border-[var(--color-border)] bg-[var(--color-surface)]" id="home">
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-16 md:grid-cols-2 md:px-10 md:py-20">
         <div className="space-y-6">
-          <p className="inline-flex rounded-[var(--radius-pill)] bg-white/10 px-4 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] ring-1 ring-white/10">
+          <p className="inline-flex rounded-[var(--radius-pill)] border border-[var(--color-border)] bg-[var(--color-surface-muted)] px-4 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
             {t.hero.badge}
           </p>
-          <h1 className="text-4xl font-black leading-tight text-white md:text-6xl">
+          <h1 className="text-4xl font-black leading-tight text-[var(--color-text)] md:text-6xl">
             {t.hero.headingStart}
-            <span className="text-[var(--color-secondary)]"> {rotatingWords[activeWordIndex]}</span>.
+            <span className="text-[var(--color-accent)]"> {rotatingWords[activeWordIndex]}</span>.
 
             <br />
             {t.hero.headingEnd}
           </h1>
-          <p className="max-w-lg text-base leading-relaxed text-white/80 md:text-lg">
+          <p className="max-w-lg text-base leading-relaxed text-[var(--color-text-muted)] md:text-lg">
             {t.hero.subtext}
           </p>
-          <div className="grid w-full max-w-2xl grid-cols-3 gap-5 pt-2 text-center text-[var(--color-accent)]">
+          <div className="grid w-full max-w-2xl grid-cols-3 gap-5 pt-2 text-center text-[var(--color-text)]">
             <div>
               <img
                 alt="Best price guarantee"
@@ -65,7 +65,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className="  p-3 shadow-[var(--shadow-strong)] backdrop-blur md:p-4">
+        <div className="rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface-muted)] p-3 md:p-4">
           <div className="overflow-hidden rounded-xl">
             <iframe
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

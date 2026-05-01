@@ -3,7 +3,7 @@ import bulb from "../assets/bulb.png";
 function About() {
   return (
     <section
-      className="bg-gradient-to-br from-[#f3f9ff] via-[#f4fbff] to-[#d7f4f8]"
+      className="border-t border-[var(--color-border)] bg-[var(--color-surface)]"
       id="about"
     >
       <div className="mx-auto grid w-full max-w-7xl items-center gap-10 px-6 py-14 md:grid-cols-2 md:px-10">
@@ -15,7 +15,7 @@ function About() {
           </h2>
 
           {/* divider */}
-          <div className="mt-3 h-1 w-20 bg-[var(--color-secondary)]" />
+          <div className="mt-3 h-1 w-20 bg-[var(--color-primary)]" />
 
           <div className="mt-6 space-y-4 text-sm leading-7 text-slate-700 md:text-base md:leading-8">
             
@@ -53,7 +53,6 @@ function About() {
               md:w-80 md:h-80
               lg:w-[380px] lg:h-[380px]
               object-contain
-              drop-shadow-[0_0_30px_rgba(0,184,255,0.25)]
             "
           />
         </div>

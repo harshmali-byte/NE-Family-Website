@@ -52,8 +52,9 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
 
     return false
   }
+  
 
-  const navAccentClass = 'text-[#c084fc] drop-shadow-[0_0_10px_rgba(192,132,252,0.45)]'
+  const navAccentClass = 'text-[var(--color-primary)]'
 
   useEffect(() => {
     if (!isMobileMenuOpen) {
@@ -81,7 +82,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
 
   return (
     <header
-      className={`sticky top-0 z-40 border-b border-[var(--color-border)] bg-[var(--color-surface)]/95 backdrop-blur transition-all duration-300 ${
+      className={`sticky top-0 z-40 border-b border-[var(--color-border)] bg-[var(--color-surface)] transition-all duration-300 ${
         isScrolled ? 'shadow-[var(--shadow-navbar)]' : 'shadow-none'
       }`}
     >
@@ -92,7 +93,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
             </Link>
         </div>
 
-        <nav className="hidden   items-center gap-8 text-white  font-bold text-md text-[var(--color-text-muted)] md:flex">
+        <nav className="hidden items-center gap-8 text-sm font-bold text-[var(--color-text-muted)] md:flex">
           {navItemsTranslated.map((item) => (
             item === t.navbar.myPolicy ? (
               <div
@@ -103,7 +104,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
               >
                 <button
                   className={`inline-flex items-center gap-2 pb-1 transition ${
-                    isActiveItem(item) ? navAccentClass : 'hover:text-[#c084fc]'
+                    isActiveItem(item) ? navAccentClass : 'hover:text-[var(--color-primary)]'
                   }`}
                   onClick={() => setIsPolicyMenuOpen((prev) => !prev)}
                   type="button"
@@ -112,20 +113,19 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
                   <span className="text-xs">▼</span>
                 </button>
                 <span
-                  className={`absolute bottom-0 left-0 h-0.5 bg-[var(--color-secondary)] transition-all duration-300 ${
+                  className={`absolute bottom-0 left-0 h-0.5 bg-[var(--color-accent)] transition-all duration-300 ${
                     isActiveItem(item) ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
 
                 {isPolicyMenuOpen && (
                   <div className="absolute left-0 top-full z-50 min-w-[157px] pt-4">
-                    <div className="bg-white/40 backdrop-blur-sm border border-white/20
-rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
+                    <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-5 shadow-[var(--shadow-strong)] text-[var(--color-text)]">
                       <ul className="space-y-3 text-sm font-semibold">
                         {policySubsections.map((subsection) => (
                           <li key={subsection.label}>
                             <Link
-                              className="transition hover:text-[var(--color-secondary)]"
+                              className="transition hover:text-[var(--color-accent)]"
                               to={subsection.to}
                               onClick={() => setIsPolicyMenuOpen(false)}
                             >
@@ -141,7 +141,7 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
             ) : (
               <Link
                 className={`group relative pb-1 transition ${
-                  isActiveItem(item) ? navAccentClass : 'hover:text-[#c084fc]'
+                  isActiveItem(item) ? navAccentClass : 'hover:text-[var(--color-primary)]'
                 }`}
                 to={navHrefMap[item] || '/'}
                 key={item}
@@ -149,7 +149,7 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
               >
                 {item}
                 <span
-                  className={`absolute bottom-0 left-0 h-0.5 bg-[var(--color-secondary)] transition-all duration-300 ${
+                  className={`absolute bottom-0 left-0 h-0.5 bg-[var(--color-accent)] transition-all duration-300 ${
                     isActiveItem(item) ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
@@ -163,7 +163,7 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
             onMouseLeave={() => setIsLanguageMenuOpen(false)}
           >
             <button
-              className="inline-flex items-center gap-2 pb-1 transition hover:text-[#c084fc]"
+              className="inline-flex items-center gap-2 pb-1 transition hover:text-[var(--color-primary)]"
               onClick={() => setIsLanguageMenuOpen((prev) => !prev)}
               type="button"
             >
@@ -176,23 +176,22 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
               <span className="text-xs">▼</span>
             </button>
             <span
-              className={`absolute bottom-0 left-0 h-0.5 bg-[var(--color-secondary)] transition-all duration-300 ${
+              className={`absolute bottom-0 left-0 h-0.5 bg-[var(--color-accent)] transition-all duration-300 ${
                 isLanguageMenuOpen ? 'w-full' : 'w-0 group-hover:w-full'
               }`}
             />
 
             {isLanguageMenuOpen && (
               <div className="absolute right-0 top-full z-50 pt-4">
-                <div className="bg-white/40 backdrop-blur-sm border border-white/20
-rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
+                <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-5 shadow-[var(--shadow-strong)] text-[var(--color-text)]">
                   <ul className="space-y-3 text-sm font-semibold">
                     {languageOptions.map((language) => (
                       <li key={language.label}>
                         <button
                           className={`inline-flex items-center gap-2 transition ${
                             selectedLanguage.label === language.label
-                              ? 'text-[var(--color-secondary)]'
-                              : 'hover:text-[var(--color-secondary)]'
+                              ? 'text-[var(--color-accent)]'
+                              : 'hover:text-[var(--color-accent)]'
                           }`}
                           onClick={() => {
                             setLanguage(language.code)
@@ -202,7 +201,7 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
                         >
                           <img
                             alt={language.alt}
-                            className="h-5 w-5 rounded-full border border-white/20 object-cover"
+                            className="h-5 w-5 rounded-full border border-[var(--color-border)] object-cover"
                             src={language.flagUrl}
                           />
                           <span>{language.label}</span>
@@ -217,7 +216,7 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
         </nav>
 
         <div className="flex items-center gap-3">
-          <button className="relative hidden overflow-hidden rounded-[var(--radius-card)] bg-[var(--color-secondary)] px-5 py-2 text-sm font-semibold text-white shadow-sm transition duration-300 before:absolute before:inset-y-0 before:-left-1/2 before:w-1/3 before:skew-x-[-20deg] before:bg-white/40 before:blur-sm before:transition-all before:duration-500 hover:shadow-[0_0_22px_rgba(31,212,224,0.45)] hover:brightness-110 hover:before:left-full active:scale-95 md:inline-flex">
+          <button className="primary-btn hidden px-5 py-2 text-sm font-semibold md:inline-flex" type="button">
             {t.navbar.getQuote}
           </button>
 
@@ -251,8 +250,8 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
                     <Link
                       className={`block rounded-md px-2 py-2 text-sm font-semibold transition ${
                         isActiveItem(item)
-                          ? 'bg-slate-50 text-[#c084fc]'
-                          : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[#c084fc]'
+                          ? 'bg-slate-50 text-[var(--color-primary)]'
+                          : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[var(--color-primary)]'
                       }`}
                       to={navHrefMap[item] || '/'}
                       onClick={onCloseMenu}
@@ -263,7 +262,7 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
                       {policySubsections.map((subsection) => (
                         <li key={subsection.label}>
                           <Link
-                            className="block rounded-md px-2 py-1 text-xs font-medium text-[var(--color-text-muted)] transition hover:bg-slate-50 hover:text-[#c084fc]"
+                            className="block rounded-md px-2 py-1 text-xs font-medium text-[var(--color-text-muted)] transition hover:bg-slate-50 hover:text-[var(--color-primary)]"
                             to={subsection.to}
                           >
                             {subsection.label}
@@ -276,8 +275,8 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
                   <Link
                     className={`block rounded-md px-2 py-2 text-sm font-semibold transition ${
                       isActiveItem(item)
-                        ? 'bg-slate-50 text-[#c084fc]'
-                        : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[#c084fc]'
+                        ? 'bg-slate-50 text-[var(--color-primary)]'
+                        : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[var(--color-primary)]'
                     }`}
                     to={navHrefMap[item] || '/'}
                     onClick={onCloseMenu}
@@ -298,8 +297,8 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
                   <button
                     className={`block w-full rounded-md px-2 py-2 text-left text-sm font-semibold transition ${
                       selectedLanguage.label === language.label
-                        ? 'bg-slate-50 text-[#c084fc]'
-                        : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[#c084fc]'
+                        ? 'bg-slate-50 text-[var(--color-primary)]'
+                        : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[var(--color-primary)]'
                     }`}
                     onClick={() => setLanguage(language.code)}
                     type="button"
@@ -317,7 +316,7 @@ rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
               ))}
             </ul>
           </div>
-          <button className="primary-btn relative mt-4 inline-flex w-full items-center justify-center overflow-hidden px-5 py-2 text-sm font-semibold transition duration-300 before:absolute before:inset-y-0 before:-left-1/2 before:w-1/3 before:skew-x-[-20deg] before:bg-white/40 before:blur-sm before:transition-all before:duration-500 hover:shadow-[0_0_22px_rgba(31,212,224,0.45)] hover:brightness-110 hover:before:left-full active:scale-95">
+          <button className="primary-btn mt-4 inline-flex w-full items-center justify-center px-5 py-2 text-sm font-semibold" type="button">
             {t.navbar.getQuote}
           </button>
         </nav>

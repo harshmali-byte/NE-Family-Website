@@ -1,4 +1,3 @@
-import bestPriceGuarantee from './assets/Best-Price-Guarantee-Final-2.png'
 import bestPriceBadge from './assets/best-price-and-service-7.png'
 import bulbIcon from './assets/bulb.png'
 import familyIcon from './assets/kind-6.png'
