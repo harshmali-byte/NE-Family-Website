@@ -15,7 +15,7 @@ function Hero() {
     return () => window.clearInterval(timer)
   }, [rotatingWords.length])
   return (
-    <section className="border-b border-app-border bg-app-card" id="home">
+    <section className="border-b border-app-border bg-app-page" id="home">
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-16 md:grid-cols-2 md:px-10 md:py-20">
         <div className="space-y-6">
           <p className="inline-flex rounded-pill border border-app-border bg-app-muted px-4 py-1 text-xs font-bold uppercase tracking-wider text-app-text-muted">
@@ -65,7 +65,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className="rounded-card border border-app-border bg-app-muted p-3 md:p-4">
+        <div className="rounded-card  p-3 md:p-4">
           <div className="overflow-hidden rounded-xl">
             <iframe
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

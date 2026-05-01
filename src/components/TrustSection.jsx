@@ -1,6 +1,6 @@
 function TrustSection({ trustMetrics }) {
   return (
-    <section className="border-t border-app-border bg-app-card py-12 md:py-14" id="reviews">
+    <section className="border-t border-app-border bg-app-page py-12 md:py-14" id="reviews">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 md:px-10">
         <article className="card-surface-light interactive-card interactive-card-light p-6 md:p-10">
           <h3 className="card-heading card-text-light text-center md:text-3xl">

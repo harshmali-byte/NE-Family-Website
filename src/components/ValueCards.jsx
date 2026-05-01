@@ -90,17 +90,13 @@ function ValueCards({ valueCards }) {
                   ${isReverse ? 'md:order-1' : ''}
                 `}
               >
-                <img
-                  src={card.icon}
-                  alt={card.title}
-                  className="
-                    h-24 w-24
-                    md:h-32 md:w-32
-                    lg:h-36 lg:w-36
-                    object-contain
-                    opacity-90
-                  "
-                />
+                <div className="value-card-icon-panel">
+                  <img
+                    src={card.icon}
+                    alt={card.title}
+                    className="value-card-icon-image"
+                  />
+                </div>
               </div>
 
             </article>
