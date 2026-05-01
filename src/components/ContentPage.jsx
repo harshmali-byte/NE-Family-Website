@@ -19,7 +19,7 @@ function ContentPage({ eyebrow, title, intro, sections = [], cards = [], actions
               >
                 {card.eyebrow && <p className="content-eyebrow text-xs">{card.eyebrow}</p>}
                 <h3 className="content-section-title mt-3">{card.title}</h3>
-                {card.meta && <p className="mt-2 text-sm text-[var(--color-text-muted)]">{card.meta}</p>}
+                {card.meta && <p className="mt-2 text-sm text-app-text-muted">{card.meta}</p>}
                 <div className="content-prose mt-4">
                   <p>{card.text}</p>
                 </div>
@@ -57,7 +57,7 @@ function ContentPage({ eyebrow, title, intro, sections = [], cards = [], actions
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {actions.map((action) => (
               <Link
-                className="card-surface-light interactive-card interactive-card-light p-5 text-center text-[var(--color-text)]"
+                className="card-surface-light interactive-card interactive-card-light p-5 text-center text-app-text"
                 key={action.label}
                 to={action.to}
               >

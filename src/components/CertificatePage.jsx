@@ -107,19 +107,19 @@ function CertificatePage() {
   return (
     <section className="py-14">
       <div className="mx-auto w-full max-w-3xl px-6 md:px-10">
-        <h1 className="text-center text-4xl font-black uppercase tracking-wide text-[var(--color-text)] md:text-5xl">
+        <h1 className="text-center text-4xl font-black uppercase tracking-wide text-app-text md:text-5xl">
           CERTIFICATE
         </h1>
 
         <div className="mt-8">
-          <div className="mb-2 flex justify-between text-xs text-[var(--color-text-muted)]">
+          <div className="mb-2 flex justify-between text-xs text-app-text-muted">
             <span>Step {step} of 5</span>
             <span>{progress}%</span>
           </div>
 
-          <div className="h-2 w-full overflow-hidden rounded-full bg-slate-200">
+          <div className="h-2 w-full overflow-hidden rounded-full bg-app-muted-ui">
             <div
-              className="h-full bg-[var(--color-primary)] transition-all duration-500"
+              className="h-full bg-app-primary transition-all duration-500"
               style={{ width: `${progress}%` }}
             />
           </div>
@@ -160,7 +160,7 @@ function CertificatePage() {
                   <label className="flex cursor-pointer items-center gap-3" key={option}>
                     <input
                       checked={form.includePolicies === option}
-                      className="accent-[var(--color-accent)]"
+                      className="accent-app-accent"
                       name="includePolicies"
                       onChange={() => {
                         updateField('includePolicies', option)
@@ -185,7 +185,7 @@ function CertificatePage() {
                       <label className="flex cursor-pointer items-center gap-3" key={policy}>
                         <input
                           checked={form.selectedPolicies.includes(policy)}
-                          className="accent-[var(--color-accent)]"
+                          className="accent-app-accent"
                           onChange={() => togglePolicy(policy)}
                           type="checkbox"
                         />
@@ -200,7 +200,7 @@ function CertificatePage() {
                 <label className="flex cursor-pointer items-center gap-3">
                   <input
                     checked={form.acceptedTerms}
-                    className="accent-[var(--color-accent)]"
+                    className="accent-app-accent"
                     onChange={(event) => updateField('acceptedTerms', event.target.checked)}
                     type="checkbox"
                   />
@@ -210,12 +210,12 @@ function CertificatePage() {
                 </label>
               </div>
 
-              <div className="mt-6 rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface-muted)] p-4">
+              <div className="mt-6 rounded-card border border-app-border bg-app-muted p-4">
                 <p className="card-body card-text-muted-light">
                   Captcha verification: What is {captcha.left} + {captcha.right}?
                 </p>
                 <input
-                  className="mt-3 w-full rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-3 text-sm text-[var(--color-text)] outline-none transition focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[rgba(30,64,175,0.2)]"
+                  className="form-control form-control--boxed mt-3"
                   onChange={(event) => updateField('captchaAnswer', event.target.value)}
                   placeholder="Enter answer"
                   type="number"
@@ -226,20 +226,20 @@ function CertificatePage() {
           )}
 
           {error && (
-            <p className="mt-6 rounded-[var(--radius-card)] border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-800">
+            <p className="form-message form-message--error">
               {error}
             </p>
           )}
 
           {submitted && (
-            <p className="mt-6 rounded-[var(--radius-card)] border border-emerald-200 bg-emerald-50 px-4 py-3 text-sm font-semibold text-emerald-900">
+            <p className="form-message form-message--success">
               Certificate request is ready to submit.
             </p>
           )}
 
           <div className="mt-8 flex justify-between">
             <button
-              className="rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface-muted)] px-5 py-2 text-sm text-[var(--color-text)] transition hover:border-slate-400 disabled:cursor-not-allowed disabled:opacity-50"
+              className="btn-outline btn-outline--muted rounded-card px-5 py-2 text-sm disabled:cursor-not-allowed disabled:opacity-50"
               disabled={step === 1}
               onClick={prev}
               type="button"
@@ -249,7 +249,7 @@ function CertificatePage() {
 
             {step < 5 ? (
               <button
-                className="primary-btn rounded-[var(--radius-card)] px-6 py-2 text-sm font-semibold"
+                className="primary-btn rounded-card px-6 py-2 text-sm font-semibold"
                 onClick={next}
                 type="button"
               >
@@ -257,7 +257,7 @@ function CertificatePage() {
               </button>
             ) : (
               <button
-                className="primary-btn rounded-[var(--radius-card)] px-6 py-2 text-sm font-semibold"
+                className="primary-btn rounded-card px-6 py-2 text-sm font-semibold"
                 onClick={submit}
                 type="button"
               >
@@ -275,13 +275,13 @@ function FloatingInput({ label, onChange, spacing = 'mt-6', type = 'text', value
   return (
     <div className={`relative ${spacing}`}>
       <input
-        className="peer w-full rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface)] px-4 pb-2 pt-5 text-sm text-[var(--color-text)] outline-none transition focus:border-[var(--color-accent)] focus:ring-2 focus:ring-[rgba(30,64,175,0.2)]"
+        className="peer form-control form-control--floating w-full"
         onChange={(event) => onChange(event.target.value)}
         placeholder=" "
         type={type}
         value={value}
       />
-      <label className="absolute left-4 top-2 text-xs text-[var(--color-text-muted)] transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs peer-focus:text-[var(--color-accent)]">
+      <label className="absolute left-4 top-2 text-xs text-app-text-muted transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-sm peer-focus:top-2 peer-focus:text-xs peer-focus:text-app-accent">
         {label}
       </label>
     </div>

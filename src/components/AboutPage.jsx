@@ -39,9 +39,9 @@ function AboutPage() {
             </p>
           </div>
 
-          <div className="flex min-h-[320px] items-center justify-center border-t border-[var(--color-border)] bg-[var(--color-surface-muted)] p-6 md:min-h-[430px] md:border-l md:border-t-0">
-            <div className="h-full w-full rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-muted)] p-[4px]">
-              <div className="h-full w-full rounded-[14px] bg-[var(--color-surface-muted)] p-[2px]">
+          <div className="flex min-h-[320px] items-center justify-center border-t border-app-border bg-app-muted p-6 md:min-h-[430px] md:border-l md:border-t-0">
+            <div className="h-full w-full rounded-2xl border border-app-border bg-app-muted p-[4px]">
+              <div className="h-full w-full rounded-[14px] bg-app-muted p-[2px]">
                 <img
                   alt={t.about.teamImageAlt}
                   className="h-full w-full rounded-[12px] object-cover"
@@ -53,15 +53,15 @@ function AboutPage() {
         </article>
 
         <article className="card-surface-light interactive-card interactive-card-light grid overflow-hidden md:grid-cols-2">
-          <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden border-b border-[var(--color-border)] bg-[var(--color-surface-muted)] p-6 md:border-b-0 md:border-r">
+          <div className="relative flex min-h-[320px] items-center justify-center overflow-hidden border-b border-app-border bg-app-muted p-6 md:border-b-0 md:border-r">
             {aboutSlides.map((slide, index) => (
               <div
-                className={`absolute inset-6 rounded-2xl border border-[var(--color-border)] bg-[var(--color-surface-muted)] p-[4px] transition-opacity duration-700 ${
+                className={`absolute inset-6 rounded-2xl border border-app-border bg-app-muted p-[4px] transition-opacity duration-700 ${
                   activeSlide === index ? 'opacity-100' : 'opacity-0'
                 }`}
                 key={slide}
               >
-                <div className="h-full w-full rounded-[14px] bg-[var(--color-surface-muted)] p-[2px]">
+                <div className="h-full w-full rounded-[14px] bg-app-muted p-[2px]">
                   <img
                     alt={`${t.about.slideImageAltPrefix} ${index + 1}`}
                     className="h-full w-full rounded-[12px] object-cover"

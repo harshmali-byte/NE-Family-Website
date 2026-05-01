@@ -11,7 +11,7 @@ function ValueCards({ valueCards }) {
   }
 
   return (
-    <section className="bg-[var(--color-page-bg)] pb-16 pt-4" id="services">
+    <section className="bg-app-page pb-16 pt-4" id="services">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 md:px-10">
 
         {valueCards.map((card, index) => {
@@ -29,7 +29,7 @@ function ValueCards({ valueCards }) {
                 group
                 grid items-center gap-8
                 p-6 md:p-10
-                text-[var(--color-text)]
+                text-app-text
                 md:grid-cols-[1.2fr_1fr]
                 ${isReverse ? 'md:grid-cols-[auto_1fr]' : ''}
               `}
@@ -48,7 +48,7 @@ function ValueCards({ valueCards }) {
                   </h3>
 
                   <div
-                    className="mt-2 h-[3px] w-full max-w-md rounded-full bg-[var(--color-primary)]"
+                    className="mt-2 h-[3px] w-full max-w-md rounded-full bg-app-primary"
                   />
                 </div>
 
@@ -65,7 +65,7 @@ function ValueCards({ valueCards }) {
 
                 {isLongContent && (
                   <button
-                    className={`mt-4 inline-flex items-center gap-2 text-sm font-semibold text-[var(--color-accent)] transition hover:text-[var(--color-primary)] ${
+                    className={`mt-4 inline-flex items-center gap-2 text-sm font-semibold text-app-accent transition hover:text-app-primary ${
                       isReverse ? 'ml-auto' : ''
                     }`}
                     onClick={() => toggleExpanded(card.title)}
@@ -73,7 +73,7 @@ function ValueCards({ valueCards }) {
                   >
                     <span>{isExpanded ? 'Read less' : 'Read more'}</span>
                     <span
-                      className={`inline-flex h-6 w-6 items-center justify-center rounded-full border border-[var(--color-border)] transition ${
+                      className={`inline-flex h-6 w-6 items-center justify-center rounded-full border border-app-border transition ${
                         isExpanded ? 'rotate-180' : ''
                       }`}
                     >

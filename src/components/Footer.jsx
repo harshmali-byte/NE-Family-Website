@@ -30,7 +30,7 @@ function Footer() {
   ]
 
   return (
-    <footer className="bg-[var(--color-primary)] text-white">
+    <footer className="bg-app-footer text-app-footer-text">
       <div className="mx-auto grid w-full max-w-7xl gap-8 px-6 py-12 md:grid-cols-3 md:px-10">
 
         {/* LEFT - LOGO + LINKS */}
@@ -41,13 +41,13 @@ function Footer() {
             src={logo}
           />
 
-          <h4 className="text-sm font-bold uppercase tracking-wider text-white/70">
+          <h4 className="text-sm font-bold uppercase tracking-wider text-app-footer-muted">
             Quick Links
           </h4>
 
-          <ul className="mt-4 space-y-2 text-sm text-white/90">
+          <ul className="mt-4 space-y-2 text-sm text-app-footer-text">
             {quickLinks.map((link) => (
-              <li key={link.label} className="cursor-pointer hover:text-white">
+              <li key={link.label} className="cursor-pointer hover:text-app-on-primary">
                 {link.to ? <Link to={link.to}>{link.label}</Link> : link.label}
               </li>
             ))}
@@ -56,15 +56,15 @@ function Footer() {
 
         {/* CONTACT */}
         <div>
-          <h4 className="text-sm font-bold uppercase tracking-wider text-white/70">
+          <h4 className="text-sm font-bold uppercase tracking-wider text-app-footer-muted">
             Contact Us
           </h4>
 
-          <ul className="mt-4 space-y-3 text-sm text-white/90">
+          <ul className="mt-4 space-y-3 text-sm text-app-footer-text">
             <li className="flex items-center gap-3">
               <FontAwesomeIcon
                 icon={faCommentSms}
-                className="text-2xl text-white"
+                className="text-2xl text-app-on-primary"
               />
               <span>Text</span>
             </li>
@@ -72,7 +72,7 @@ function Footer() {
             <li className="flex items-center gap-3">
               <FontAwesomeIcon
                 icon={faWhatsapp}
-                className="text-2xl text-white"
+                className="text-2xl text-app-on-primary"
               />
               <span>WhatsApp</span>
             </li>
@@ -80,7 +80,7 @@ function Footer() {
             <li className="flex items-center gap-3">
               <FontAwesomeIcon
                 icon={faEnvelope}
-                className="text-2xl text-white"
+                className="text-2xl text-app-on-primary"
               />
               <span>Email: service@nefamily4me.com</span>
             </li>
@@ -88,7 +88,7 @@ function Footer() {
             <li className="flex items-center gap-3">
               <FontAwesomeIcon
                 icon={faPhone}
-                className="text-2xl text-white"
+                className="text-2xl text-app-on-primary"
               />
               <span>Call: +15086722997</span>
             </li>
@@ -96,7 +96,7 @@ function Footer() {
             <li className="flex items-center gap-3">
               <FontAwesomeIcon
                 icon={faFax}
-                className="text-2xl text-white"
+                className="text-2xl text-app-on-primary"
               />
               <span>Fax: 508 677 3058</span>
             </li>
@@ -105,7 +105,7 @@ function Footer() {
           <div className="mt-4 flex gap-2">
             <a
               aria-label="New England Family Insurance on Facebook"
-              className="flex h-8 w-8 items-center justify-center rounded border border-white/20 bg-[var(--color-primary-dark)]"
+              className="flex h-8 w-8 items-center justify-center rounded border border-app-footer-btn-border bg-app-primary-dark"
               href={socialLinks.facebook}
               rel="noreferrer"
               target="_blank"
@@ -114,7 +114,7 @@ function Footer() {
             </a>
             <a
               aria-label="New England Family Insurance on Instagram"
-              className="flex h-8 w-8 items-center justify-center rounded bg-white/10"
+              className="flex h-8 w-8 items-center justify-center rounded bg-app-footer-icon"
               href={socialLinks.instagram}
               rel="noreferrer"
               target="_blank"
@@ -126,13 +126,13 @@ function Footer() {
 
         {/* MAP */}
         <div>
-          <h4 className="text-sm font-bold uppercase tracking-wider text-white/70">
+          <h4 className="text-sm font-bold uppercase tracking-wider text-app-footer-muted">
             Location
           </h4>
 
           <iframe
             title="Office Location"
-            className="mt-4 h-80 w-full rounded-[var(--radius-card)] border border-white/15"
+            className="mt-4 h-80 w-full rounded-card border border-app-footer-border"
             src="https://www.google.com/maps?q=101+President+Ave+Fall+River+MA&output=embed"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -141,22 +141,22 @@ function Footer() {
       </div>
 
       {/* BOTTOM SECTION */}
-      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-5 border-t border-white/10 px-6 py-8 md:px-10">
+      <div className="mx-auto flex w-full max-w-7xl flex-col items-center gap-5 border-t border-app-footer-border px-6 py-8 md:px-10">
 
         <div className="flex gap-4">
           <img
             alt="Trustpilot badge"
-            className="h-48 w-48 rounded-lg bg-white object-contain p-2"
+            className="h-48 w-48 rounded-lg bg-app-card object-contain p-2"
             src={trustpilotBadge}
           />
           <img
             alt="BBB badge"
-            className="h-48 w-48 rounded-lg bg-white object-contain p-2"
+            className="h-48 w-48 rounded-lg bg-app-card object-contain p-2"
             src={bbbBadge}
           />
         </div>
 
-        <p className="text-center text-xs text-slate-400">
+        <p className="text-center text-xs text-app-footer-subtle">
           New England Family | 2026 | All rights reserved. Terms and Privacy apply.
         </p>
       </div>

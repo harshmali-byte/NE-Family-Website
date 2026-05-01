@@ -15,23 +15,23 @@ function Hero() {
     return () => window.clearInterval(timer)
   }, [rotatingWords.length])
   return (
-    <section className="border-b border-[var(--color-border)] bg-[var(--color-surface)]" id="home">
+    <section className="border-b border-app-border bg-app-card" id="home">
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-16 md:grid-cols-2 md:px-10 md:py-20">
         <div className="space-y-6">
-          <p className="inline-flex rounded-[var(--radius-pill)] border border-[var(--color-border)] bg-[var(--color-surface-muted)] px-4 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+          <p className="inline-flex rounded-pill border border-app-border bg-app-muted px-4 py-1 text-xs font-bold uppercase tracking-wider text-app-text-muted">
             {t.hero.badge}
           </p>
-          <h1 className="text-4xl font-black leading-tight text-[var(--color-text)] md:text-6xl">
+          <h1 className="text-4xl font-black leading-tight text-app-text md:text-6xl">
             {t.hero.headingStart}
-            <span className="text-[var(--color-accent)]"> {rotatingWords[activeWordIndex]}</span>.
+            <span className="text-app-accent"> {rotatingWords[activeWordIndex]}</span>.
 
             <br />
             {t.hero.headingEnd}
           </h1>
-          <p className="max-w-lg text-base leading-relaxed text-[var(--color-text-muted)] md:text-lg">
+          <p className="max-w-lg text-base leading-relaxed text-app-text-muted md:text-lg">
             {t.hero.subtext}
           </p>
-          <div className="grid w-full max-w-2xl grid-cols-3 gap-5 pt-2 text-center text-[var(--color-text)]">
+          <div className="grid w-full max-w-2xl grid-cols-3 gap-5 pt-2 text-center text-app-text">
             <div>
               <img
                 alt="Best price guarantee"
@@ -65,7 +65,7 @@ function Hero() {
           </div>
         </div>
 
-        <div className="rounded-[var(--radius-card)] border border-[var(--color-border)] bg-[var(--color-surface-muted)] p-3 md:p-4">
+        <div className="rounded-card border border-app-border bg-app-muted p-3 md:p-4">
           <div className="overflow-hidden rounded-xl">
             <iframe
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

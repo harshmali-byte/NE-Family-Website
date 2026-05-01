@@ -3,20 +3,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import { useI18n } from '../i18n.jsx'
 
-function CommonContactForm({ subject = 'New contact inquiry', className = '', theme = 'light' }) {
+function CommonContactForm({ subject = 'New contact inquiry', className = '' }) {
   const { t } = useI18n()
   const [loading, setLoading] = useState(false)
   const [success, setSuccess] = useState(false)
 
-  const isDark = theme === 'dark'
-  const containerClass = isDark
-    ? 'card-surface-dark interactive-card interactive-card-dark p-5 md:p-6'
-    : 'card-surface-light interactive-card interactive-card-light p-5 md:p-6'
-  const fieldClass = isDark
-    ? 'w-full border-b border-white/20 bg-transparent px-2 py-3 text-white placeholder:text-white/65'
-    : 'w-full border-b border-[var(--color-border)] bg-transparent px-2 py-3 text-[var(--color-text)] placeholder:text-[var(--color-text-muted)]'
-  const labelClass = isDark ? 'flex items-center gap-3 text-white' : 'flex items-center gap-3 text-[var(--color-text)]'
-  const successClass = isDark ? 'flex items-center gap-2 text-green-400 text-sm font-medium' : 'flex items-center gap-2 text-sm font-medium text-green-600'
+  const containerClass = 'card-surface-light interactive-card interactive-card-light p-5 md:p-6'
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -45,14 +37,14 @@ function CommonContactForm({ subject = 'New contact inquiry', className = '', th
         <input name="_captcha" type="hidden" value="false" />
 
         <input
-          className={fieldClass}
+          className="form-field-inline"
           name="name"
           placeholder={t.contact.fullName}
           required
         />
 
         <input
-          className={fieldClass}
+          className="form-field-inline"
           name="email"
           placeholder={t.contact.emailAddress}
           required
@@ -60,26 +52,26 @@ function CommonContactForm({ subject = 'New contact inquiry', className = '', th
         />
 
         <textarea
-          className={fieldClass}
+          className="form-field-inline min-h-[100px] resize-y"
           name="message"
           placeholder={t.contact.message}
           required
         />
 
-        <label className={labelClass}>
-          <input className="form-checkbox h-5 w-5 text-[var(--color-primary)]" required type="checkbox" />
+        <label className="form-label-inline">
+          <input className="form-checkbox h-5 w-5 accent-app-accent" required type="checkbox" />
           <span>{t.contact.robot}</span>
         </label>
 
         {success && (
-          <div className={successClass}>
+          <div className="form-message--inline-success">
             <FontAwesomeIcon icon={faCheckCircle} />
             {t.contact.success}
           </div>
         )}
 
         <button
-          className="primary-btn w-full rounded-[var(--radius-card)] py-3 font-semibold"
+          className="primary-btn w-full rounded-card py-3 font-semibold"
           disabled={loading}
           type="submit"
         >

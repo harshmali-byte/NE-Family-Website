@@ -2,8 +2,51 @@
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        /* All map to CSS variables in src/index.css :root — change theme there only */
+        'app-page': 'var(--color-page-bg)',
+        'app-card': 'var(--color-card-bg)',
+        'app-muted': 'var(--color-surface-muted)',
+        'app-border': 'var(--color-border)',
+        'app-border-hover': 'var(--color-border-hover)',
+        'app-text': 'var(--color-text)',
+        'app-text-muted': 'var(--color-text-muted)',
+        'app-accent': 'var(--color-accent)',
+        'app-primary': 'var(--color-primary)',
+        'app-primary-dark': 'var(--color-primary-dark)',
+        'app-muted-ui': 'var(--color-muted-ui)',
+        'app-card-dark': 'var(--color-card-bg-dark)',
+        'app-card-dark-elevated': 'var(--color-card-bg-dark-elevated)',
+        'app-on-primary': 'var(--color-on-primary)',
+        'app-footer': 'var(--color-footer-bg)',
+        'app-footer-text': 'var(--color-footer-text)',
+        'app-footer-muted': 'var(--color-footer-text-muted)',
+        'app-footer-subtle': 'var(--color-footer-text-subtle)',
+        'app-footer-border': 'var(--color-footer-border)',
+        'app-footer-icon': 'var(--color-footer-icon-bg)',
+        'app-footer-btn-border': 'var(--color-footer-button-border)',
+        'app-form-error-bg': 'var(--color-form-error-bg)',
+        'app-form-error-border': 'var(--color-form-error-border)',
+        'app-form-error-text': 'var(--color-form-error-text)',
+        'app-form-success-bg': 'var(--color-form-success-bg)',
+        'app-form-success-border': 'var(--color-form-success-border)',
+        'app-form-success-text': 'var(--color-form-success-text)',
+        'app-google-1': 'var(--color-brand-google-1)',
+        'app-google-2': 'var(--color-brand-google-2)',
+        'app-google-3': 'var(--color-brand-google-3)',
+        'app-google-4': 'var(--color-brand-google-4)',
+      },
+      borderRadius: {
+        card: 'var(--radius-card)',
+        pill: 'var(--radius-pill)',
+      },
+      boxShadow: {
+        'app-soft': 'var(--shadow-soft)',
+        'app-strong': 'var(--shadow-strong)',
+        'app-navbar': 'var(--shadow-navbar)',
+      },
+    },
   },
   plugins: [],
 }
-

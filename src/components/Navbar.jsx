@@ -54,7 +54,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
   }
   
 
-  const navAccentClass = 'text-[var(--color-primary)]'
+  const navAccentClass = 'text-app-primary'
 
   useEffect(() => {
     if (!isMobileMenuOpen) {
@@ -82,8 +82,8 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
 
   return (
     <header
-      className={`sticky top-0 z-40 border-b border-[var(--color-border)] bg-[var(--color-surface)] transition-all duration-300 ${
-        isScrolled ? 'shadow-[var(--shadow-navbar)]' : 'shadow-none'
+      className={`sticky top-0 z-40 border-b border-app-border bg-app-card transition-all duration-300 ${
+        isScrolled ? 'shadow-app-navbar' : 'shadow-none'
       }`}
     >
       <div className="mx-auto cursor-pointer flex w-full max-w-7xl items-center justify-between px-6 py-4 md:px-10">
@@ -93,7 +93,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
             </Link>
         </div>
 
-        <nav className="hidden items-center gap-8 text-sm font-bold text-[var(--color-text-muted)] md:flex">
+        <nav className="hidden items-center gap-8 text-sm font-bold text-app-text-muted md:flex">
           {navItemsTranslated.map((item) => (
             item === t.navbar.myPolicy ? (
               <div
@@ -104,7 +104,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
               >
                 <button
                   className={`inline-flex items-center gap-2 pb-1 transition ${
-                    isActiveItem(item) ? navAccentClass : 'hover:text-[var(--color-primary)]'
+                    isActiveItem(item) ? navAccentClass : 'hover:text-app-primary'
                   }`}
                   onClick={() => setIsPolicyMenuOpen((prev) => !prev)}
                   type="button"
@@ -113,19 +113,19 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
                   <span className="text-xs">▼</span>
                 </button>
                 <span
-                  className={`absolute bottom-0 left-0 h-0.5 bg-[var(--color-accent)] transition-all duration-300 ${
+                  className={`absolute bottom-0 left-0 h-0.5 bg-app-accent transition-all duration-300 ${
                     isActiveItem(item) ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
 
                 {isPolicyMenuOpen && (
                   <div className="absolute left-0 top-full z-50 min-w-[157px] pt-4">
-                    <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-5 shadow-[var(--shadow-strong)] text-[var(--color-text)]">
+                    <div className="rounded-xl border border-app-border bg-app-card px-5 py-5 shadow-app-strong text-app-text">
                       <ul className="space-y-3 text-sm font-semibold">
                         {policySubsections.map((subsection) => (
                           <li key={subsection.label}>
                             <Link
-                              className="transition hover:text-[var(--color-accent)]"
+                              className="transition hover:text-app-accent"
                               to={subsection.to}
                               onClick={() => setIsPolicyMenuOpen(false)}
                             >
@@ -141,7 +141,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
             ) : (
               <Link
                 className={`group relative pb-1 transition ${
-                  isActiveItem(item) ? navAccentClass : 'hover:text-[var(--color-primary)]'
+                  isActiveItem(item) ? navAccentClass : 'hover:text-app-primary'
                 }`}
                 to={navHrefMap[item] || '/'}
                 key={item}
@@ -149,7 +149,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
               >
                 {item}
                 <span
-                  className={`absolute bottom-0 left-0 h-0.5 bg-[var(--color-accent)] transition-all duration-300 ${
+                  className={`absolute bottom-0 left-0 h-0.5 bg-app-accent transition-all duration-300 ${
                     isActiveItem(item) ? 'w-full' : 'w-0 group-hover:w-full'
                   }`}
                 />
@@ -163,35 +163,35 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
             onMouseLeave={() => setIsLanguageMenuOpen(false)}
           >
             <button
-              className="inline-flex items-center gap-2 pb-1 transition hover:text-[var(--color-primary)]"
+              className="inline-flex items-center gap-2 pb-1 transition hover:text-app-primary"
               onClick={() => setIsLanguageMenuOpen((prev) => !prev)}
               type="button"
             >
               <img
                 alt={selectedLanguage.alt}
-                className="h-4 w-4 rounded-full border border-[var(--color-border)] object-cover"
+                className="h-4 w-4 rounded-full border border-app-border object-cover"
                 src={selectedLanguage.flagUrl}
               />
               <span>{selectedLanguage.label.toUpperCase()}</span>
               <span className="text-xs">▼</span>
             </button>
             <span
-              className={`absolute bottom-0 left-0 h-0.5 bg-[var(--color-accent)] transition-all duration-300 ${
+              className={`absolute bottom-0 left-0 h-0.5 bg-app-accent transition-all duration-300 ${
                 isLanguageMenuOpen ? 'w-full' : 'w-0 group-hover:w-full'
               }`}
             />
 
             {isLanguageMenuOpen && (
               <div className="absolute right-0 top-full z-50 pt-4">
-                <div className="rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] px-5 py-5 shadow-[var(--shadow-strong)] text-[var(--color-text)]">
+                <div className="rounded-xl border border-app-border bg-app-card px-5 py-5 shadow-app-strong text-app-text">
                   <ul className="space-y-3 text-sm font-semibold">
                     {languageOptions.map((language) => (
                       <li key={language.label}>
                         <button
                           className={`inline-flex items-center gap-2 transition ${
                             selectedLanguage.label === language.label
-                              ? 'text-[var(--color-accent)]'
-                              : 'hover:text-[var(--color-accent)]'
+                              ? 'text-app-accent'
+                              : 'hover:text-app-accent'
                           }`}
                           onClick={() => {
                             setLanguage(language.code)
@@ -201,7 +201,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
                         >
                           <img
                             alt={language.alt}
-                            className="h-5 w-5 rounded-full border border-[var(--color-border)] object-cover"
+                            className="h-5 w-5 rounded-full border border-app-border object-cover"
                             src={language.flagUrl}
                           />
                           <span>{language.label}</span>
@@ -224,7 +224,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
             aria-controls="mobile-menu"
             aria-expanded={isMobileMenuOpen}
             aria-label="Toggle mobile menu"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-[var(--color-border)] text-[var(--color-primary)] md:hidden"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md border border-app-border text-app-primary md:hidden"
             onClick={onToggleMenu}
             type="button"
           >
@@ -238,7 +238,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
       </div>
 
       <div
-        className={`md:hidden ${isMobileMenuOpen ? 'max-h-[360px] border-t border-[var(--color-border)]' : 'max-h-0'} overflow-hidden bg-[var(--color-surface)] transition-all duration-300`}
+        className={`md:hidden ${isMobileMenuOpen ? 'max-h-[360px] border-t border-app-border' : 'max-h-0'} overflow-hidden bg-app-card transition-all duration-300`}
         id="mobile-menu"
       >
         <nav className="px-6 py-4">
@@ -250,19 +250,19 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
                     <Link
                       className={`block rounded-md px-2 py-2 text-sm font-semibold transition ${
                         isActiveItem(item)
-                          ? 'bg-slate-50 text-[var(--color-primary)]'
-                          : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[var(--color-primary)]'
+                          ? 'bg-app-muted text-app-primary'
+                          : 'text-app-text-muted hover:bg-app-muted hover:text-app-primary'
                       }`}
                       to={navHrefMap[item] || '/'}
                       onClick={onCloseMenu}
                     >
                       {item}
                     </Link>
-                    <ul className="ml-4 mt-1 space-y-1 border-l border-slate-200 pl-3">
+                    <ul className="ml-4 mt-1 space-y-1 border-l border-app-border pl-3">
                       {policySubsections.map((subsection) => (
                         <li key={subsection.label}>
                           <Link
-                            className="block rounded-md px-2 py-1 text-xs font-medium text-[var(--color-text-muted)] transition hover:bg-slate-50 hover:text-[var(--color-primary)]"
+                            className="block rounded-md px-2 py-1 text-xs font-medium text-app-text-muted transition hover:bg-app-muted hover:text-app-primary"
                             to={subsection.to}
                           >
                             {subsection.label}
@@ -275,8 +275,8 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
                   <Link
                     className={`block rounded-md px-2 py-2 text-sm font-semibold transition ${
                       isActiveItem(item)
-                        ? 'bg-slate-50 text-[var(--color-primary)]'
-                        : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[var(--color-primary)]'
+                        ? 'bg-app-muted text-app-primary'
+                        : 'text-app-text-muted hover:bg-app-muted hover:text-app-primary'
                     }`}
                     to={navHrefMap[item] || '/'}
                     onClick={onCloseMenu}
@@ -287,8 +287,8 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
               </li>
             ))}
           </ul>
-          <div className="mt-4 border-t border-[var(--color-border)] pt-3">
-            <p className="mb-2 px-2 text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
+          <div className="mt-4 border-t border-app-border pt-3">
+            <p className="mb-2 px-2 text-xs font-bold uppercase tracking-wider text-app-text-muted">
               {t.navbar.language}
             </p>
             <ul className="space-y-1">
@@ -297,8 +297,8 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
                   <button
                     className={`block w-full rounded-md px-2 py-2 text-left text-sm font-semibold transition ${
                       selectedLanguage.label === language.label
-                        ? 'bg-slate-50 text-[var(--color-primary)]'
-                        : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[var(--color-primary)]'
+                        ? 'bg-app-muted text-app-primary'
+                        : 'text-app-text-muted hover:bg-app-muted hover:text-app-primary'
                     }`}
                     onClick={() => setLanguage(language.code)}
                     type="button"
@@ -306,7 +306,7 @@ function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
                     <span className="inline-flex items-center gap-2">
                       <img
                         alt={language.alt}
-                        className="h-4 w-4 rounded-full border border-[var(--color-border)] object-cover"
+                        className="h-4 w-4 rounded-full border border-app-border object-cover"
                         src={language.flagUrl}
                       />
                       {language.label}

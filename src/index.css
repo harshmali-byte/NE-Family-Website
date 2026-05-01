@@ -2,36 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+  Theme: edit values in :root only. Components use Tailwind `app-*` colors (see tailwind.config.js)
+  or the semantic classes below — no per-file hex/rgb.
+*/
+
 :root {
-  --color-primary: #0f172a;
-  --color-primary-dark: #020617;
-  --color-secondary: #334155;
-  --color-accent: #1e40af;
-  --color-text: #0f172a;
-  --color-text-muted: #475569;
-  --color-surface: #ffffff;
-  --color-surface-muted: #f8fafc;
-  --color-page-bg: #f1f5f9;
-  --color-card-bg: #ffffff;
-  --color-card-bg-light: #ffffff;
-  --color-card-bg-dark: #1e293b;
-  --color-card-bg-dark-elevated: #334155;
-  --policy-card-bg: #e2e8f0;
-  --color-dark: #ffffff;
-  --color-dark-soft: #1e293b;
-  --color-dark-elevated: #334155;
-  --color-border: #e2e8f0;
-  --color-border-soft: rgba(15, 23, 42, 0.1);
-  --color-border-softer: rgba(15, 23, 42, 0.16);
+  /* ——— Core palette (change these to re-theme) ——— */
+  --palette-navy: #102a43;
+  --palette-navy-deep: #0a1929;
+  --palette-slate: #486581;
+  --palette-steel: #334e68;
+  --palette-white: #ffffff;
+  --palette-cloud: #f0f4f8;
+  --palette-mist: #edf2f7;
+  --palette-line: #d9e2ec;
+  --palette-line-strong: #bcccdc;
+  --palette-track: #c5d3e0;
+  --palette-navy-panel: #1c2f45;
+  --palette-navy-panel-2: #243b53;
+
+  /* ——— Semantic (map to palette; used by Tailwind + classes) ——— */
+  --color-primary: var(--palette-navy);
+  --color-primary-dark: var(--palette-navy-deep);
+  --color-secondary: var(--palette-slate);
+  --color-accent: var(--palette-steel);
+  --color-text: var(--palette-navy);
+  --color-text-muted: var(--palette-slate);
+  /* Single surface for nav, hero, cards, form fields */
+  --color-card-bg: var(--palette-white);
+  --color-surface: var(--color-card-bg);
+  --color-surface-muted: var(--palette-cloud);
+  --color-page-bg: var(--palette-mist);
+  --color-card-bg-dark: var(--palette-navy-panel);
+  --color-card-bg-dark-elevated: var(--palette-navy-panel-2);
+  --policy-card-bg: var(--palette-line);
+  --color-border: var(--palette-line);
+  --color-border-hover: var(--palette-line-strong);
+  --color-muted-ui: var(--palette-track);
+  --color-border-soft: rgba(16, 42, 67, 0.12);
+  --color-border-softer: rgba(16, 42, 67, 0.18);
+
+  /* Buttons (single source = primary) */
+  --color-button-bg: var(--color-primary);
+  --color-button-bg-hover: var(--color-primary-dark);
+  --color-on-primary: #ffffff;
+
+  /* Focus rings (forms + inputs) */
+  --color-focus-ring: rgba(51, 78, 104, 0.22);
+  --color-focus-border: var(--color-accent);
+
+  /* Form status (subtle, still professional) */
+  --color-form-error-bg: #fef2f2;
+  --color-form-error-border: #fecaca;
+  --color-form-error-text: #991b1b;
+  --color-form-success-bg: #f0fdf4;
+  --color-form-success-border: #bbf7d0;
+  --color-form-success-text: #14532d;
+
+  /* Footer on dark background */
+  --color-footer-bg: var(--color-primary);
+  --color-footer-text: #ffffff;
+  --color-footer-text-muted: rgba(255, 255, 255, 0.72);
+  --color-footer-text-subtle: rgba(255, 255, 255, 0.6);
+  --color-footer-border: rgba(255, 255, 255, 0.12);
+  --color-footer-icon-bg: rgba(255, 255, 255, 0.1);
+  --color-footer-button-border: rgba(255, 255, 255, 0.2);
+
+  /* Optional: third-party wordmark (Reviews); tweak here only */
+  --color-brand-google-1: #4285f4;
+  --color-brand-google-2: #db4437;
+  --color-brand-google-3: #f4b400;
+  --color-brand-google-4: #0f9d58;
 
   --font-sans: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --radius-card: 1rem;
   --radius-pill: 999px;
 
-  --shadow-soft: 0 4px 20px rgba(15, 23, 42, 0.06);
-  --shadow-strong: 0 8px 28px rgba(15, 23, 42, 0.08);
-  --shadow-navbar: 0 1px 0 rgba(15, 23, 42, 0.08);
+  --shadow-soft: 0 4px 20px rgba(16, 42, 67, 0.06);
+  --shadow-strong: 0 8px 28px rgba(16, 42, 67, 0.09);
+  --shadow-navbar: 0 1px 0 rgba(16, 42, 67, 0.08);
 
   --card-heading-size: 1.25rem;
   --card-heading-size-md: 1.5rem;
@@ -44,7 +95,7 @@
   --card-body-line-height: 1.75;
   --card-text-light: var(--color-text);
   --card-text-muted-light: var(--color-text-muted);
-  --card-text-dark: #ffffff;
+  --card-text-dark: var(--color-on-primary);
   --card-text-muted-dark: rgba(255, 255, 255, 0.85);
 }
 
@@ -74,10 +125,11 @@ body {
 }
 
 @layer components {
+  /* ——— Cards (single fill: --color-card-bg) ——— */
   .card-surface-light {
     border-radius: var(--radius-card);
     border: 1px solid var(--color-border);
-    background: var(--color-card-bg-light);
+    background: var(--color-card-bg);
     box-shadow: var(--shadow-soft);
   }
 
@@ -129,6 +181,126 @@ body {
     background: var(--policy-card-bg);
   }
 
+  /* ——— Buttons (all solid CTAs use the same tokens) ——— */
+  .primary-btn {
+    border-radius: var(--radius-pill);
+    background: var(--color-button-bg);
+    color: var(--color-on-primary);
+    transition: background 0.2s ease;
+  }
+
+  .primary-btn:hover:not(:disabled) {
+    background: var(--color-button-bg-hover);
+  }
+
+  .primary-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+  }
+
+  /* Outline / secondary actions (Previous, Learn more, carousel nav) */
+  .btn-outline {
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-border);
+    background: var(--color-card-bg);
+    color: var(--color-text);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .btn-outline:hover:not(:disabled) {
+    border-color: var(--color-border-hover);
+  }
+
+  .btn-outline--muted {
+    background: var(--color-surface-muted);
+  }
+
+  .btn-outline--pill {
+    border-radius: var(--radius-pill);
+  }
+
+  /* ——— Forms (shared contact + certificate-style controls) ——— */
+  .form-control {
+    width: 100%;
+    border-radius: var(--radius-card);
+    border: 1px solid var(--color-border);
+    background: var(--color-card-bg);
+    color: var(--color-text);
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .form-control:focus {
+    border-color: var(--color-focus-border);
+    box-shadow: 0 0 0 2px var(--color-focus-ring);
+  }
+
+  .form-control--boxed {
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+  }
+
+  .form-control--floating {
+    padding: 1.25rem 1rem 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .form-field-inline {
+    width: 100%;
+    border-bottom: 1px solid var(--color-border);
+    background: transparent;
+    padding: 0.75rem 0.5rem;
+    color: var(--color-text);
+    outline: none;
+    transition: border-color 0.2s ease;
+  }
+
+  .form-field-inline::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .form-field-inline:focus {
+    border-bottom-color: var(--color-focus-border);
+  }
+
+  .form-label-inline {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-text);
+  }
+
+  .form-message {
+    border-radius: var(--radius-card);
+    padding: 0.75rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .form-message--error {
+    margin-top: 1.5rem;
+    border: 1px solid var(--color-form-error-border);
+    background: var(--color-form-error-bg);
+    color: var(--color-form-error-text);
+  }
+
+  .form-message--success {
+    margin-top: 1.5rem;
+    border: 1px solid var(--color-form-success-border);
+    background: var(--color-form-success-bg);
+    color: var(--color-form-success-text);
+  }
+
+  .form-message--inline-success {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-form-success-text);
+  }
+
+  /* ——— Content pages ——— */
   .content-page {
     padding-block: 3rem;
   }
@@ -183,17 +355,6 @@ body {
     padding-left: 1.25rem;
   }
 
-  .primary-btn {
-    border-radius: var(--radius-pill);
-    background: var(--color-primary);
-    color: #fff;
-    transition: background 0.2s ease;
-  }
-
-  .primary-btn:hover {
-    background: var(--color-primary-dark);
-  }
-
   .interactive-card {
     position: relative;
     overflow: hidden;
@@ -202,13 +363,13 @@ body {
 
   .interactive-card-light:hover,
   .interactive-card-light:focus-within {
-    border-color: #cbd5e1;
+    border-color: var(--color-border-hover);
     box-shadow: var(--shadow-strong);
   }
 
   .interactive-card-dark:hover,
   .interactive-card-dark:focus-within {
-    border-color: rgba(255, 255, 255, 0.18);
+    border-color: var(--color-border-softer);
   }
 
   @media (min-width: 768px) {

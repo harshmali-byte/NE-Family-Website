@@ -83,22 +83,22 @@ function ReviewsPage() {
     <section className="overflow-hidden py-12 md:py-14">
       <div className="mx-auto w-full max-w-7xl space-y-10 px-6 md:px-10">
         <article className="relative flex justify-center overflow-visible py-2">
-          <div className="relative w-full max-w-xl rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] px-8 py-7 text-center shadow-[var(--shadow-soft)]">
-            <p className="text-3xl tracking-wide text-amber-600">★★★★★</p>
-            <h2 className="mt-2 text-4xl font-black tracking-tight text-[var(--color-text)]">{t.reviews.title}</h2>
-            <p className="mt-1 text-sm font-medium text-[var(--color-text-muted)]">{t.reviews.basedOn}</p>
+          <div className="relative w-full max-w-xl rounded-full border border-app-border bg-app-card px-8 py-7 text-center shadow-app-soft">
+            <p className="text-3xl tracking-wide text-app-accent">★★★★★</p>
+            <h2 className="mt-2 text-4xl font-black tracking-tight text-app-text">{t.reviews.title}</h2>
+            <p className="mt-1 text-sm font-medium text-app-text-muted">{t.reviews.basedOn}</p>
             <p className="mt-3 text-4xl font-semibold tracking-wide">
-              <span className="text-[#4285f4]">G</span>
-              <span className="text-[#db4437]">o</span>
-              <span className="text-[#f4b400]">o</span>
-              <span className="text-[#4285f4]">g</span>
-              <span className="text-[#0f9d58]">l</span>
-              <span className="text-[#db4437]">e</span>
+              <span className="text-app-google-1">G</span>
+              <span className="text-app-google-2">o</span>
+              <span className="text-app-google-3">o</span>
+              <span className="text-app-google-1">g</span>
+              <span className="text-app-google-4">l</span>
+              <span className="text-app-google-2">e</span>
             </p>
           </div>
         </article>
 
-        <div className="overflow-hidden rounded-[var(--radius-card)]">
+        <div className="overflow-hidden rounded-card">
           <div
             className="flex"
             onTransitionEnd={handleTrackTransitionEnd}
@@ -117,11 +117,11 @@ function ReviewsPage() {
               return (
                 <article
                   key={`${card.name}-${index}`}
-                  className={`interactive-card interactive-card-light group relative m-2 cursor-pointer overflow-hidden rounded-[var(--radius-card)] border p-5 transition-colors duration-300 ${
+                  className={`interactive-card interactive-card-light group relative m-2 cursor-pointer overflow-hidden rounded-card border p-5 transition-colors duration-300 ${
                     isHighlighted
-                      ? 'card-surface-light border-[var(--color-primary)]'
-                      : 'card-surface-light border-[var(--color-border)]'
-                  } hover:border-slate-400`}
+                      ? 'card-surface-light border-app-primary'
+                      : 'card-surface-light border-app-border'
+                  } hover:border-app-border-hover`}
                   onClick={() => setSelectedIndex(originalIndex)}
                   onMouseEnter={() => setSelectedIndex(originalIndex)}
                   style={{ width: `${100 / duplicatedCards.length}%` }}
@@ -131,17 +131,17 @@ function ReviewsPage() {
                       <img
                         src={card.image}
                         alt={card.name}
-                        className="h-11 w-11 rounded-full border border-[var(--color-border)] object-cover"
+                        className="h-11 w-11 rounded-full border border-app-border object-cover"
                       />
                       <div>
-                        <p className="card-subheading text-sm text-[var(--color-text)]">{card.name}</p>
-                        <p className="text-xs text-[var(--color-text-muted)]">{card.time}</p>
+                        <p className="card-subheading text-sm text-app-text">{card.name}</p>
+                        <p className="text-xs text-app-text-muted">{card.time}</p>
                       </div>
                     </div>
-                    <span className="text-sm font-black text-[var(--color-accent)]">G</span>
+                    <span className="text-sm font-black text-app-accent">G</span>
                   </div>
 
-                  <p className="relative z-10 mt-4 text-base leading-none tracking-wide text-amber-600">★★★★★</p>
+                  <p className="relative z-10 mt-4 text-base leading-none tracking-wide text-app-accent">★★★★★</p>
                   <p className="card-body card-text-muted-light relative z-10 mt-3 line-clamp-4">{card.text}</p>
 
 
@@ -163,7 +163,7 @@ function ReviewsPage() {
                 type="button"
                 aria-label={`${t.reviews.goToReview} ${index + 1}`}
                 className={`h-2.5 rounded-full transition-all duration-300 ${
-                  isActive ? 'w-8 bg-[var(--color-primary)]' : 'w-2.5 bg-slate-300'
+                  isActive ? 'w-8 bg-app-primary' : 'w-2.5 bg-app-muted-ui'
                 }`}
                 onClick={() => {
                   setSelectedIndex(index)

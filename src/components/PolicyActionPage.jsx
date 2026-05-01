@@ -4,28 +4,28 @@ import CommonContactForm from './CommonContactForm'
 
 function PolicyActionPage({ title, prompt, options }) {
   const cardClassName = `
-    group relative overflow-hidden rounded-[18px] border border-[var(--color-border)]
-    bg-[var(--color-surface-muted)] min-h-[170px] p-4 text-center transition
-    hover:border-slate-300
+    group relative overflow-hidden rounded-[18px] border border-app-border
+    bg-app-muted min-h-[170px] p-4 text-center transition
+    hover:border-app-border-hover
   `
 
   const iconWrapClass =
-    'mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-text)]'
-  const labelClass = 'card-subheading mt-4 text-[1.1rem] text-[var(--color-text)]'
+    'mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-app-border bg-app-card text-app-text'
+  const labelClass = 'card-subheading mt-4 text-[1.1rem] text-app-text'
   const actionClass =
-    'mt-4 inline-flex h-8 w-14 items-center justify-center rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] transition hover:border-[var(--color-text-muted)] hover:text-[var(--color-text)]'
+    'mt-4 inline-flex h-8 w-14 items-center justify-center rounded-full border border-app-border text-app-text-muted transition hover:border-app-text-muted hover:text-app-text'
 
   return (
     <section className="py-14">
       <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
-        <h1 className="text-center text-4xl font-black uppercase tracking-wide text-[var(--color-text)] md:text-5xl">
+        <h1 className="text-center text-4xl font-black uppercase tracking-wide text-app-text md:text-5xl">
           {title}
         </h1>
 
         <div className="mt-10 grid items-start gap-8 md:grid-cols-[1fr_1fr]">
-          <div className="rounded-[24px] border border-[var(--color-border)] bg-[var(--color-surface)] p-6 shadow-[var(--shadow-soft)] md:p-8">
-            <h2 className="card-heading text-[var(--color-text)] md:text-3xl">{prompt}</h2>
-            <div className="mt-2 h-[3px] w-44 rounded-full bg-[var(--color-primary)]" />
+          <div className="rounded-[24px] border border-app-border bg-app-card p-6 shadow-app-soft md:p-8">
+            <h2 className="card-heading text-app-text md:text-3xl">{prompt}</h2>
+            <div className="mt-2 h-[3px] w-44 rounded-full bg-app-primary" />
 
             <div className="mt-6 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
               {options.map((option) => {
@@ -64,7 +64,7 @@ function PolicyActionPage({ title, prompt, options }) {
             </div>
           </div>
 
-          <CommonContactForm subject={`${title} inquiry`} theme="light" />
+          <CommonContactForm subject={`${title} inquiry`} />
         </div>
       </div>
     </section>
