@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react'
 import bestPriceGuarantee from '../assets/Best-Price-Guarantee-Final-2.png'
 import familyPolicy from '../assets/Get-A-New-Policy-Final-2.webp'
 import myPolicy from '../assets/My-Policy-Image-Final-2.webp'
+import { useI18n } from '../i18n.jsx'
 
 function Hero() {
-  const rotatingWords = ['best price', 'best service']
+  const { t } = useI18n()
+  const rotatingWords = t.hero.rotatingWords
   const [activeWordIndex, setActiveWordIndex] = useState(0)
   useEffect(() => {
     const timer = window.setInterval(() => {
@@ -13,27 +15,23 @@ function Hero() {
     return () => window.clearInterval(timer)
   }, [rotatingWords.length])
   return (
-    <section
-      className="bg-gradient-to-br from-[#f3f9ff] via-[#f4fbff] to-[#d7f4f8]"
-      id="home"
-    >
+    <section id="home">
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-16 md:grid-cols-2 md:px-10 md:py-20">
         <div className="space-y-6">
-          <p className="inline-flex rounded-[var(--radius-pill)] bg-white px-4 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-primary)]">
-            Trusted Insurance Advisors
+          <p className="inline-flex rounded-[var(--radius-pill)] bg-white/10 px-4 py-1 text-xs font-bold uppercase tracking-wider text-[var(--color-accent)] ring-1 ring-white/10">
+            {t.hero.badge}
           </p>
-          <h1 className="text-4xl font-black leading-tight text-[var(--color-text)] md:text-6xl">
-            We&apos;re not just the
+          <h1 className="text-4xl font-black leading-tight text-white md:text-6xl">
+            {t.hero.headingStart}
             <span className="text-[var(--color-secondary)]"> {rotatingWords[activeWordIndex]}</span>.
 
             <br />
-            We&apos;re both in equal measures.
+            {t.hero.headingEnd}
           </h1>
-          <p className="max-w-lg text-base leading-relaxed text-[var(--color-text-muted)] md:text-lg">
-            A redesigned, modern experience built around clarity, trust, and
-            coverage confidence for every stage of life.
+          <p className="max-w-lg text-base leading-relaxed text-white/80 md:text-lg">
+            {t.hero.subtext}
           </p>
-          <div className="grid w-full max-w-2xl grid-cols-3 gap-5 pt-2 text-center text-[var(--color-primary)]">
+          <div className="grid w-full max-w-2xl grid-cols-3 gap-5 pt-2 text-center text-[var(--color-accent)]">
             <div>
               <img
                 alt="Best price guarantee"
@@ -41,7 +39,7 @@ function Hero() {
                 src={bestPriceGuarantee}
               />
               <p className="mt-3 text-base font-bold md:text-[1rem] md:leading-[2.2rem] lg:text-[1.05rem]">
-                Best Price Guarantee
+                {t.hero.bestPrice}
               </p>
             </div>
             <div>
@@ -51,7 +49,7 @@ function Hero() {
                 src={familyPolicy}
               />
               <p className="mt-3 text-base font-bold md:text-[1rem] md:leading-[2.2rem] lg:text-[1.05rem]">
-                Get A New Policy
+                {t.hero.getPolicy}
               </p>
             </div>
             <div>
@@ -61,13 +59,13 @@ function Hero() {
                 src={myPolicy}
               />
               <p className="mt-3 text-base font-bold md:text-[1rem] md:leading-[2.2rem] lg:text-[1.05rem]">
-                My Policy
+                {t.hero.myPolicy}
               </p>
             </div>
           </div>
         </div>
 
-        <div className="rounded-2xl border border-white/70  p-3 shadow-[var(--shadow-strong)] backdrop-blur md:p-4">
+        <div className="  p-3 shadow-[var(--shadow-strong)] backdrop-blur md:p-4">
           <div className="overflow-hidden rounded-xl">
             <iframe
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"

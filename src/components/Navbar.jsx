@@ -1,39 +1,59 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import logo from '../assets/New-England-Family-Logo.webp'
+import { useI18n } from '../i18n.jsx'
 
-function Navbar({ navItems, isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
+function Navbar({ isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
+  const { language, setLanguage, languageMeta, t } = useI18n()
   const [isScrolled, setIsScrolled] = useState(false)
   const [isPolicyMenuOpen, setIsPolicyMenuOpen] = useState(false)
   const [isLanguageMenuOpen, setIsLanguageMenuOpen] = useState(false)
-  const [selectedLanguage, setSelectedLanguage] = useState({ label: 'English', flag: '🇺🇸' })
   const location = useLocation()
-  const navHrefMap = {
-    'My Policy': '/#home',
-    'Get A New Policy': '/get-a-new-policy',
-    Reviews: '/reviews',
-    'About Us': '/about',
-    'Contact Us': '/contact',
-  }
-  const policySubsections = ['Pay My Bill', 'Policy Change', 'Certificate', 'File A Claim']
+  const selectedLanguage = languageMeta[language]
   const languageOptions = [
-    { label: 'Português', flag: '🇵🇹' },
-    { label: 'Español', flag: '🇪🇸' },
-    { label: 'English', flag: '🇺🇸' },
+    { code: 'pt', ...languageMeta.pt },
+    { code: 'es', ...languageMeta.es },
+    { code: 'en', ...languageMeta.en },
+  ]
+  const navItemsTranslated = [
+    t.navbar.myPolicy,
+    t.navbar.getNewPolicy,
+    t.navbar.reviews,
+    t.navbar.contactUs,
+    t.navbar.aboutUs,
+  ]
+  const navHrefMap = {
+    [t.navbar.myPolicy]: '/pay-my-bill',
+    [t.navbar.getNewPolicy]: '/get-a-new-policy',
+    [t.navbar.reviews]: '/reviews',
+    [t.navbar.aboutUs]: '/about',
+    [t.navbar.contactUs]: '/contact',
+  }
+  const policySubsections = [
+    { label: t.navbar.payMyBill, to: '/pay-my-bill' },
+    { label: t.navbar.policyChange, to: '/policy-change' },
+    { label: t.navbar.certificate, to: '/certificate' },
+    { label: t.navbar.fileAClaim, to: '/file-a-claim' },
   ]
 
   const isActiveItem = (item) => {
-    if (item === 'Contact Us' || item === 'About Us' || item === 'Reviews' || item === 'Get A New Policy') {
+    if (
+      item === t.navbar.contactUs ||
+      item === t.navbar.aboutUs ||
+      item === t.navbar.reviews ||
+      item === t.navbar.getNewPolicy
+    ) {
       return location.pathname === navHrefMap[item]
     }
 
-    if (location.pathname !== '/') {
-      return false
+    if (item === t.navbar.myPolicy) {
+      return ['/pay-my-bill', '/policy-change', '/certificate', '/file-a-claim'].includes(location.pathname)
     }
 
-    const expectedHash = navHrefMap[item].replace('/', '')
-    return location.hash ? location.hash === expectedHash : item === 'My Policy'
+    return false
   }
+
+  const navAccentClass = 'text-[#c084fc] drop-shadow-[0_0_10px_rgba(192,132,252,0.45)]'
 
   useEffect(() => {
     if (!isMobileMenuOpen) {
@@ -72,9 +92,9 @@ function Navbar({ navItems, isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
             </Link>
         </div>
 
-        <nav className="hidden   items-center gap-8 text-sm font-semibold text-[var(--color-text-muted)] md:flex">
-          {navItems.map((item) => (
-            item === 'My Policy' ? (
+        <nav className="hidden   items-center gap-8 text-white  font-bold text-md text-[var(--color-text-muted)] md:flex">
+          {navItemsTranslated.map((item) => (
+            item === t.navbar.myPolicy ? (
               <div
                 className="group relative"
                 key={item}
@@ -83,7 +103,7 @@ function Navbar({ navItems, isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
               >
                 <button
                   className={`inline-flex items-center gap-2 pb-1 transition ${
-                    isActiveItem(item) ? 'text-[var(--color-primary)]' : 'hover:text-[var(--color-primary)]'
+                    isActiveItem(item) ? navAccentClass : 'hover:text-[#c084fc]'
                   }`}
                   onClick={() => setIsPolicyMenuOpen((prev) => !prev)}
                   type="button"
@@ -98,23 +118,30 @@ function Navbar({ navItems, isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
                 />
 
                 {isPolicyMenuOpen && (
-                  <div className="absolute left-0 top-full mt-4 min-w-[157px] bg-black px-8 py-6 text-white shadow-2xl">
-                    <ul className="space-y-4 text-md font-semibold">
-                      {policySubsections.map((subsection) => (
-                        <li key={subsection}>
-                          <a className="transition hover:text-[var(--color-secondary)]" href="#">
-                            {subsection}
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
+                  <div className="absolute left-0 top-full z-50 min-w-[157px] pt-4">
+                    <div className="bg-white/40 backdrop-blur-sm border border-white/20
+rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
+                      <ul className="space-y-3 text-sm font-semibold">
+                        {policySubsections.map((subsection) => (
+                          <li key={subsection.label}>
+                            <Link
+                              className="transition hover:text-[var(--color-secondary)]"
+                              to={subsection.to}
+                              onClick={() => setIsPolicyMenuOpen(false)}
+                            >
+                              {subsection.label}
+                            </Link>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 )}
               </div>
             ) : (
               <Link
                 className={`group relative pb-1 transition ${
-                  isActiveItem(item) ? 'text-[var(--color-primary)]' : 'hover:text-[var(--color-primary)]'
+                  isActiveItem(item) ? navAccentClass : 'hover:text-[#c084fc]'
                 }`}
                 to={navHrefMap[item] || '/'}
                 key={item}
@@ -136,11 +163,15 @@ function Navbar({ navItems, isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
             onMouseLeave={() => setIsLanguageMenuOpen(false)}
           >
             <button
-              className="inline-flex items-center gap-2 pb-1 transition hover:text-[var(--color-primary)]"
+              className="inline-flex items-center gap-2 pb-1 transition hover:text-[#c084fc]"
               onClick={() => setIsLanguageMenuOpen((prev) => !prev)}
               type="button"
             >
-              <span>{selectedLanguage.flag}</span>
+              <img
+                alt={selectedLanguage.alt}
+                className="h-4 w-4 rounded-full border border-[var(--color-border)] object-cover"
+                src={selectedLanguage.flagUrl}
+              />
               <span>{selectedLanguage.label.toUpperCase()}</span>
               <span className="text-xs">▼</span>
             </button>
@@ -151,36 +182,43 @@ function Navbar({ navItems, isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
             />
 
             {isLanguageMenuOpen && (
-              <div className="absolute right-0 top-full mt-4 min-w-[185px] bg-black px-8 py-6 text-white shadow-2xl">
-                <ul className="space-y-4 text-2xl font-semibold">
-                  {languageOptions.map((language) => (
-                    <li key={language.label}>
-                      <button
-                        className={`inline-flex items-center gap-2 transition ${
-                          selectedLanguage.label === language.label
-                            ? 'text-[var(--color-secondary)]'
-                            : 'hover:text-[var(--color-secondary)]'
-                        }`}
-                        onClick={() => {
-                          setSelectedLanguage(language)
-                          setIsLanguageMenuOpen(false)
-                        }}
-                        type="button"
-                      >
-                        <span>{language.flag}</span>
-                        <span>{language.label}</span>
-                      </button>
-                    </li>
-                  ))}
-                </ul>
+              <div className="absolute right-0 top-full z-50 pt-4">
+                <div className="bg-white/40 backdrop-blur-sm border border-white/20
+rounded-xl px-5 py-5 shadow-[0_10px_40px_rgba(0,0,0,0.25)] text-black">
+                  <ul className="space-y-3 text-sm font-semibold">
+                    {languageOptions.map((language) => (
+                      <li key={language.label}>
+                        <button
+                          className={`inline-flex items-center gap-2 transition ${
+                            selectedLanguage.label === language.label
+                              ? 'text-[var(--color-secondary)]'
+                              : 'hover:text-[var(--color-secondary)]'
+                          }`}
+                          onClick={() => {
+                            setLanguage(language.code)
+                            setIsLanguageMenuOpen(false)
+                          }}
+                          type="button"
+                        >
+                          <img
+                            alt={language.alt}
+                            className="h-5 w-5 rounded-full border border-white/20 object-cover"
+                            src={language.flagUrl}
+                          />
+                          <span>{language.label}</span>
+                        </button>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             )}
           </div>
         </nav>
 
         <div className="flex items-center gap-3">
-          <button className="primary-btn hidden px-5 py-2 text-sm font-semibold md:inline-flex">
-            Get a Quote
+          <button className="relative hidden overflow-hidden rounded-[var(--radius-card)] bg-[var(--color-secondary)] px-5 py-2 text-sm font-semibold text-white shadow-sm transition duration-300 before:absolute before:inset-y-0 before:-left-1/2 before:w-1/3 before:skew-x-[-20deg] before:bg-white/40 before:blur-sm before:transition-all before:duration-500 hover:shadow-[0_0_22px_rgba(31,212,224,0.45)] hover:brightness-110 hover:before:left-full active:scale-95 md:inline-flex">
+            {t.navbar.getQuote}
           </button>
 
           <button
@@ -206,15 +244,15 @@ function Navbar({ navItems, isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
       >
         <nav className="px-6 py-4">
           <ul className="space-y-3">
-            {navItems.map((item) => (
+            {navItemsTranslated.map((item) => (
               <li key={item}>
-                {item === 'My Policy' ? (
+                {item === t.navbar.myPolicy ? (
                   <div>
                     <Link
                       className={`block rounded-md px-2 py-2 text-sm font-semibold transition ${
                         isActiveItem(item)
-                          ? 'bg-slate-50 text-[var(--color-primary)]'
-                          : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[var(--color-primary)]'
+                          ? 'bg-slate-50 text-[#c084fc]'
+                          : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[#c084fc]'
                       }`}
                       to={navHrefMap[item] || '/'}
                       onClick={onCloseMenu}
@@ -223,13 +261,13 @@ function Navbar({ navItems, isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
                     </Link>
                     <ul className="ml-4 mt-1 space-y-1 border-l border-slate-200 pl-3">
                       {policySubsections.map((subsection) => (
-                        <li key={subsection}>
-                          <a
-                            className="block rounded-md px-2 py-1 text-xs font-medium text-[var(--color-text-muted)] transition hover:bg-slate-50 hover:text-[var(--color-primary)]"
-                            href="#"
+                        <li key={subsection.label}>
+                          <Link
+                            className="block rounded-md px-2 py-1 text-xs font-medium text-[var(--color-text-muted)] transition hover:bg-slate-50 hover:text-[#c084fc]"
+                            to={subsection.to}
                           >
-                            {subsection}
-                          </a>
+                            {subsection.label}
+                          </Link>
                         </li>
                       ))}
                     </ul>
@@ -238,8 +276,8 @@ function Navbar({ navItems, isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
                   <Link
                     className={`block rounded-md px-2 py-2 text-sm font-semibold transition ${
                       isActiveItem(item)
-                        ? 'bg-slate-50 text-[var(--color-primary)]'
-                        : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[var(--color-primary)]'
+                        ? 'bg-slate-50 text-[#c084fc]'
+                        : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[#c084fc]'
                     }`}
                     to={navHrefMap[item] || '/'}
                     onClick={onCloseMenu}
@@ -252,7 +290,7 @@ function Navbar({ navItems, isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
           </ul>
           <div className="mt-4 border-t border-[var(--color-border)] pt-3">
             <p className="mb-2 px-2 text-xs font-bold uppercase tracking-wider text-[var(--color-text-muted)]">
-              Language
+              {t.navbar.language}
             </p>
             <ul className="space-y-1">
               {languageOptions.map((language) => (
@@ -260,24 +298,30 @@ function Navbar({ navItems, isMobileMenuOpen, onToggleMenu, onCloseMenu }) {
                   <button
                     className={`block w-full rounded-md px-2 py-2 text-left text-sm font-semibold transition ${
                       selectedLanguage.label === language.label
-                        ? 'bg-slate-50 text-[var(--color-primary)]'
-                        : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[var(--color-primary)]'
+                        ? 'bg-slate-50 text-[#c084fc]'
+                        : 'text-[var(--color-text-muted)] hover:bg-slate-50 hover:text-[#c084fc]'
                     }`}
-                    onClick={() => setSelectedLanguage(language)}
+                    onClick={() => setLanguage(language.code)}
                     type="button"
                   >
-                    {language.flag} {language.label}
+                    <span className="inline-flex items-center gap-2">
+                      <img
+                        alt={language.alt}
+                        className="h-4 w-4 rounded-full border border-[var(--color-border)] object-cover"
+                        src={language.flagUrl}
+                      />
+                      {language.label}
+                    </span>
                   </button>
                 </li>
               ))}
             </ul>
           </div>
-          <button className="primary-btn mt-4 inline-flex w-full items-center justify-center px-5 py-2 text-sm font-semibold">
-            Get a Quote
+          <button className="primary-btn relative mt-4 inline-flex w-full items-center justify-center overflow-hidden px-5 py-2 text-sm font-semibold transition duration-300 before:absolute before:inset-y-0 before:-left-1/2 before:w-1/3 before:skew-x-[-20deg] before:bg-white/40 before:blur-sm before:transition-all before:duration-500 hover:shadow-[0_0_22px_rgba(31,212,224,0.45)] hover:brightness-110 hover:before:left-full active:scale-95">
+            {t.navbar.getQuote}
           </button>
         </nav>
       </div>
-      <div className="h-[3px] w-full bg-[var(--color-secondary)]" />
     </header>
   )
 }

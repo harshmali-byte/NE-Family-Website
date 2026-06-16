@@ -1,121 +1,186 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from 'react'
+import { useI18n } from '../i18n.jsx'
 
-const reviewCards = [
-  {
-    name: "Paulo Ferreira",
-    time: "1 year ago",
-    text: "Décio, ótimo atendimento..",
-    image: "https://i.pravatar.cc/100?img=1",
-  },
-  {
-    name: "Henry Teixeira",
-    time: "1 year ago",
-    text: "Gracias Angie por ahorrarme tanto dinero en mis vehículos siempre es un placer verte.",
-    image: "https://i.pravatar.cc/100?img=2",
-  },
-  {
-    name: "Rodolfo Vital",
-    time: "1 year ago",
-    text: "Obrigado pela gentileza e educação em todo atendimento.",
-    image: "https://i.pravatar.cc/100?img=3",
-  },
-  {
-    name: "Alex Huerta",
-    time: "1 year ago",
-    text: "Excellent service, very friendly and professional, thank you Decio.",
-    image: "https://i.pravatar.cc/100?img=4",
-  },
-];
+const reviewImages = [
+  'https://i.pravatar.cc/100?img=1',
+  'https://i.pravatar.cc/100?img=2',
+  'https://i.pravatar.cc/100?img=3',
+  'https://i.pravatar.cc/100?img=4',
+]
 
 function ReviewsPage() {
-  const [startIndex, setStartIndex] = useState(0);
+  const { t } = useI18n()
+  const reviewCards = useMemo(
+    () =>
+      t.reviews.cards.map((card, index) => ({
+        ...card,
+        image: reviewImages[index % reviewImages.length],
+      })),
+    [t.reviews.cards],
+  )
+  const [activeIndex, setActiveIndex] = useState(0)
+  const [selectedIndex, setSelectedIndex] = useState(null)
+  const [isTransitionEnabled, setIsTransitionEnabled] = useState(true)
+  const [visibleCount, setVisibleCount] = useState(() => {
+    if (typeof window === 'undefined') return 4
+    if (window.innerWidth >= 1024) return 4
+    if (window.innerWidth >= 768) return 2
+    return 1
+  })
+  const duplicatedCards = useMemo(() => [...reviewCards, ...reviewCards], [])
 
-  // 🔁 Auto rotate every 3 sec
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setVisibleCount(4)
+        return
+      }
+      if (window.innerWidth >= 768) {
+        setVisibleCount(2)
+        return
+      }
+      setVisibleCount(1)
+    }
+
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   useEffect(() => {
     const interval = setInterval(() => {
-      setStartIndex((prev) => (prev + 1) % reviewCards.length);
-    }, 3000);
+      setActiveIndex((prev) => prev + 1)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
 
-    return () => clearInterval(interval);
-  }, []);
+  useEffect(() => {
+    if (isTransitionEnabled) {
+      return
+    }
 
-  // show 4 cards rotating
-  const visibleCards = Array.from({ length: 4 }, (_, i) => {
-    return reviewCards[(startIndex + i) % reviewCards.length];
-  });
+    const frame = window.requestAnimationFrame(() => {
+      setIsTransitionEnabled(true)
+    })
+
+    return () => window.cancelAnimationFrame(frame)
+  }, [isTransitionEnabled])
+
+  const handleTrackTransitionEnd = () => {
+    if (activeIndex < reviewCards.length) {
+      return
+    }
+
+    setIsTransitionEnabled(false)
+    setActiveIndex(0)
+  }
+
+  const slidePercent = 100 / visibleCount
+  const translatedX = activeIndex * slidePercent
+  const currentAutoHighlight = activeIndex % reviewCards.length
 
   return (
-    <section className="bg-[var(--color-page-bg)] pb-14 overflow-hidden">
-
-      <div className="mx-auto w-full max-w-7xl px-6 md:px-10">
-       
-
-        {/* HEADER */}
-        <div className="mt-16 text-center">
-          <p className="text-4xl text-[#f2b600]">★★★★★</p>
-          <p className="mt-2 text-2xl font-bold text-[#1f2937]">EXCELLENT</p>
-          <p className="mt-1 text-sm text-slate-600">
-            Based on 2,832 reviews
-          </p>
-
-          <p className="mt-2 text-4xl font-semibold">
-            <span className="text-[#4285f4]">G</span>
-            <span className="text-[#db4437]">o</span>
-            <span className="text-[#f4b400]">o</span>
-            <span className="text-[#4285f4]">g</span>
-            <span className="text-[#0f9d58]">l</span>
-            <span className="text-[#db4437]">e</span>
-          </p>
-        </div>
-
-        {/* CARDS */}
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4 transition-all duration-500">
-          {visibleCards.map((card, index) => (
-            <article
-              key={index}
-              className="group relative rounded-xl bg-white p-5 shadow-md transition-all duration-500 hover:scale-105 hover:shadow-xl"
-            >
-              {/* HEADER */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <img
-                    src={card.image}
-                    alt={card.name}
-                    className="h-10 w-10 rounded-full object-cover border"
-                  />
-                  <div>
-                    <p className="text-sm font-bold text-[#111827]">
-                      {card.name}
-                    </p>
-                    <p className="text-xs text-slate-500">{card.time}</p>
-                  </div>
-                </div>
-
-                <span className="text-xs font-semibold text-[#4285f4]">
-                  G
-                </span>
-              </div>
-
-              {/* STARS */}
-              <p className="mt-3 text-lg text-[#f2b600]">★★★★★</p>
-
-              {/* TEXT */}
-              <p className="mt-2 text-sm leading-6 text-slate-700">
-                {card.text}
+    <section className="overflow-hidden py-12 md:py-14">
+      <div className="mx-auto w-full max-w-7xl space-y-10 px-6 md:px-10">
+        <article className="relative flex justify-center overflow-visible py-2">
+          <div className="pointer-events-none absolute top-1/2 h-44 w-44 -translate-y-1/2 rounded-full bg-violet-500/20 blur-3xl" />
+          <div className="pointer-events-none absolute top-1/2 h-32 w-[26rem] -translate-y-1/2 rounded-full bg-cyan-400/15 blur-2xl" />
+          <div className="relative w-full max-w-xl rounded-full bg-gradient-to-r from-cyan-400 via-violet-400 to-fuchsia-400 p-[2px] shadow-[0_0_30px_rgba(192,132,252,0.25)]">
+            <div className="rounded-full bg-[linear-gradient(180deg,#101a43_0%,#151f52_100%)] px-8 py-7 text-center">
+              <p className="text-3xl tracking-wide text-amber-400">★★★★★</p>
+              <h2 className="mt-2 text-4xl font-black tracking-tight text-white">{t.reviews.title}</h2>
+              <p className="mt-1 text-sm font-medium text-white/65">{t.reviews.basedOn}</p>
+              <p className="mt-3 text-4xl font-semibold tracking-wide">
+                <span className="text-[#4285f4]">G</span>
+                <span className="text-[#db4437]">o</span>
+                <span className="text-[#f4b400]">o</span>
+                <span className="text-[#4285f4]">g</span>
+                <span className="text-[#0f9d58]">l</span>
+                <span className="text-[#db4437]">e</span>
               </p>
+            </div>
+          </div>
+        </article>
 
-              {/* HOVER EFFECT */}
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-tr from-transparent to-blue-50 opacity-0 transition group-hover:opacity-100" />
-            </article>
-          ))}
+        <div className="overflow-hidden rounded-[var(--radius-card)]">
+          <div
+            className="flex"
+            onTransitionEnd={handleTrackTransitionEnd}
+            style={{
+              transform: `translateX(-${translatedX}%)`,
+              transition: isTransitionEnabled ? 'transform 700ms ease' : 'none',
+              width: `${(duplicatedCards.length * 100) / visibleCount}%`,
+            }}
+          >
+            {duplicatedCards.map((card, index) => {
+              const originalIndex = index % reviewCards.length
+              const isSelected = selectedIndex === originalIndex
+              const isAutoActive = selectedIndex === null && originalIndex === currentAutoHighlight
+              const isHighlighted = isSelected || isAutoActive
+
+              return (
+                <article
+                  key={`${card.name}-${index}`}
+                  className={`interactive-card interactive-card-dark group relative m-2 cursor-pointer overflow-hidden rounded-[var(--radius-card)] border p-5 transition-all duration-300 ${
+                    isHighlighted
+                      ? 'card-surface-dark scale-[1.01] border-[var(--color-accent)] shadow-[var(--shadow-accent)]'
+                      : 'card-surface-dark border-white/10'
+                  } hover:-translate-y-1 hover:border-[var(--color-accent)] hover:shadow-[var(--shadow-accent)]`}
+                  onClick={() => setSelectedIndex(originalIndex)}
+                  onMouseEnter={() => setSelectedIndex(originalIndex)}
+                  style={{ width: `${100 / duplicatedCards.length}%` }}
+                >
+                  <div className="relative z-10 flex items-start justify-between gap-4">
+                    <div className="flex items-center gap-3">
+                      <img
+                        src={card.image}
+                        alt={card.name}
+                        className="h-11 w-11 rounded-full border border-white/20 object-cover"
+                      />
+                      <div>
+                        <p className="card-subheading card-text-dark text-sm">{card.name}</p>
+                        <p className="text-xs text-white/70">{card.time}</p>
+                      </div>
+                    </div>
+                    <span className="text-sm font-black text-[var(--color-accent)]">G</span>
+                  </div>
+
+                  <p className="relative z-10 mt-4 text-base leading-none tracking-wide text-amber-400">★★★★★</p>
+                  <p className="card-body card-text-muted-dark relative z-10 mt-3 line-clamp-4">{card.text}</p>
+
+                  
+                </article>
+              )
+            })}
+          </div>
         </div>
 
-        <p className="mt-6 text-right text-xs text-slate-500">
-          Verified by Trustindex
-        </p>
+        <div className="flex justify-center gap-2">
+          {reviewCards.map((card, index) => {
+            const isSelected = selectedIndex === index
+            const isAutoActive = selectedIndex === null && currentAutoHighlight === index
+            const isActive = isSelected || isAutoActive
+
+            return (
+              <button
+                key={card.name}
+                type="button"
+                aria-label={`${t.reviews.goToReview} ${index + 1}`}
+                className={`h-2.5 rounded-full transition-all duration-300 ${
+                  isActive ? 'w-8 bg-[var(--color-secondary)]' : 'w-2.5 bg-slate-300'
+                }`}
+                onClick={() => {
+                  setSelectedIndex(index)
+                  setActiveIndex(index)
+                }}
+              />
+            )
+          })}
+        </div>
+
       </div>
     </section>
-  );
+  )
 }
 
-export default ReviewsPage;
+export default ReviewsPage
